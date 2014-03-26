@@ -3,6 +3,12 @@
   src: url("fonts/espek.ttf");
 }
 
+@font-face {
+  font-family: "Extrude";
+  src: url("fonts/Extrude.ttf");
+
+}
+
 body{
 	background-image: url(imgs/wallpaper.png);
 	background-position: bottom center;
@@ -21,7 +27,7 @@ div#logo {
 	width: 450px;
 	text-align: center;
 	font-size: 100px;
-	font-family: "Especial Kay";
+	font-family: "Extrude";
 	border-bottom: 1px solid black;
 }
 
