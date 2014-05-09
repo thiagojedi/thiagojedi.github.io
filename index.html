@@ -1,9 +1,22 @@
+---
+---
 <html>
 <head>
-<title>Thiago Abreu's Page</title>
+	<title>Thiagos Page</title>
 </head>
 <body>
-<h1>Hello World!</h1>
+	Hello!
+
+	<ul>
+		{% for post in site.posts %}
+		<li>
+			<a href="{{ post.url }}">{{ post.title }}</a>
+			{{ post.excerpt }}
+		</li>
+		{% endfor %}
+	</ul>
+	
+
 
 </body>
 </html>

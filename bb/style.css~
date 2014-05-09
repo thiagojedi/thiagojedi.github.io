@@ -31,7 +31,7 @@ div#logo {
 	width: 450px;
 	text-align: center;
 	font-size: 100px;
-	font-family: "Junko's Typewriter";
+	font-family: "Extrude";
 	border-bottom: 1px solid black;
 }
 
