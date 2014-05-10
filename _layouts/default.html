@@ -1,10 +1,104 @@
+---
+layout: default
+---
 <html>
 <head>
-	<title>{{ page.title }} </title>
+	<title>Thiago Abreu</title>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+	<style type="text/css">
+	body {
+		font-family: sans-serif;
+		color: black;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	a:visited {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	#main {
+		max-width: 800px;
+		margin: auto;
+		background-color: white;
+	}
+
+	#page_title {
+		font-size: 5em;
+		text-align: center;
+		font-variant: small-caps;
+	}
+
+	nav ul {
+		list-style: none;
+		width: 100%;
+		text-align: center;
+	}
+	nav li {
+		display: inline-block;
+		border-right: 1px solid black;
+		padding: 0 20px;
+		vertical-align: baseline;
+	}
+
+	nav li:last-child {
+		border: none;
+	}
+
+	nav a {
+		text-decoration: none;
+		font-family: sans-serif;
+		font-variant: small-caps;
+	}
+
+	#conteudo {
+		background-image: url("https://scontent-a-mia.xx.fbcdn.net/hphotos-frc1/t31.0-8/906843_10152402081687128_7355035549197042918_o.jpg");
+		background-position: center center;
+		height: 520px;
+	}
+
+	.center {
+		display: none;
+		background-color: white;
+		text-align: justify;
+		height: 520px;
+		position: relative;
+		z-index: 0;
+	}
+
+	.shown{
+		display: block;
+		z-index: 1;
+	}
+
+	.post {
+		padding: 12px;
+	}
+
+	footer {
+		font-size: small;
+		margin-top: 20px;
+	}
+	</style>
+
+	<script type="text/javascript" src="jquery.min.js"></script>
+
+	<script>
+	var show_conteudo = function (i) {
+		$('.shown').removeClass("shown");
+		$('#' + i).addClass("shown");
+	};
+	</script>
 </head>
 <body>
-{{ content }}
+	<div id="main">
+		{{ content }}
+	</div>
 </body>
 </html>

@@ -1,13 +1,28 @@
 ---
+layout: default
+title: Thiago Abreu
 
+paginate: 2
 ---
-Hello!
-
-	<ul>
+{% include main_header.html %}
+<div id="conteudo">
+	<div id="posts" class="center">
 		{% for post in site.posts %}
-		<li>
-			<a href="{{ post.url }}">{{ post.title }}</a>
-			{{ post.excerpt }}
-		</li>
+		<div class="post">
+			<h2>{{ post.title }}</h2>
+			<p>{{ post.excerpt}} 
+				<a href="{{ post.url }}">Continue lendo....</a>
+			</p>
+		</div>
 		{% endfor %}
-	</ul>
+		<div class="post">
+			<a href="blog">Ver todos os posts</a>
+		</div>
+	</div>
+	<div id="contato" class="center"></div>
+</div>
+
+<footer>
+	Template por Thiago Abreu <br/>
+	Imagens por <a href="http://ornicar.deviantart.com/art/Shadow-of-the-Colossus-144525281">Benjamin Carré</a>
+</footer>
