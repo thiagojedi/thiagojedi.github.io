@@ -1,0 +1,24 @@
+<header>
+	<div id="page_title">
+		Thiago Abreu
+	</div>
+	<nav>
+		<ul>
+		{% if paginator.previous_page %}
+		<li>
+			<a href="./{{paginator.previous_page}}">ANTERIOR</a>
+			</li>
+		{% endif %}
+			
+			<li><a href="/">INICIAL</a></li>
+			<li><a href="/blog">BLOG</a></li>
+
+	{% if paginator.next_page %}
+	<li>
+		<a href="./{{paginator.next_page}}">PROXIMO</a>
+	</li>
+	{% endif %}
+
+		</ul>
+	</nav>
+</header>

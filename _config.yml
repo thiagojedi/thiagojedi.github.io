@@ -1,2 +1,4 @@
 timezone: America/Recife
 markdown: kramdown
+
+paginate_path: "blog/page:num"
