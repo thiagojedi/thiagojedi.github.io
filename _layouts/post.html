@@ -6,14 +6,16 @@
 	<link rel="stylesheet" type="text/css" href="/estilo.css">
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name = "title" content = "{{ page.title }}"> 
+	<meta name ="copyright" content="Copyright (C) Thiago 'Jedi' Abreu">
 </head>
 <body>
 {% include post_header.html %}
 
 <div id="main">
 <h2>{{ page.title }}</h2>
-<p class="meta">{{ page.date | date_to_string }}</p>
-
+<p class = "dateline"> Wednesday, September 18, 2013 7:38 AM </p>
+Por <span class="byline-name"> Thiago Abreu </span>
 <div class="post">
 {{ content }}
 </div>
