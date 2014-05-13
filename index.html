@@ -43,7 +43,9 @@ paginate: 2
 		<div id="projetos">
 			<h3>Projetos:</h3>
 			{% for repo in site.github.public_repositories %}
-				<a href="{{ repo.html_url }}">{{ repo.name }}</a><br/>
+			{% if repo.owner.login == thiagoabreu || repo.owner.login == blackberets %}
+				<a href="{{ repo.html_url }}">{{ repo.name }}</a><br/>				
+			{% endif %}
 			{% endfor %}
 		</div>
 	</div>
