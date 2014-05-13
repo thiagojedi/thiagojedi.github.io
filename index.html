@@ -4,7 +4,6 @@ title: Thiago Abreu
 
 paginate: 2
 ---
-{% include main_header.html %}
 <div id="conteudo">
 	<div id="posts" class="center">
 		{% for post in site.posts %}
@@ -19,10 +18,33 @@ paginate: 2
 			<a href="blog">Ver todos os posts</a>
 		</div>
 	</div>
-	<div id="contato" class="center"></div>
+	<div id="contato" class="center">
+		<div id="sobre_pic">
+			<img src="/images/sobre_pic.jpg" />
+		</div>
+		<div id="dados">
+			<dl>
+				<dt>Nome:</dt>
+				<dd>Thiago Abreu</dd>
+				<dt>Também conhecido como:</dt>
+				<dd>Thiago Jedi, Ray Skywalker, Ray Sky, Ray Jedi, Rayarth</dd>
+				<dt>Local:</dt>
+				<dd>Natal, RN, Brasil</dd>
+				<dt>Links:</dt>
+				<dd>
+					<ul>
+						<li>Twitter: <a href="http://twitter.com/jedi_thiago" title="@Jedi_Thiago">@Jedi_Thiago</a></li>
+						<li>Facebook: <a href="http://facebook.com/thiagojedi" title="Perfil no Facebook">Perfil no Facebook</a> </li>
+						<li>E-mail: <a href="mailto:thiagojedi@live.it?subject=Contato Github" "Entre em contato">Entre em contato</a> </li>
+					</ul>
+				</dd>
+			</dl>
+		</div>
+		<div id="projetos">
+			<h3>Projetos:</h3>
+			{% for repo in site.github.public_repositories %}
+				<a href="{{ repo.html_url }}">{{ repo.name }}</a><br/>
+			{% endfor %}
+		</div>
+	</div>
 </div>
-
-<footer>
-	Copyright (c) 2014 Thiago 'Jedi' Abreu <br/>
-	Imagens por <a href="http://ornicar.deviantart.com/art/Tannhauser-Gate-103297846">Benjamin Carré</a>
-</footer>

@@ -1,82 +1,111 @@
 body {
-		font-family: sans-serif;
-		color: black;
+	font-family: sans-serif;
+	color: black;
+}
+
+a {
+	color: inherit;
+}
+
+a:visited {
+	color: inherit;
+}
+
+main {
+	max-width: 800px;
+	margin: auto;
+	background-color: white;
+}
+
+#page_title {
+	font-size: 5em;
+	text-align: center;
+	font-variant: small-caps;
+}
+
+nav ul {
+	list-style: none;
+	max-width: 100%;
+	text-align: center;
+	padding: 0;
+}
+nav li {
+	display: inline-block;
+	border-right: 1px solid black;
+	padding: 0 20px;
+	vertical-align: baseline;
+}
+
+nav li:last-child {
+	border: none;
+}
+
+nav a {
+	text-decoration: none;
+	font-family: sans-serif;
+	font-variant: small-caps;
+}
+
+#conteudo {
+	background-image: url("/images/x-wing.jpg");
+	background-position: center center;
+	height: 520px;
+}
+
+#posts {
+	overflow-y: scroll;
+}
+
+.center {
+	display: none;
+	background-color: white;
+	text-align: justify;
+	height: 520px;
+	position: relative;
+	z-index: 0;}
+
+.shown{
+	display: block;
+	z-index: 1;
+}
+
+.post {
+	padding: 12px;
+}
+
+footer {
+	font-size: small;
+	margin-top: 20px;
+	text-align: center;
+}
+
+#contato {
+
+}
+
+	#contato dt {
+		font-weight: bold;
 	}
 
-	a {
-		color: inherit;
-		text-decoration: none;
+	#contato dd {
+		padding-left: 12px;
 	}
 
-	a:visited {
-		color: inherit;
-		text-decoration: none;
+	#sobre_pic {
+			float: left;
 	}
 
-	#main {
-		max-width: 800px;
-		margin: auto;
-		background-color: white;
+		#sobre_pic img {
+			width: 100px; 
+			height: 150px;
+			margin: 24px;
+			background-color: white;
+		}
+
+	#dados {
+		float: left;
 	}
 
-	#page_title {
-		font-size: 5em;
-		text-align: center;
-		font-variant: small-caps;
-	}
-
-	nav ul {
-		list-style: none;
-		max-width: 100%;
-		text-align: center;
-	}
-	nav li {
-		display: inline-block;
-		border-right: 1px solid black;
-		padding: 0 20px;
-		vertical-align: baseline;
-	}
-
-	nav li:last-child {
-		border: none;
-	}
-
-	nav a {
-		text-decoration: none;
-		font-family: sans-serif;
-		font-variant: small-caps;
-	}
-
-	#conteudo {
-		background-image: url("https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-ash3/t31.0-8/10295028_10152402081692128_4774756352888261594_o.jpg");
-		background-position: center center;
-		height: 520px;
-	}
-
-	#posts {
-		overflow-y: scroll;
-	}
-
-	.center {
-		display: none;
-		background-color: white;
-		text-align: justify;
-		height: 520px;
-		position: relative;
-		z-index: 0;
-		opacity: 0.8;
-	}
-
-	.shown{
-		display: block;
-		z-index: 1;
-	}
-
-	.post {
-		padding: 12px;
-	}
-
-	footer {
-		font-size: small;
-		margin-top: 20px;
+	#projetos {
+		clear: both;
 	}

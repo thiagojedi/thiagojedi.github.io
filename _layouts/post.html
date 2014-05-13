@@ -10,16 +10,16 @@
 	<meta name ="copyright" content="Copyright (C) Thiago 'Jedi' Abreu">
 </head>
 <body>
-{% include post_header.html %}
+	{% include post_header.html %}
 
-<div id="main">
-<h2>{{ page.title }}</h2>
-<p class = "dateline"> Wednesday, September 18, 2013 7:38 AM </p>
-Por <span class="byline-name"> Thiago Abreu </span>
-<div class="post">
-{{ content }}
-</div>
-</div>
+	<main>
+		<h2>{{ page.title }}</h2>
+		<p class = "dateline"> Wednesday, September 18, 2013 7:38 AM </p>
+		Por <span class="byline-name"> Thiago Abreu </span>
+		<div class="post">
+			{{ content }}
+		</div>
+	</main>
 </body>
 </html>
 
