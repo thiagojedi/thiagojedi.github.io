@@ -42,11 +42,31 @@ paginate: 2
 		</div>
 		<div id="projetos">
 			<h3>Projetos:</h3>
+			<div class="repo">
+				<a href="http://blackberets.github.io/cardapio/" title="App Cardápio RU">App Cardápio RU</a> ( C# )
+				<p>Aplicativo do Cardápio do Restaurante Universitário da UFRN para Windows Phone</p>
+			</div>
+			{% if site.github %}
 			{% for repo in site.github.public_repositories %}
 			{% if repo.fork == false %}
-				<a href="{{ repo.html_url }}">{{ repo.name }}</a><br/>				
+			<div class="repo">
+				<a href="{{ repo.html_url }}" title="{{ repo.name }}">{{ repo.name }}</a> {% if repo.language %}
+				    ({{ repo.language }})
+				{% endif %}
+				<p>{{ repo.description }}</p>
+			</div>			
 			{% endif %}
 			{% endfor %}
+			{% else %}
+			<div class="repo">
+				<a href="#" title="Repositorio">Repositorio</a>
+				<p>Descrição</p>
+			</div>
+			<div class="repo">
+				<a href="#" title="Repositorio">Repositorio</a>
+				<p>Descrição</p>
+			</div>
+			{% endif %}
 		</div>
 	</div>
 </div>
