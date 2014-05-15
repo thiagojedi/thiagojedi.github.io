@@ -11,9 +11,11 @@ paginate: 5
 
 </head>
 <body>
-	<main>
 		{% include blog_header.html %}
+	<main>
 		{{ content }}
 	</main>
+	{% include blog_footer.html %}
+
 </body>
 </html>
