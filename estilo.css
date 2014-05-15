@@ -50,7 +50,7 @@ nav a {
 #conteudo {
 	background-image: url("/images/x-wing.jpg");
 	background-position: center center;
-	height: 520px;
+	min-height: 520px;
 }
 
 #posts {
