@@ -5,5 +5,8 @@ paginate_path: "blog/page:num"
 
 permalink: none
 
+category_archive:
+   path: blog
+
 gems:
   - jekyll-mentions

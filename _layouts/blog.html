@@ -9,11 +9,44 @@ paginate: 5
 
 	<link rel="stylesheet" type="text/css" href="/estilo.css">
 
+	<style type="text/css" media="screen">
+	main {
+		background-position: top center;
+		background-repeat: no-repeat;
+		background-image: url("/images/obi-wan.jpg");
+		padding-top: 100px;
+	}
+
+	#categories {
+		float: right;
+		border-left: 1px solid #ddd;
+		padding: 12px;
+	}
+
+	#categories ul {
+		list-style: none;
+	}
+	</style>
+
 </head>
 <body>
-		{% include blog_header.html %}
+	{% include blog_header.html %}
 	<main>
-		{{ content }}
+		{% unless site.categories == blank %}
+		<div id="categories">
+			Categorias:
+			<ul>
+				{% for cat in site.categories %}
+				{% unless cat[0] == "blog" %}
+				<li> <a href="/blog/{{ cat | first }}" title="{{ cat | first }}">{{ cat | first }}</a> </li>				    
+				{% endunless %}
+				{% endfor %}
+			</ul>
+		</div>		    
+		{% endunless %}
+		<div class="posts">
+			{{ content }}
+		</div>
 	</main>
 	{% include blog_footer.html %}
 

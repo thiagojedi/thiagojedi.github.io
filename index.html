@@ -8,7 +8,7 @@ paginate: 2
 	<div id="posts" class="center">
 		{% for post in site.posts %}
 		<div class="post">
-			<h2>{{ post.title }}</h2>
+			<h2><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
 			<p>{{ post.excerpt}} 
 				<a href="{{ post.url }}">Continue lendo....</a>
 			</p>
