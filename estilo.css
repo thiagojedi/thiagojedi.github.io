@@ -1,3 +1,8 @@
+@font-face {
+	font-family: UltraCondensed;
+	src: url(UltraCondensedSansSerif.ttf);
+}
+
 body {
 	font-family: sans-serif;
 	color: black;
@@ -22,7 +27,7 @@ main {
 #page_title {
 	font-size: 5em;
 	text-align: center;
-	font-variant: small-caps;
+	font-family: UltraCondensed, sans-serif;
 }
 
 nav ul {
