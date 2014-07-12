@@ -57,6 +57,7 @@ paginate: 2
 				({{ repo.language }})
 				{% endif %}
 				<p>{{ repo.description }}</p>
+				<p>Último commit: {{ repo.updated_at }}</p>
 			</div>
 			{% endfor %}
 			{% else %}
