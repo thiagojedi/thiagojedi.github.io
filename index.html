@@ -50,14 +50,14 @@ paginate: 2
 				<p>Aplicativo do Cardápio do Restaurante Universitário da UFRN para Windows Phone</p>
 			</div>
 			{% if site.github %}
-			{% assign repos = site.github.public_repositories | sort: 'updated_at' %}
+			{% assign repos = site.github.public_repositories | sort: 'pushed_at' %}
 			{% for repo in repos reversed %}
 			<div class="repo">
 				<a href="{{ repo.html_url }}" title="{{ repo.name }}">{{ repo.name }}</a> {% if repo.language %}
 				({{ repo.language }})
 				{% endif %}
 				<p>{{ repo.description }}</p>
-				<p>Último commit: {{ repo.updated_at }}</p>
+				<p>Último commit: {{ repo.pushed_at }}</p>
 			</div>
 			{% endfor %}
 			{% else %}
