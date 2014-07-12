@@ -127,3 +127,7 @@ footer {
 		#projetos .repo > a {
 			font-size: 1.2em;
 		}
+
+		#projetos p.comment {
+			font-size: 0.8em;
+		}

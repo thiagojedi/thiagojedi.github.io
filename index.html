@@ -57,20 +57,24 @@ paginate: 2
 				({{ repo.language }})
 				{% endif %}
 				<p>{{ repo.description }}</p>
-				<p>Último commit: {{ repo.pushed_at | date_to_string }}</p>
+				<p class="comment">
+				{% if repo.fork %}
+				Fork -
+				{% endif %}
+				Último commit: {{ repo.pushed_at | date_to_string }}</p>
 			</div>
 			{% endfor %}
 			{% else %}
 			<div class="repo">
 				<a href="#" title="Repositorio">Repositorio</a>
 				<p>Descrição</p>
+				<p class="comment">Fork - Ultimo commit Hoje</p>
 			</div>
 			<div class="repo">
 				<a href="#" title="Repositorio">Repositorio</a>
 				<p>Descrição</p>
 			</div>
 			{% endif %}
-			Veja todos no perfil do <a href="http://github.com/thiagoabreu" title="GitHub Profile">GitHub</a>
 		</div>
 	</div>
 </div>
