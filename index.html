@@ -50,7 +50,6 @@ paginate: 2
 				<p>Aplicativo do Cardápio do Restaurante Universitário da UFRN para Windows Phone</p>
 			</div>
 			{% if site.github %}
-
 			{% assign repos = site.github.public_repositories | sort: 'updated_at' %}
 			{% for repo in repos limit:5 %}
 			<div class="repo">
