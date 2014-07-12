@@ -51,7 +51,7 @@ paginate: 2
 			</div>
 			{% if site.github %}
 
-			{% assign repos = site.github.public_repositories | order: 'updated_at', 'last' %}
+			{% assign repos = site.github.public_repositories | order: 'updated_at' %}
 			{% for repo in repos limit:5 %}
 			<div class="repo">
 				<a href="{{ repo.html_url }}" title="{{ repo.name }}">{{ repo.name }}</a> {% if repo.language %}
