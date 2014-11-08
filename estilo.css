@@ -3,6 +3,11 @@
 	src: url(UltraCondensedSansSerif.ttf);
 }
 
+@font-face {
+	font-family: Steelfish;
+	src: url(steelfish_rg.ttf);
+}
+
 body {
 	font-family: sans-serif;
 	color: black;
@@ -25,9 +30,10 @@ main {
 }
 
 #page_title {
+	font-family: Steelfish, sans-serif;
 	font-size: 5em;
+	letter-spacing: 0.15em;
 	text-align: center;
-	font-family: UltraCondensed, sans-serif;
 }
 
 nav ul {
