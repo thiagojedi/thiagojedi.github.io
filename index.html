@@ -1,11 +1,17 @@
 ---
 layout: default
 title: Thiago Abreu
-
-paginate: 2
 ---
-<div id="conteudo">
-	<div id="posts" class="center">
+<div id="conteudo" data-win-control="WinJS.UI.Pivot">
+	<div id="home" class="center" data-win-control="WinJS.UI.PivotItem" data-win-options="{header: 'home'}">
+        {% include main_header.html %}
+		<img src="/images/x-wing.jpg" alt="X-Wing" style="width: 100%">
+        <footer style="text-align: center; padding-top: 12px;">
+        Copyright (c) 2014-2015 Thiago 'Jedi' Abreu <br />
+        Imagens por <a href="http://ornicar.deviantart.com/art/Tannhauser-Gate-103297846">Benjamin Carré</a>
+    </footer>
+	</div>
+	<div id="posts" class="center" data-win-control="WinJS.UI.PivotItem" data-win-options="{header: 'posts'}">
 		{% for post in site.posts %}
 		<div class="post">
 			<h2><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
@@ -18,7 +24,7 @@ paginate: 2
 			<a href="blog">Ver todos os posts</a>
 		</div>
 	</div>
-	<div id="contato" class="center">
+	<div id="contato" class="center" data-win-control="WinJS.UI.PivotItem" data-win-options="{header: 'contato'}">
 		<div id="sobre_pic">
 			<img src="{{ site.github.owner_gravatar_url }}" />
 		</div>

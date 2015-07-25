@@ -1,30 +1,27 @@
----
+﻿---
 ---
 <html>
 <head>
 	<title>{% include var_titulo.html %}</title>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/winjs/4.1.0/css/ui-light.css" rel="stylesheet" />
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/winjs/4.1.0/js/base.js"></script>
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/winjs/4.1.0/js/ui.js"></script> 
 
 	<link rel="stylesheet" type="text/css" href="estilo.css">
-
-	<script type="text/javascript" src="jquery.min.js"></script>
-
-	<script>
-	var show_conteudo = function (i) {
-		$('.shown').removeClass("shown");
-		$('#' + i).addClass("shown");
-	};
-	</script>
 </head>
 <body>
-	{% include main_header.html %}
+	
 	<main>
 		{{ content }}
 	</main>
-	<footer>
-	Copyright (c) 2014 Thiago 'Jedi' Abreu <br/>
-	Imagens por <a href="http://ornicar.deviantart.com/art/Tannhauser-Gate-103297846">Benjamin Carré</a>
-</footer>
+
+   
+<script>
+	WinJS.UI.processAll();
+</script>
 </body>
 </html>

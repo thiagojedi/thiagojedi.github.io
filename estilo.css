@@ -11,7 +11,7 @@
 body {
 	font-family: sans-serif;
 	color: black;
-	font-size: 16px;
+	font-size: 1em;
 }
 
 a {
@@ -26,7 +26,6 @@ main {
 	max-width: 800px;
 	margin: auto;
 	background-color: white;
-	display: block;
 }
 
 #page_title {
@@ -60,19 +59,14 @@ nav a {
 }
 
 #conteudo {
-	background-image: url("/images/x-wing.jpg");
-	background-position: center center;
-	min-height: 520px;
+
 }
 
 #posts {
 }
 
 .center {
-	display: none;
-	background-color: white;
 	text-align: justify;
-	min-height: 520px;
 	position: relative;
 	font-size: 1em;
 }
