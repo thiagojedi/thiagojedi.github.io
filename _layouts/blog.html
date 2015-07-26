@@ -24,9 +24,9 @@ paginate: 5
 
 </head>
 <body>
+        {% include blog_header.html %}
 	<main>
         <div id="conteudo">
-        {% include blog_header.html %}
         <img src="../images/obi-wan.jpg" alt="Obi-Wan" />
 		{% unless site.categories == blank %}
 		<div id="categories">
