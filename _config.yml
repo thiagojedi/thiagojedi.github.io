@@ -2,6 +2,7 @@ timezone: America/Recife
 markdown: kramdown
 
 paginate_path: "blog/page:num"
+paginate: 5
 
 permalink: none
 
