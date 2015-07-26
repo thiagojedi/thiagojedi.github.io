@@ -1,48 +1,23 @@
 ﻿<html>
 <head>
-	<title>Thiago Abreu - Blog</title>
+    <title>Thiago Abreu - Blog</title>
 
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no">
 
-	<link href="../estilo.css" rel="stylesheet">
-
-	<style type="text/css">
-	#categories {
-		float: right;
-		border-left: 1px solid #ddd;
-		padding: 12px;
-	}
-
-	#categories ul {
-		list-style: none;
-	}
-	</style>
-
+    <link href="../estilo.css" rel="stylesheet">
 </head>
 <body>
-        {% include blog_header.html %}
-	<main>
+    {% include blog_header.html %}
+    <main>
         <div id="conteudo">
-        <img src="../images/obi-wan.jpg" alt="Obi-Wan" />
-		{% unless site.categories == blank %}
-		<div id="categories">
-			Categorias:
-			<ul>
-				{% for cat in site.categories %}
-				{% unless cat[0] == "blog" %}
-				<li> <a href="/blog/{{ cat | first }}" title="{{ cat | first }}">{{ cat | first }}</a> </li>				    
-				{% endunless %}
-				{% endfor %}
-			</ul>
-		</div>		    
-		{% endunless %}
-		<div class="posts">
-			{{ content }}
-		</div>
+            <img src="../images/obi-wan.jpg" alt="Obi-Wan" />
+            <div class="posts">
+                {{ content }}
+            </div>
         </div>
-	</main>
-	{% include blog_footer.html %}
+    </main>
+    {% include blog_footer.html %}
 
 </body>
 </html>
