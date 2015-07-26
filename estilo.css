@@ -166,3 +166,7 @@ footer {
     background-position-y: bottom;
     background-repeat: no-repeat;
 }
+
+.win-pivot-surface {
+    height: calc(100% - 50px);
+}
