@@ -91,7 +91,6 @@ nav {
 
 .center {
     text-align: justify;
-    position: relative;
     font-size: 1em;
 }
 
@@ -154,3 +153,7 @@ footer {
     #projetos p.comment {
         font-size: 0.8em;
     }
+
+.win-pivot .win-pivot-viewport {
+    height: calc(100% - 50px);
+}
