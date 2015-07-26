@@ -1,4 +1,4 @@
----
+﻿---
 paginate: 5
 ---
 <html>
@@ -8,16 +8,9 @@ paginate: 5
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 
-	<link rel="stylesheet" type="text/css" href="/estilo.css">
+	<link href="../estilo.css" rel="stylesheet">
 
 	<style type="text/css">
-	main {
-		background-position: top center;
-		background-repeat: no-repeat;
-		background-image: url("/images/obi-wan.jpg");
-		padding-top: 100px;
-	}
-
 	#categories {
 		float: right;
 		border-left: 1px solid #ddd;
@@ -31,8 +24,10 @@ paginate: 5
 
 </head>
 <body>
-	{% include blog_header.html %}
 	<main>
+        <div id="conteudo">
+        {% include blog_header.html %}
+        <img src="../images/obi-wan.jpg" alt="Obi-Wan" />
 		{% unless site.categories == blank %}
 		<div id="categories">
 			Categorias:
@@ -48,6 +43,7 @@ paginate: 5
 		<div class="posts">
 			{{ content }}
 		</div>
+        </div>
 	</main>
 	{% include blog_footer.html %}
 
