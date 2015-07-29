@@ -129,14 +129,32 @@ footer {
 }
 
     #sobre_pic img {
-        width: 150px;
-        height: 150px;
-        margin: 24px;
+        width: 240px;
+        height: 240px;
+        margin: 12px 24px 12px 0;
         background-color: white;
     }
 
 #dados {
-    float: left;
+    display: inline-block;
+    width: calc(100% - 300px);
+}
+
+@media all and (max-width: 600px) {
+    #sobre_pic {
+        width: 100%;
+        clear: both;
+        float: none;
+        text-align: center;
+    }
+    
+    #sobre_pic img {
+        margin: 12px auto;
+    }
+    
+    #dados {
+        width: 100%;
+    }
 }
 
 #projetos {
