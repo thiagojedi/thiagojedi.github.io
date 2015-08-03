@@ -25,29 +25,35 @@ title: Thiago Abreu
 		</div>
 	</div>
 	<div id="contato" class="center" data-win-control="WinJS.UI.PivotItem" data-win-options="{header: 'contato'}">
-		<div id="sobre_pic">
-			<img src="{{ site.github.owner_gravatar_url }}" />
-		</div>
-		<div id="dados">
-			<dl>
-				<dt>Nome:</dt>
-				<dd>Thiago Abreu</dd>
-				<dt>Também conhecido como:</dt>
-				<dd>Thiago Jedi, Ray Skywalker, Ray Sky, Ray Jedi, Rayarth, ...</dd>
-				<dt>Local:</dt>
-				<dd>Natal, RN, Brasil</dd>
-				<dt>B-sides:</dt>
-				<dd>Baixista e fã de Star Wars</dd>
-				<dt>Links:</dt>
-				<dd>
-					<ul>
-						<li>GitHub: @thiagoabreu </li>
-						<li>Twitter: <a href="http://twitter.com/jedi_thiago" title="@Jedi_Thiago">@Jedi_Thiago</a></li>
-						<li>Facebook: <a href="http://facebook.com/thiagojedi" title="Perfil no Facebook">Perfil no Facebook</a> </li>
-						<li>E-mail: <a href="mailto:thiagojedi@live.it?subject=Contato Github" "Entre em contato">Entre em contato</a> </li>
-					</ul>
-				</dd>
-			</dl>
+		<div id="sobre">
+			<div id="sobre_pic">
+				{% if site.github %}
+				<img src="{{ site.github.owner_gravatar_url }}" />
+				{% else %}
+				<img src="http://github.com/thiagoabreu.png" />
+				{% endif %}
+			</div>
+			<div id="dados">
+				<dl>
+					<dt>Nome:</dt>
+					<dd>Thiago Abreu</dd>
+					<dt>Também conhecido como:</dt>
+					<dd>Thiago Jedi, Ray Skywalker, Ray Sky, Ray Jedi, Rayarth, ...</dd>
+					<dt>Local:</dt>
+					<dd>Natal, RN, Brasil</dd>
+					<dt>B-sides:</dt>
+					<dd>Baixista e fã de Star Wars</dd>
+					<dt>Links:</dt>
+					<dd>
+						<ul>
+							<li>GitHub: @thiagoabreu </li>
+							<li>Twitter: <a href="http://twitter.com/jedi_thiago" title="@Jedi_Thiago">@Jedi_Thiago</a></li>
+							<li>Facebook: <a href="http://fb.com/thiagojedi" title="thiagojedi">thiagojedi</a> </li>
+							<li>E-mail: <a href="mailto:thiagojedi@live.it?subject=Contato Github" "Entre em contato">Entre em contato</a> </li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
 		</div>
 		<div id="projetos">
 			<h3>Projetos de Código Aberto:</h3>

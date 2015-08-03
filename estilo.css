@@ -95,16 +95,12 @@ nav {
     padding: 0 12px;
 }
 
-.center {
-    text-align: justify;
-    font-size: 1em;
-}
-
 .shown {
     display: block;
 }
 
 .post {
+    text-align: justify;
 }
 
 footer {
@@ -123,6 +119,16 @@ footer {
     #contato dd {
         padding-left: 12px;
     }
+    
+    #contato ul {
+        margin: 0;
+        padding: 0;
+    }
+
+#sobre {
+    background-color: #eee;
+    margin: 12px 0;
+}
 
 #sobre_pic {
     float: left;
@@ -131,13 +137,18 @@ footer {
     #sobre_pic img {
         width: 240px;
         height: 240px;
-        margin: 12px 24px 12px 0;
+        margin: 0 24px 12px 0;
         background-color: white;
+        border: 10px solid black;
     }
 
 #dados {
     display: inline-block;
     width: calc(100% - 300px);
+}
+
+#dados dl {
+    margin: 1px;
 }
 
 @media all and (max-width: 600px) {
@@ -154,6 +165,7 @@ footer {
     
     #dados {
         width: 100%;
+        margin: 12px;
     }
 }
 
