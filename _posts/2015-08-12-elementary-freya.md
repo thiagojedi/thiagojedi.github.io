@@ -31,11 +31,11 @@ Como disse muito bem minha irmã:
 > "Os 'Linux' de maneira geral têm papéis de parede padrão escuros ou opacos. 
 > Deixam a pessoa meio claustofóbica"
 
-Nunca parei pra notar isso, até ver os papéis de parede do elementaryOS. 
+Nunca parei pra notar isso, até ver os papéis de parede do elementaryOS, que são uma agradável exceção à regra.
 
 ![Minha Área de Trabalho](images/ssDesktop.png)
 
-Essa é a minha área de trabalho atual.
+A imagem aí de cima é a minha área de trabalho atual.
 Bonita né?
 O papel de parede tá na seleção que veio junto do sistema.
 
@@ -59,7 +59,7 @@ Tudo o que um usuário casual usa, feitos pela própria equipe do eOS de acordo 
 
 E foi aqui o que eu não gostei.
 Alguns dos aplicativos nativos são simples demais.
-Têm muito potencial, mas ainda podem amadurecer um pouco.
+Têm muito potencial, mas ainda precisam amadurecer um pouco.
 Além disso, a loja de aplicativos é a mesma do Ubuntu, o *Ubuntu Software Center*, que eu detesto. 
 Mas eles já estão trabalhando num substituto próprio. 
 
@@ -81,7 +81,7 @@ Já falei que achei o terminal muito bonito?
 
 Reforço o título.
 O elementaryOS me surpreendeu como uma distribuição de acesso ao Linux, principalmente se você vier do MacOS.
-Se você já estiver acostumado às personalições de outros ambientes, como o KDE ou o Xfce, talvez se sinta um pouco preso.
+Se você já estiver acostumado às personalizações de outros ambientes, como o KDE ou o Xfce, talvez se sinta um pouco preso.
 
 Ainda tem muito espaço pra crescer, sem dúvida.
 Mas é já rápido e bonito, e bastante eficiente em cumprir o que se propõe.
