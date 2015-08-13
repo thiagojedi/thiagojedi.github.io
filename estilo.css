@@ -196,8 +196,13 @@ footer {
     }
 
 .win-pivot .win-pivot-headers, nav ul {
-    background-image: url("/images/nav_border.jpg");
-    background-position-x: 12px;
-    background-position-y: bottom;
-    background-repeat: no-repeat;
+    border-bottom: 1px solid #999;
+    height: auto;
+    max-width: 766px;
+    margin: 0 auto;
+}
+
+.win-pivot-header {
+    font-size: 32px !important;
+    height: 48px !important;
 }
