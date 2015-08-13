@@ -6,7 +6,7 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name = "title" content = "{{ page.title }}"> 
-	<meta name ="copyright" content="Copyleft (C) Thiago 'Jedi' Abreu">
+	<meta name ="copyright" content="Copyright (C) Thiago 'Jedi' Abreu">
 </head>
 <body>
 	<!-- Facebook SDK -->
@@ -24,8 +24,7 @@
 	<main>
 		<div style="padding: 0 24px;">
             <h1>{{ page.title }}</h1>
-            <p class="dateline"> {{ page.date | date: "%-d / %m / %Y" }} </p>
-            Por <span class="byline-name"> Thiago Abreu </span>
+            Por <span class="byline-name"> Thiago Abreu </span> em <span class="dateline"> {{ page.date | date: "%d / %m / %Y" }} </span>
             <div class="post">
                 {{ content }}
             </div>

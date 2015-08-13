@@ -103,6 +103,11 @@ nav {
     text-align: justify;
 }
 
+.post img {
+    margin: 12px auto;
+    display: block;
+}
+
 footer {
     font-size: 0.75em;
     margin-top: 20px;
