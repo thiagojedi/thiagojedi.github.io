@@ -71,7 +71,7 @@ E o fato de terem poucos pacotes instalados por padrão parece deixar o sistema 
 As versões do elementaryOS são baseadas nas versões LTS do Ubuntu, então têm uma base sólida por debaixo.
 Ainda sim eu esperava um crash ou dois, mas para a minha surpresa o sistema tá seguindo firme e forte.
 
-O únicos "bugs" que eu achei foram um *glitch* no cursor do mouse quando se arrasta os ícones, e o cliente de e-mail não se conectar ao Gmail (mas isso eu acho que é culpa da própria Google mesmo).
+O únicos "bugs" que eu achei foram um *glitch* no cursor do mouse quando se arrasta os ícones [**UPDATE**: Corrigido na versão 0.3.1], e o cliente de e-mail não se conectar ao Gmail (mas isso eu acho que é culpa da própria Google mesmo).
 
 Já falei que achei o terminal muito bonito?
 
