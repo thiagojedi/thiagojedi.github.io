@@ -15,9 +15,9 @@ Eis aqui o que eu achei.
 Vou ser sincero: Eu não sabia o que esperar. 
 Não sabia absolutamente nada da distribuição, e esse era justamente um dos pontos que me inclinaram a instalar ela ao invés de instalar a nova versão do Fedora.
 Eu estava com o Debian desde um pouco antes da edição Jessie ficar estável e estava atrás de novas experiências.
-A versão atual do elementaryOS (ou eOS), chamada *Freya*, foi lançada no começo do ano.
+A versão atual do elementaryOS, chamada *Freya*, foi lançada no começo do ano.
 
-Pra falar a verdade, achava que o eOS usava o *enlightment* como ambiente e achava que eu ia demorar para aprender a me virar.
+Pra falar a verdade, achava que o elementaryOS usava o *enlightment* como ambiente e achava que eu ia demorar para aprender a me virar.
 Sim, eu vi as screenshots no site, mas não confio em fotos na internet, sejam de perfil de pessoas, sejam de sistema operacional.
 
 Qual foi a minha surpresa quando vi o Ubiquity (instalador do Ubuntu) durante a instalação.
@@ -52,10 +52,10 @@ Como todo o resto, bastante inspirados no MacOS, acabaram me atrapalhando já qu
 
 ### Aplicativos
 
-O eOS vem com uma quantidade mínima de aplicativos instalados, acessíveis pelo menu superior.
+O elementaryOS vem com uma quantidade mínima de aplicativos instalados, acessíveis pelo menu superior.
 Gerenciador de arquivos, navegador web, email, fotos, música, editor de texto, e configurações.
 Não muito mais que isso.
-Tudo o que um usuário casual usa, feitos pela própria equipe do eOS de acordo com a filosofia de uso deles.
+Tudo o que um usuário casual usa, feitos pela própria equipe do elementaryOS de acordo com a filosofia de uso deles.
 
 E foi aqui o que eu não gostei.
 Alguns dos aplicativos nativos são simples demais.
@@ -68,7 +68,7 @@ E o fato de terem poucos pacotes instalados por padrão parece deixar o sistema 
 
 ### Bugs
 
-As versões do eOS são baseadas nas versões LTS do Ubuntu, então têm uma base sólida por debaixo.
+As versões do elementaryOS são baseadas nas versões LTS do Ubuntu, então têm uma base sólida por debaixo.
 Ainda sim eu esperava um crash ou dois, mas para a minha surpresa o sistema tá seguindo firme e forte.
 
 O únicos "bugs" que eu achei foram um *glitch* no cursor do mouse quando se arrasta os ícones, e o cliente de e-mail não se conectar ao Gmail (mas isso eu acho que é culpa da própria Google mesmo).
