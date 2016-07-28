@@ -5,20 +5,18 @@
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
     .container {
-        -webkit-columns: 40vw;
-        -moz-columns: 40vw;
-        columns: 40vw;
-        column-gap: 32px;
+        -webkit-columns: 768px;
+        -moz-columns: 768px;
+        columns: 768px;
+        /*column-gap: 2em;*/
         column-fill: balance;
         max-height: 95vh;
-        padding: 12px 15px;        
-        width: 90vw;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        width: 768px;
     }
     .post img {
         max-width: 80%;
-    }
-    #page_title {
-        text-align: left;
     }
     #post_title_inline {
         display: inline-block;
