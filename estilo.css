@@ -29,9 +29,9 @@ a {
     color: inherit;
 }
 
-    a:visited {
-        color: inherit;
-    }
+a:visited {
+    color: inherit;
+}
 
 header {
     max-width: 800px;
@@ -44,50 +44,36 @@ main {
     background-color: white;
 }
 
-
-nav {
-
+nav a {
+    color: black;
+    color: #aaaaaa;
+    text-decoration: none;
+    text-transform: lowercase;
 }
 
-    nav a {
-        color: black;
-        color: #aaaaaa;
-        text-decoration: none;
-        text-transform: lowercase;
-    }
+nav a.active {
+    color: #000000;
+}
 
-        nav a.active {
-            color: #000000;
-        }
+nav ul {
+    list-style-type: none;
+    padding-left: 0;
+    font-size: 24px;
+    margin: 0 0 0 12px;
+    display: inline-block;
+    height: 48px;
+}
 
-    nav ul {
-        list-style-type: none;
-        padding-left: 0;
-        font-size: 24px;
-        margin: 0 0 0 12px;
-        display: inline-block;
-        height: 48px;
-    }
-
-        nav ul li {
-            display: inline-block;
-            margin: 12px 12px 0 12px;
-        }
-
-        nav ul a {
-        }
-
-            nav ul a.active {
-            }
+nav ul li {
+    display: inline-block;
+    margin: 12px 12px 0 12px;
+}
 
 #page_title {
     font-family: Steelfish, sans-serif;
     font-size: 5em;
     letter-spacing: 0.15em;
     text-align: center;
-}
-
-#conteudo {
 }
 
 .posts {
@@ -114,21 +100,18 @@ footer {
     text-align: center;
 }
 
-#contato {
+#contato dt {
+    font-weight: bold;
 }
 
-    #contato dt {
-        font-weight: bold;
-    }
+#contato dd {
+    padding-left: 12px;
+}
 
-    #contato dd {
-        padding-left: 12px;
-    }
-    
-    #contato ul {
-        margin: 0;
-        padding: 0;
-    }
+#contato ul {
+    margin: 0;
+    padding: 0;
+}
 
 #sobre {
     background-color: #eee;
@@ -139,13 +122,13 @@ footer {
     float: left;
 }
 
-    #sobre_pic img {
-        width: 240px;
-        height: 240px;
-        margin: 0 24px 12px 0;
-        background-color: white;
-        border: 10px solid black;
-    }
+#sobre_pic img {
+    width: 240px;
+    height: 240px;
+    margin: 0 24px 12px 0;
+    background-color: white;
+    border: 10px solid black;
+}
 
 #dados {
     display: inline-block;
@@ -163,11 +146,9 @@ footer {
         float: none;
         text-align: center;
     }
-    
     #sobre_pic img {
         margin: 12px auto;
     }
-    
     #dados {
         width: 100%;
         margin: 12px;
@@ -178,22 +159,22 @@ footer {
     clear: both;
 }
 
-    #projetos .repo {
-        border-bottom: 1px solid #ddd;
-        margin-bottom: 12px;
-    }
+#projetos .repo {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 12px;
+}
 
-        #projetos .repo:last-child {
-            border-bottom: none;
-        }
+#projetos .repo:last-child {
+    border-bottom: none;
+}
 
-        #projetos .repo > a {
-            font-size: 1.2em;
-        }
+#projetos .repo > a {
+    font-size: 1.2em;
+}
 
-    #projetos p.comment {
-        font-size: 0.8em;
-    }
+#projetos p.comment {
+    font-size: 0.8em;
+}
 
 .win-pivot .win-pivot-headers, nav ul {
     border-bottom: 1px solid #999;
