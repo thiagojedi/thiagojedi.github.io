@@ -100,6 +100,10 @@ footer {
     text-align: center;
 }
 
+#posts .post:last-child {
+    margin-bottom: 48px;
+}
+
 #contato dt {
     font-weight: bold;
 }
@@ -166,6 +170,7 @@ footer {
 
 #projetos .repo:last-child {
     border-bottom: none;
+    margin-bottom: 24px;
 }
 
 #projetos .repo > a {
