@@ -2,13 +2,47 @@
 layout: default
 title: Thiago Abreu
 ---
+
+<div data-win-control="WinJS.UI.Hub">
+	<div class="hero" data-win-control="WinJS.UI.HubSection" data-win-options="{header: 'Hero' }">
+		{% include main_header.html %}			
+	</div>
+
+	<div data-win-control="WinJS.UI.HubSection" data-win-options="{header: 'Ultimo Post', isHeaderStatic: true}">
+		{% for post in site.posts limit: 1 %}
+		<div class="post">
+			<h2><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
+			<p>
+				{{ post.content }} 
+			</p>
+		</div>
+		{% endfor %}
+		<h3 class="post">
+			<a href="blog">Ver todos os posts</a>
+		</h3>
+	</div>
+
+	<div data-win-control="WinJS.UI.HubSection" data-win-options="{header: 'Sobre', isHeaderStatic: true}">
+		<div id="sobre">
+			<div id="sobre_pic">
+				{% if site.github %}
+				<img src="{{ site.github.owner_gravatar_url }}" /> 
+				{% else %}
+				<img src="http://github.com/thiagoabreu.png" /> 
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+
+<main>
 <div id="conteudo" data-win-control="WinJS.UI.Pivot">
 	<div id="home" class="center" data-win-control="WinJS.UI.PivotItem" data-win-options="{header: 'home'}">
         {% include main_header.html %}
-		<img src="/images/x-wing.jpg" alt="Tannhauser Gate" style="width: 100%">
+		<img src="/images/passage.png" alt="Tannhauser Gate" style="width: 100%">
         <footer style="text-align: center; padding-top: 12px;">
-        Copyright (c) 2014-2015 Thiago 'Jedi' Abreu <br />
-        Imagens por <a href="http://ornicar.deviantart.com/art/Tannhauser-Gate-103297846">Benjamin Carré</a>
+        Copyright (c) 2014-2016 Thiago 'Jedi' Abreu <br />
+        <!--Imagens por <a href="http://ornicar.deviantart.com/art/Tannhauser-Gate-103297846">Benjamin Carré</a>-->
     </footer>
 	</div>
 	<div id="posts" class="center" data-win-control="WinJS.UI.PivotItem" data-win-options="{header: 'posts'}">
@@ -91,3 +125,4 @@ title: Thiago Abreu
 		</div>
 	</div>
 </div>
+</main>

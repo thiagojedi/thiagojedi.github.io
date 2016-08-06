@@ -12,14 +12,19 @@
 	<link rel="stylesheet" type="text/css" href="estilo.css" />
 </head>
 <body>
-	
-	<main>
-		{{ content }}
-	</main>
-
-   
+		{{ content }}   
 <script>
-	WinJS.UI.process(document.querySelector('div#conteudo'));
+	WinJS.UI.processAll(document);
+
+	// window.addEventListener('resize', function() {
+	// 	var hub = document.querySelector(".win-hub").winControl;
+		
+	// 	if (document.body.clientWidth > 500) {
+	// 		hub.orientation = WinJS.UI.Orientation.vertical;
+	// 	} else if (hub.orientation !== WinJS.UI.Orientation.horizontal) {
+    //         hub.orientation = WinJS.UI.Orientation.horizontal;
+	// 	}
+	// });
 </script>
 </body>
 </html>
