@@ -3,7 +3,7 @@
 		<ul>
 		{% if paginator.previous_page %}
 		<li>
-			<a href="./{{paginator.previous_page}}">ANTERIOR</a>
+			<a href="{{paginator.previous_page_path}}">ANTERIOR</a>
 			</li>
 		{% endif %}
 			
@@ -12,7 +12,7 @@
 
 	{% if paginator.next_page %}
 	<li>
-		<a href="./{{paginator.next_page}}">PROXIMO</a>
+		<a href="{{paginator.next_page_path}}">PROXIMO</a>
 	</li>
 	{% endif %}
 
