@@ -11,10 +11,12 @@ title: Thiago Abreu
 		<div id="aba-sobre" class="container collapse in">
 			<div class="row">
 				<div class="col-sm-4">
-					<img id="profile-pic" src="http://github.com/thiagoabreu.png" alt="Thiago Jedi" class="img-responsive img-circle hidden-xs pull-right" />
+					<img id="profile-pic" src="http://github.com/thiagoabreu.png" alt="Thiago Jedi" class="img-responsive img-circle hidden-xs pull-right"
+					/>
 				</div>
 				<div class="col-sm-8">
-					<img id="profile-pic" src="http://github.com/thiagoabreu.png" alt="Thiago Jedi" class="img-responsive img-circle pull-left visible-xs-inline" />
+					<img id="profile-pic" src="http://github.com/thiagoabreu.png" alt="Thiago Jedi" class="img-responsive img-circle pull-left visible-xs-inline"
+					/>
 					<p>
 						Meu nome é Thiago Abreu, sendo amplamente conhecido na minha cidade como Thiago Jedi.
 					</p>
@@ -31,24 +33,28 @@ title: Thiago Abreu
 			<div class="row">
 				<div class="col-sm-4">
 					<ul class="nav nav-pills nav-stacked hidden-xs">
-						{% for post in site.posts limit: 3 %}
-						<li role="presentation"><a href="#">{{ post.title }}</a></li>
+						<li role="presentation" class="active"><a href="#{{site.posts.first.id | remove: '/'}}" data-toggle="pill">{{ site.posts.first.title }}</a></li>
+						{% for post in site.posts limit: 2 offset: 1 %}
+						<li role="presentation"><a href="#{{post.id | remove: '/'}}" data-toggle="pill">{{ post.title }}</a></li>
 						{% endfor %}
 						<li><a href="/blog/">Todos os posts</a></li>
 					</ul>
 				</div>
-				<div class="col-md-8" style="height: 60vh; max-height: 300px; overflow-y: scroll;">
-					{% for post in site.posts limit: 3 %}
-					<div class="post">
-						<h3><a href="{{post.url}}">{{post.title}}</a> <small>{{ page.date | date: "%d / %m / %Y" }}</small></h3>
-						<p>
-							{{ post.excerpt | remove: '<p>' }}
-								<a href="{{ post.url }}">Continue lendo....</a>
+				<div class="col-md-8 tab-content" style="max-height: 60vh; overflow-y: scroll;">
+					{% for post in site.posts limit: 3 %} {% if post == site.posts.first %}
+					<div class="post tab-pane active" role="tabpanel" id="{{post.id | remove: '/'}}">
+						{% else %}
+						<div class="post tab-pane" role="tabpanel" id="{{post.id | remove: '/'}}">
+							{% endif %}
+							<h3><a href="{{post.url}}">{{post.title}}</a> <small>{{ page.date | date: "%d / %m / %Y" }}</small></h3>
+							{{ post.content }}
+							<p>
+								<a href="{{ post.url }}">Comentar</a>
 							</p>
+						</div>
+						{% endfor %}
 					</div>
-					{% endfor %}
 				</div>
 			</div>
-		</div>
 	</section>
-</div>
+	</div>
