@@ -9,5 +9,9 @@ permalink: none
 category_archive:
    path: blog
 
-gems:
-  - jekyll-mentions
+exclude:
+  - bootstrap\less\
+  - .gitignore
+  - .git
+  - taste.bat
+  - Pretzel.exe

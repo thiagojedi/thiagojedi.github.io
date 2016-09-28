@@ -1,30 +1,44 @@
-﻿<html>
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+
 <head>
+	<meta charset="UTF-8">
+
 	<title>{% include var_titulo.html %}</title>
 
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, user-scalable=no">
-	
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/winjs/4.1.0/css/ui-light.css" rel="stylesheet" />
- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/winjs/4.1.0/js/base.js"></script>
- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/winjs/4.1.0/js/ui.js"></script> 
 
-	<link rel="stylesheet" type="text/css" href="estilo.css" />
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="/css/estilo.css" />
 </head>
-<body>
-		{{ content }}   
-<script>
-	WinJS.UI.processAll(document);
 
-	// window.addEventListener('resize', function() {
-	// 	var hub = document.querySelector(".win-hub").winControl;
-		
-	// 	if (document.body.clientWidth > 500) {
-	// 		hub.orientation = WinJS.UI.Orientation.vertical;
-	// 	} else if (hub.orientation !== WinJS.UI.Orientation.horizontal) {
-    //         hub.orientation = WinJS.UI.Orientation.horizontal;
-	// 	}
-	// });
-</script>
+<body>
+	<div>
+		<header>
+			<div class="container">
+				<div class="col-sm-2 text-center">
+					<h1 class="jedicomp">{% include var_titulo.html %}</h1>
+				</div>
+				<div class="col-sm-10 text-right">
+					<span class="glyphicon glyphicon-github"></span>
+				</div>
+			</div>
+		</header>
+		<main>
+			{{content}}
+		</main>
+		<footer class="text-center">
+			Copyright (c) 2014-2016 Thiago 'Jedi' Abreu
+		</footer>
+	</div>
 </body>
+
 </html>
