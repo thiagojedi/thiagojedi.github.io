@@ -12,3 +12,7 @@ category_archive:
 gems:
   - jekyll-mentions
   - jekyll-paginate
+
+exclude:
+  - .gitignore
+  - .git
