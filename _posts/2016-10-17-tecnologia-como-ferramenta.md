@@ -10,11 +10,11 @@ Eis minha opinião sobre como passar por isso.
 
 Os pessoal das metodologias ágeis estão certos nesse ponto: No mundo, tudo é mutável.
 Clientes têm novas necessidades, governos colocam novas restrições, o software vai ficando velho e sem suporte.
-Exitem vários motivos pelo qual uma renovação geral.
+Exitem vários motivos pelo qual uma renovação geral se faz necessária.
 
 Acho que o principal motivo pelo qual em algum momento você tem que parar e considerar começar do zero é a sua própria experiência.
 
-É natural, principalmente com o boom de empreenderorismo que o Brasil está passando, que você comece algum projeto e faça algumas decisões erradas.
+É natural, principalmente com o boom de empreendedorismo que o Brasil está passando, que você comece algum projeto e faça algumas decisões erradas.
 Você é humano e vai cometer erros, não se cobre muito sobre isso.
 O que vai te fazer ser um bom empreendedor, um bom profissional, não é a falta de erro, mas a humildade de aceitar seus erros e sua postura com eles.
 
