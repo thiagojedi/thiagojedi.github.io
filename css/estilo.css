@@ -3,39 +3,19 @@
     src: url(/fonts/steelfish_rg.ttf);
 }
 
-body {
-    color: white;
-    background-image: url(/images/millenium-falcon.jpg);
-    background-position: center center;
-    background-size: cover;
-}
-
-.jedicomp {
+h1.jedicomp {
     font-family: Steelfish;
     letter-spacing: 0.15em;
+    font-size: 5em;
+    vertical-align: bottom;
 }
 
-body > div {
-    min-height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-nav {
-    color: initial;
-}
-
-ul.nav {
-    margin-top: 24px;
+header {
+    height: 220px;
+    background-color: dimgray;
+    color: white;
 }
 
 img#profile-pic {
-    max-height: 140px;
-}
-
-section {
-    color: initial;
-}
-
-.panel {
-    border: none !important;
+    max-height: 150px;
 }

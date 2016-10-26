@@ -3,58 +3,60 @@ layout: default
 title: Thiago Abreu
 ---
 
-<div id="sanfona" role="tablist" aria-multiselectable="true">
-	<div class="text-center">
-		<h2 data-toggle="collapse" data-parent="#sanfona" data-target="#aba-sobre">SOBRE</h2>
-	</div>
-	<section class="panel">
-		<div id="aba-sobre" class="container collapse in">
+	
+			{% for post in site.posts limit: 1 %}
+			<h2><a href="{{post.url}}">{{post.title}}</a> <small>{{ post.date | date: "%d / %m / %Y" }}</small></h2>
+			{{ post.content }}
+			<p>
+				<a href="{{ post.url }}#comentarios">Comentar</a>
+			</p>
+			{% endfor %}
 			<div class="row">
+				{% for post in site.posts limit:3 offset:1 %}
 				<div class="col-sm-4">
-					<img id="profile-pic" src="http://github.com/thiagoabreu.png" alt="Thiago Jedi" class="img-responsive img-circle hidden-xs pull-right"
-					/>
-				</div>
-				<div class="col-sm-8">
-					<img id="profile-pic" src="http://github.com/thiagoabreu.png" alt="Thiago Jedi" class="img-responsive img-circle pull-left visible-xs-inline"
-					/>
+					<h3><a href="{{post.url}}">{{post.title}}</a></h3>
+					<span>{{ post.date | date: "%d / %m / %Y" }}</span>
 					<p>
-						Meu nome é Thiago Abreu, sendo amplamente conhecido na minha cidade como Thiago Jedi.
+						{{ post.excerpt }}
 					</p>
+					<p>
+						<a href="{{ post.url }}">Continuar lendo</a>
+					</p>
+				</div>
+				{% endfor %}
+			</div>
+		
+
+	<!--<div class="text-center">
+	<h2 data-toggle="collapse" data-parent="#sanfona" data-target="#aba-blog"><a id="blog-link" href="#blog-link">BLOG</a></h2>
+</div>
+<section class="panel">
+	<div id="aba-blog" class="container collapse">
+		<div class="row">
+			<div class="col-sm-4">
+				<ul class="nav nav-pills nav-stacked hidden-xs">
+					<li role="presentation" class="active"><a href="#{{site.posts.first.id | remove: '/'}}" data-toggle="pill">{{ site.posts.first.title }}</a></li>
+					{% for post in site.posts limit: 2 offset: 1 %}
+					<li role="presentation"><a href="#{{post.id | remove: '/'}}" data-toggle="pill">{{ post.title }}</a></li>
+					{% endfor %}
+					<li><a href="/blog/">Todos os posts</a></li>
+				</ul>
+			</div>
+			<div class="col-md-8 tab-content" style="max-height: 60vh; overflow-y: scroll;">
+				{% for post in site.posts limit: 3 %} {% if post == site.posts.first %}
+				<div class="post tab-pane active" role="tabpanel" id="{{post.id | remove: '/'}}">
+					{% else %}
+					<div class="post tab-pane" role="tabpanel" id="{{post.id | remove: '/'}}">
+						{% endif %}
+						<h3><a href="{{post.url}}">{{post.title}}</a> <small><small>{{ post.date | date: "%d / %m / %Y" }}</small></h3>
+						{{ post.content }}
+						<p>
+							<a href="{{ post.url }}">Comentar</a>
+						</p>
+					</div>
+					{% endfor %}
 				</div>
 			</div>
 		</div>
-	</section>
-
-	<div class="text-center">
-		<h2 data-toggle="collapse" data-parent="#sanfona" data-target="#aba-blog"><a id="blog-link" href="#blog-link">BLOG</a></h2>
-	</div>
-	<section class="panel">
-		<div id="aba-blog" class="container collapse">
-			<div class="row">
-				<div class="col-sm-4">
-					<ul class="nav nav-pills nav-stacked hidden-xs">
-						<li role="presentation" class="active"><a href="#{{site.posts.first.id | remove: '/'}}" data-toggle="pill">{{ site.posts.first.title }}</a></li>
-						{% for post in site.posts limit: 2 offset: 1 %}
-						<li role="presentation"><a href="#{{post.id | remove: '/'}}" data-toggle="pill">{{ post.title }}</a></li>
-						{% endfor %}
-						<li><a href="/blog/">Todos os posts</a></li>
-					</ul>
-				</div>
-				<div class="col-md-8 tab-content" style="max-height: 60vh; overflow-y: scroll;">
-					{% for post in site.posts limit: 3 %} {% if post == site.posts.first %}
-					<div class="post tab-pane active" role="tabpanel" id="{{post.id | remove: '/'}}">
-						{% else %}
-						<div class="post tab-pane" role="tabpanel" id="{{post.id | remove: '/'}}">
-							{% endif %}
-							<h3><a href="{{post.url}}">{{post.title}}</a> <small>{{ page.date | date: "%d / %m / %Y" }}</small></h3>
-							{{ post.content }}
-							<p>
-								<a href="{{ post.url }}">Comentar</a>
-							</p>
-						</div>
-						{% endfor %}
-					</div>
-				</div>
-			</div>
-	</section>
-	</div>
+</section>
+</div>-->
