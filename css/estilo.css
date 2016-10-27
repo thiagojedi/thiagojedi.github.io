@@ -10,6 +10,12 @@ h1.jedicomp {
     vertical-align: bottom;
 }
 
+h1.jedicomp a,
+h1.jedicomp a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
 header {
     height: 220px;
     background-color: dimgray;
