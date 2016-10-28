@@ -28,7 +28,7 @@ a, a:hover, a:visited {
     color: seagreen;
 }
 
-img {
+.post img {
     max-width: 100%;
     max-height: 360px;
     margin: 12px auto;
