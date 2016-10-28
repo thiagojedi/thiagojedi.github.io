@@ -3,60 +3,94 @@ layout: default
 title: Thiago Abreu
 ---
 
-	
-			{% for post in site.posts limit: 1 %}
-			<h2><a href="{{post.url}}">{{post.title}}</a> <small>{{ post.date | date: "%d / %m / %Y" }}</small></h2>
-			{{ post.content }}
-			<p>
-				<a href="{{ post.url }}#comentarios">Comentar</a>
-			</p>
-			{% endfor %}
-			<div class="row">
-				{% for post in site.posts limit:3 offset:1 %}
-				<div class="col-sm-4">
-					<h3><a href="{{post.url}}">{{post.title}}</a></h3>
-					<span>{{ post.date | date: "%d / %m / %Y" }}</span>
-					<p>
-						{{ post.excerpt }}
-					</p>
-					<p>
-						<a href="{{ post.url }}">Continuar lendo</a>
-					</p>
-				</div>
-				{% endfor %}
-			</div>
-		
-
-	<!--<div class="text-center">
-	<h2 data-toggle="collapse" data-parent="#sanfona" data-target="#aba-blog"><a id="blog-link" href="#blog-link">BLOG</a></h2>
-</div>
-<section class="panel">
-	<div id="aba-blog" class="container collapse">
-		<div class="row">
-			<div class="col-sm-4">
-				<ul class="nav nav-pills nav-stacked hidden-xs">
-					<li role="presentation" class="active"><a href="#{{site.posts.first.id | remove: '/'}}" data-toggle="pill">{{ site.posts.first.title }}</a></li>
-					{% for post in site.posts limit: 2 offset: 1 %}
-					<li role="presentation"><a href="#{{post.id | remove: '/'}}" data-toggle="pill">{{ post.title }}</a></li>
-					{% endfor %}
-					<li><a href="/blog/">Todos os posts</a></li>
-				</ul>
-			</div>
-			<div class="col-md-8 tab-content" style="max-height: 60vh; overflow-y: scroll;">
-				{% for post in site.posts limit: 3 %} {% if post == site.posts.first %}
-				<div class="post tab-pane active" role="tabpanel" id="{{post.id | remove: '/'}}">
-					{% else %}
-					<div class="post tab-pane" role="tabpanel" id="{{post.id | remove: '/'}}">
-						{% endif %}
-						<h3><a href="{{post.url}}">{{post.title}}</a> <small><small>{{ post.date | date: "%d / %m / %Y" }}</small></h3>
-						{{ post.content }}
-						<p>
-							<a href="{{ post.url }}">Comentar</a>
-						</p>
-					</div>
-					{% endfor %}
-				</div>
-			</div>
-		</div>
+<section class="row">
+	<h2 class="col-sm-12">Blog</h2>
+	{% for post in site.posts limit:3 %}
+	<div class="col-md-4 {% unless forloop.first %} hidden-sm hidden-xs {% endunless %}">
+		<h3><a href="{{post.url}}">{{post.title}}</a></h3>
+		<span><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%D"}}</time></span>
+		<p>
+			{{ post.excerpt }}
+		</p>
+		<p>
+			<a href="{{ post.url }}">Continuar lendo</a>
+		</p>
+	</div>
+	{% endfor %}
+	<div class="col-sm-12 text-right">
+		<a href="/blog" class="btn btn-default">Mais postagens</a>
+	</div>
 </section>
-</div>-->
+<section class="row">
+	<h2 class="col-sm-12">Open-Source</h2>
+	{% if site.github %} {% assign repos = site.github.public_repositories | sort: 'pushed_at' %} {% for repo in repos reversed
+	limit: 8 %}
+	<div class="repo col-sm-3">
+		<h4>
+			<a href="{% if repo.source %}{{repo.source.html_url}}{% else %}{{ repo.html_url }}{% endif %}" title="{{ repo.name }}">{{ repo.name }}</a>			{% if repo.language %} <small>({{ repo.language }})</small>{% endif %}</h4>
+		<p>{{ repo.description }}</p>
+		<p>
+			{% if repo.fork %} Contribuição - {% endif %} Último commit:
+			<time datetime="{{ repo.pushed_at | date_to_xmlschema }}">{{ repo.pushed_at | date: '%D' }}</time>
+		</p>
+	</div>
+	{% endfor %} {% else %}
+	<div class="repo col-sm-3">
+		<h4><a href="https://github.com/thiagoabreu/thiagoabreu.github.io" title="thiagoabreu.github.io">thiagoabreu.github.io</a>			<small>(HTML)</small></h4>
+
+		<p>Blog portfolio</p>
+		<p> Último commit: 18 Oct 2016</p>
+	</div>
+
+	<div class="repo col-sm-3">
+		<h4><a href="https://github.com/thiagoabreu/TsWithReact" title="TsWithReact">TsWithReact</a> (TypeScript)
+		</h4>
+		<p></p>
+		<p> Último commit: 18 Sep 2016</p>
+	</div>
+
+	<div class="repo col-sm-3">
+		<h4><a href="https://github.com/thiagoabreu/vala-code" title="vala-code">vala-code</a></h4>
+		<p>Vala language support for Visual Studio Code</p>
+		<p> Último commit: 03 May 2016</p>
+	</div>
+
+	<div class="repo col-sm-3">
+		<h4><a href="https://github.com/thiagoabreu/xwt" title="xwt">xwt</a> (C#)
+		</h4>
+		<p>A cross-platform UI toolkit for creating desktop applications with .NET and Mono</p>
+		<p> Contribução - Último commit: 02 May 2016</p>
+	</div>
+
+	<div class="repo col-sm-3">
+		<h4><a href="https://github.com/thiagoabreu/code-debug" title="code-debug">code-debug</a> (TypeScript)
+		</h4>
+		<p>Native debugging for VSCode</p>
+		<p> Contribução - Último commit: 01 Feb 2016</p>
+	</div>
+
+	<div class="repo col-sm-3">
+		<h4><a href="https://github.com/thiagoabreu/moka-icon-theme" title="moka-icon-theme">moka-icon-theme</a> (Python)
+		</h4>
+		<p>Official Moka Icon Theme source repo col-sm-3sitory</p>
+		<p> Contribução - Último commit: 23 Nov 2015</p>
+	</div>
+
+	<div class="repo col-sm-3">
+		<h4><a href="https://github.com/thiagoabreu/website" title="website">website</a> (CSS)
+		</h4>
+		<p>Mono's web site.</p>
+		<p> Contribução - Último commit: 05 Sep 2015</p>
+	</div>
+
+	<div class="repo col-sm-3">
+		<h4><a href="https://github.com/thiagoabreu/pretzel" title="pretzel">pretzel</a> (C#)
+		</h4>
+		<p>A site generation tool (and then some) for .NET platforms </p>
+		<p> Contribução - Último commit: 10 Aug 2015</p>
+	</div>
+	{% endif %}
+	<div class="col-sm-12 text-right">
+		<a href="https://github.com/thiagoabreu" class="btn btn-default">Mais no GitHub</a>
+	</div>
+</section>

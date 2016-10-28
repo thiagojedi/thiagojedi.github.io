@@ -9,6 +9,9 @@ permalink: none
 category_archive:
    path: blog
 
+gems: 
+  - jekyll-paginate
+
 exclude:
   - bootstrap\less\
   - .gitignore

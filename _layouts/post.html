@@ -30,16 +30,10 @@
 		js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.0";
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
-	<header>
-		<div class="container text-right">
-			<h1 class="jedicomp">
-				<a href="/" title="{% include var_titulo.html %}">{% include var_titulo.html %}</a>
-				<br>
-				<small>Desenvolvendo à Força</small>
-			</h1>
-		</div>
-	</header>
-	<div class="container">
+
+	{% include main_header.html %}
+
+	<div class="container-fluid">
 		<div class="row">
 			<main class="col-sm-9">
 				<div style="padding: 0 24px;">
