@@ -6,13 +6,13 @@ paginate: 3
 
 permalink: none
 
-category_archive:
-   path: blog
-
 gems:
   - jekyll-mentions
   - jekyll-paginate
 
 exclude:
+  - bootstrap\less\
   - .gitignore
   - .git
+  - taste.bat
+  - Pretzel.exe

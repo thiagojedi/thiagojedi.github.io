@@ -1,11 +1,10 @@
 ---
-layout: blog
+layout: default
 ---
 
-{% for post in paginator.posts %}
-<div class="post">
-	<h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-	<p>{{ post.excerpt }} 
-		<a href="{{ post.url }}">Continue lendo....</a></p>
-</div>
-{% endfor %}
+{% for post in site.posts %}
+<article class="post">
+	<h2><a href="{{ post.url }}">{{ post.title }}</a> <small><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%x"}}</time></small></h2>
+	{{ post.excerpt}}
+	<p><a href="{{ post.url }}">Continue lendo....</a></p>
+</article>

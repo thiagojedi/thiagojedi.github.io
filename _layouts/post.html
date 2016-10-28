@@ -1,55 +1,59 @@
-﻿<html>
+﻿<!DOCTYPE html>
+<html lang="pt-br">
 
 <head>
-	<title>{{ page.title }}</title>
-	<link rel="stylesheet" type="text/css" href="/estilo.css">
-	<link rel="stylesheet" type="text/css" href="/post.ipad.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta charset="UTF-8">
+
+	<title>{% include var_titulo.html %}</title>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="title" content="{{ page.title }}">
 	<meta name="copyright" content="Copyright (C) Thiago 'Jedi' Abreu">
 
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"	crossorigin="anonymous">
-
-	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"	crossorigin="anonymous"></script>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="/css/estilo.css" />
 </head>
 
 <body>
-	<div class="container">
-		<!-- Facebook SDK -->
-		<div id="fb-root"></div>
-		<script>
-			(function(d, s, id) { 
-				var js, fjs = d.getElementsByTagName(s)[0]; 
-				if (d.getElementById(id)) return; 
-				js = d.createElement(s);
-				js.id = id; 
-				js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.0"; 
-				fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));
-		</script>
-	
-		{% include post_header.html %}
+	<!-- Facebook SDK -->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.0";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 
-		<main>
-			<h2>{{ page.title }}</h2>
-			<p class="text-muted">
-				Por <span class="byline-name"> Thiago Abreu </span> em <span class="dateline"> {{ page.date | date: "%d / %m / %Y" }} </span>
-			</p>
-			<div class="post">
-				{{ content }}
-			</div>
-			<div class="comments">
-				<div class="fb-comments" data-href="http://thiagoabreu.github.io{{page.url}}" data-numposts="5" data-colorscheme="light" width="100%" ></div>
-			</div>
-		</main>
+	{% include main_header.html %}
 
-		{% include post_footer.html %}
+	<div class="container-fluid">
+		<div class="row">
+			<main class="col-sm-9">
+				<div style="padding: 0 24px;">
+					<h1>{{ page.title }} <small class="dateline"> {{ page.date | date: "%d / %m / %Y" }} </small></h1>
+					<div class="post">
+						{{ content }}
+					</div>
+					<div id="comentarios" class="comments">
+						<div class="fb-comments" data-href="http://thiagoabreu.github.io{{page.url}}" data-numposts="5" data-colorscheme="light" data-width="100%"></div>
+					</div>
+				</div>
+			</main>
+			<aside class="col-sm-3" style="margin-top: 12px;">
+				{% include side_bar.html %}
+			</aside>
+		</div>
 	</div>
+	<footer class="text-center container">
+		<hr/> Copyright (c) 2014-{{ page.date | date: "%Y" }} Thiago 'Jedi' Abreu
+	</footer>
 </body>
 
 </html>

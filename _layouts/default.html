@@ -1,25 +1,40 @@
-﻿<html>
+﻿<!DOCTYPE html>
+<html>
+
 <head>
+	<meta charset="UTF-8">
+
 	<title>{% include var_titulo.html %}</title>
 
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<meta name="viewport" content="width=device-width, user-scalable=no">
-	
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/winjs/4.1.0/css/ui-light.css" rel="stylesheet" />
- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/winjs/4.1.0/js/base.js"></script>
- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/winjs/4.1.0/js/ui.js"></script> 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="title" content="{{ page.title }}">
+	<meta name="copyright" content="Copyright (C) Thiago 'Jedi' Abreu">
 
-	<link rel="stylesheet" type="text/css" href="estilo.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="/css/estilo.css" />
 </head>
-<body>
-	
-	<main>
-		{{ content }}
-	</main>
 
-   
-<script>
-	WinJS.UI.process(document.querySelector('div#conteudo'));
-</script>
+<body>
+	{% include main_header.html %}
+	<div class="container-fluid">
+		<div class="row">
+			<main class="col-sm-9">
+				{{content}}
+			</main>
+			<aside class="col-sm-3" style="margin-top: 12px;">
+				{% include side_bar.html %}
+			</aside>
+		</div>
+	</div>
+	<footer class="text-center container">
+		<hr/> Copyright (c) 2014-{{ page.date | date: "%Y" }} Thiago 'Jedi' Abreu
+	</footer>
 </body>
+
 </html>
