@@ -36,15 +36,15 @@
 	<div class="container-fluid">
 		<div class="row">
 			<main class="col-sm-9">
-				<div style="padding: 0 24px;">
-					<h1>{{ page.title }} <small class="dateline"> {{ page.date | date: "%d&nbsp;/&nbsp;%m&nbsp;/&nbsp;%Y" }} </small></h1>
+				<article style="padding: 0 24px;">
+					<h1>{{ page.title }} <small class="dateline"> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d&nbsp;/&nbsp;%m&nbsp;/&nbsp;%Y" }}</time> </small></h1>
 					<div class="post">
 						{{ content }}
 					</div>
 					<div id="comentarios" class="comments">
 						<div class="fb-comments" data-href="http://thiagoabreu.github.io{{page.url}}" data-numposts="5" data-colorscheme="light" data-width="100%"></div>
 					</div>
-				</div>
+				</article>
 			</main>
 			<aside class="col-sm-3" style="margin-top: 12px;">
 				{% include side_bar.html %}
