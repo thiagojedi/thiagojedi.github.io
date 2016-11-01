@@ -8,7 +8,7 @@ title: Thiago Abreu
 	{% for post in site.posts limit:3 %}
 	<article class="col-md-4 {% unless forloop.first %} col-sm-6 hidden-xs {% endunless %}">
 		<h3><a href="{{post.url}}">{{post.title}}</a></h3>
-		<span><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%d / %m / %Y'}}</time></span>
+		<span><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%d&nbsp;/&nbsp;%m&nbsp;/&nbsp;%Y'}}</time></span>
 		<p>
 			{{ post.excerpt }}
 		</p>
@@ -31,7 +31,7 @@ title: Thiago Abreu
 		<p>{{ repo.description }}</p>
 		<p>
 			{% if repo.fork %}Contribuição - {% endif %}Último commit:
-			<time datetime="{{ repo.pushed_at | date_to_xmlschema }}">{{ repo.pushed_at | date: '%d / %m / %Y' }}</time>
+			<time datetime="{{ repo.pushed_at | date_to_xmlschema }}">{{ repo.pushed_at | date: '%d&nbsp;/&nbsp;%m&nbsp;/&nbsp;%Y' }}</time>
 		</p>
 	</div>
 	{% endfor %} {% else %}
