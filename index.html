@@ -23,7 +23,7 @@ title: Thiago Abreu
 </section>
 <section class="row">
 	<h2 class="col-sm-12">Open-Source</h2>
-	{% if site.github %} {% assign repos = site.github.public_repositories | sort: 'pushed_at' | reverse %} {% for repo in repos limit: 8 %}
+	{% if site.github %} {% assign repos = site.github.public_repositories | sort: 'pushed_at' | reverse %} {% for repo in repos limit:8 offset:1 %}
 	<div class="repo col-sm-4 col-md-3 {% if forloop.index > 6 %}hidden-sm{% endif %} {% if forloop.index > 3 %}hidden-xs{% endif %}">
 		<h4>
 			<a href="{{ repo.html_url }}" title="{{ repo.name }}">{{ repo.name }}</a> {% if repo.language %} <small>({{ repo.language }})</small>{% endif %}
