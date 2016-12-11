@@ -9,6 +9,7 @@ permalink: none
 gems:
   - jekyll-mentions
   - jekyll-paginate
+  - jekyll-auto-image
 
 exclude:
   - bootstrap\less\
@@ -16,3 +17,5 @@ exclude:
   - .git
   - taste.bat
   - Pretzel.exe
+
+image: https://github.com/thiagoabreu.png

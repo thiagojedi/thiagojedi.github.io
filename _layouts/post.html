@@ -11,6 +11,14 @@
 	<meta name="title" content="{{ page.title }}">
 	<meta name="copyright" content="Copyright (C) Thiago 'Jedi' Abreu">
 
+	<meta name="twitter:card" content="{% if page.image %}summary_large_image{% else %}summary{% endif %}">
+	<meta name="twitter:title" content="{{ page.title }}" />
+	<meta name="twitter:creator" content="@jedi_thiago" />
+	<meta name="twitter:description" content="{{ page.excerpt | remove: '<p>' | remove: '</p>' }}" />
+	{% if page.image %}
+    <meta name="twitter:image:src" content="{{ page.image | prepend: site.baseurl | prepend: site.url }}">
+    {% endif %}
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 	<!-- Latest compiled and minified CSS -->
