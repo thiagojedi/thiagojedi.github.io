@@ -7,7 +7,7 @@ tags: [opensource, opinioes]
 
 Durante o último ano, principalmente nos últimos seis meses, eu me afastei um pouco do mundo Unix/Linux. 
 É até natural devido às ferramentas utilizadas na empresa em que trabalho.
-Por isso aproveitei que tava reinstalando os sistemas operacionais do meu PC no final do mês passado para tentar algo novo e instalei o [**elementaryOS**](http://elementary.io). 
+Por isso aproveitei que tava reinstalando os sistemas operacionais do meu PC no final do mês passado para tentar algo novo e instalei o elementaryOS. 
 Eis aqui o que eu achei.
 
 ### Antes de tudo
@@ -15,7 +15,7 @@ Eis aqui o que eu achei.
 Vou ser sincero: Eu não sabia o que esperar. 
 Não sabia absolutamente nada da distribuição, e esse era justamente um dos pontos que me inclinaram a instalar ela ao invés de instalar a nova versão do Fedora.
 Eu estava com o Debian desde um pouco antes da edição Jessie ficar estável e estava atrás de novas experiências.
-A versão atual do elementaryOS, chamada *Freya*, foi lançada no começo do ano.
+A versão atual do [**elementaryOS**](http://elementary.io), chamada *Freya*, foi lançada no começo do ano.
 
 Pra falar a verdade, achava que o elementaryOS usava o *enlightment* como ambiente e achava que eu ia demorar para aprender a me virar.
 Sim, eu vi as screenshots no site, mas não confio em fotos na internet, sejam de perfil de pessoas, sejam de sistema operacional.
@@ -30,6 +30,7 @@ Como disse muito bem minha irmã:
 
 > "Os 'Linux' de maneira geral têm papéis de parede padrão escuros ou opacos. 
 > Deixam a pessoa meio claustofóbica"
+> <footer>Kel Abreu, Designer</footer>
 
 Nunca parei pra notar isso, até ver os papéis de parede do elementaryOS, que são uma agradável exceção à regra.
 
