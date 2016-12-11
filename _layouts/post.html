@@ -17,6 +17,8 @@
 	<meta name="twitter:description" content="{{ page.excerpt | remove: '<p>' | remove: '</p>' }}" />
 	{% if page.image %}
     <meta name="twitter:image:src" content="{{ page.image | prepend: site.baseurl | prepend: site.url }}">
+	{% else %}
+	<meta name="twitter:image" content="{{ site.image }}">
     {% endif %}
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
