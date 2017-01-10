@@ -33,7 +33,13 @@ title: Thiago Abreu
 			{% if repo.fork %}Contribuição - {% endif %}Último commit:
 			<time datetime="{{ repo.pushed_at | date_to_xmlschema }}">{{ repo.pushed_at | date: '%d&nbsp;/&nbsp;%m&nbsp;/&nbsp;%Y' }}</time>
 		</p>
-	</div>
+	</div>	
+	{% if forloop.index = 3 %}
+	<div class="clearfix visible-sm-block"></div>
+	{% endif %}
+	{% if forloop.index = 4 %}
+	<div class="clearfix visible-md-block visible-lg-block"></div>
+	{% endif %}
 	{% endfor %} {% else %}
 	<div class="repo col-md-3 col-sm-4">
 		<h4><a href="https://github.com/thiagoabreu/thiagoabreu.github.io" title="thiagoabreu.github.io">thiagoabreu.github.io</a><small>(HTML)</small></h4>
