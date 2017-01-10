@@ -34,10 +34,10 @@ title: Thiago Abreu
 			<time datetime="{{ repo.pushed_at | date_to_xmlschema }}">{{ repo.pushed_at | date: '%d&nbsp;/&nbsp;%m&nbsp;/&nbsp;%Y' }}</time>
 		</p>
 	</div>	
-	{% if forloop.index = 3 %}
+	{% if forloop.index == 3 %}
 	<div class="clearfix visible-sm-block"></div>
 	{% endif %}
-	{% if forloop.index = 4 %}
+	{% if forloop.index == 4 %}
 	<div class="clearfix visible-md-block visible-lg-block"></div>
 	{% endif %}
 	{% endfor %} {% else %}
