@@ -11,7 +11,7 @@ TODO
 
 - Preprodução
     - Criar arquivo de planejamento - OK
-    - Definir projeto
+    - Definir projeto - OK - Aplicativo de Lista de Compras
     - Procurar APIs
 
 - Post 1 - Basic Stuff
