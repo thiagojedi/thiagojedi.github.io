@@ -15,10 +15,13 @@ TODO
     - Procurar APIs
 
 - Post 1 - Basic Stuff
-    - Apresentação
-    - Disclaimer
-    - Escopo
+    - Apresentação - OK
+    - Disclaimer - OK
+    - Escopo - OK
     - Resumo das tecnologias
+        - Electron - OK
+        - React
+        - TypeScript
 
 - Post 2 - Getting things Done
     - Instalação
