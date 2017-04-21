@@ -10,7 +10,7 @@ title: Thiago Abreu
 		<h3><a href="{{post.url}}">{{post.title}}</a></h3>
 		<span><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%d&nbsp;/&nbsp;%m&nbsp;/&nbsp;%Y'}}</time></span>
 		<p>
-			{{ post.excerpt }}
+			{{ post.excerpt | remove: '<p>' | remove: '</p>' }}
 		</p>
 		<p>
 			<a href="{{ post.url }}">Continuar lendo</a>
