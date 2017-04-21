@@ -15,7 +15,7 @@
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-		crossorigin="anonymous">
+	 crossorigin="anonymous">
 
 	<link rel="stylesheet" type="text/css" href="/css/estilo.css" />
 </head>
@@ -23,6 +23,16 @@
 <body>
 	{% include main_header.html %}
 	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<ol class="breadcrumb">
+					<li><a href="/">Página Inicial</a></li>
+					{% if page.url == "/blog/" %}
+					<li class="active">Blog</li>
+					{% endif %}
+				</ol>
+			</div>
+		</div>
 		<div class="row">
 			<main class="col-lg-9 col-sm-8">
 				{{content}}

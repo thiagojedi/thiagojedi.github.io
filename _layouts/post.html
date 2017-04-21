@@ -26,7 +26,7 @@
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-		crossorigin="anonymous">
+	 crossorigin="anonymous">
 
 	<link rel="stylesheet" type="text/css" href="/css/estilo.css" />
 </head>
@@ -34,22 +34,33 @@
 <body>
 	<!-- Facebook SDK -->
 	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id)) return;
-		js = d.createElement(s); js.id = id;
-		js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.0";
-		fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
+	<script>
+		(function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.0";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
 
 	{% include main_header.html %}
 
 	<div class="container">
 		<div class="row">
+			<div class="col-sm-12">
+				<ol class="breadcrumb">
+					<li><a href="/">Página Inicial</a></li>
+					<li><a href="/blog/">Blog</a></li>
+					<li class="active">Post</li>
+				</ol>
+			</div>
+		</div>
+		<div class="row">
 			<main class="col-lg-9 col-sm-8">
 				<article>
 					<h1>{{ page.title }}</h1>
-					<h2><small> <time class="dateline" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d&nbsp;/&nbsp;%m&nbsp;/&nbsp;%Y" }}</time></small></h2>					
+					<h2><small> <time class="dateline" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d&nbsp;/&nbsp;%m&nbsp;/&nbsp;%Y" }}</time></small></h2>
 					<div class="post">
 						{{ content }}
 					</div>
@@ -59,8 +70,9 @@
 				{% include side_bar.html %}
 			</aside>
 			<div id="comentarios" class="comments col-lg-9 col-sm-8">
-						<div class="fb-comments" data-href="http://thiagoabreu.github.io{{page.url}}" data-numposts="5" data-colorscheme="light" data-width="100%"></div>
-					</div>
+				<div class="fb-comments" data-href="http://thiagoabreu.github.io{{page.url}}" data-numposts="5" data-colorscheme="light"
+				 data-width="100%"></div>
+			</div>
 		</div>
 	</div>
 	<footer class="text-center container">
