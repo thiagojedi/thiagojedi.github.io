@@ -64,20 +64,69 @@ Mas pra isso é preciso ter uma APLICAÇÃO web.
 
 ## React
 
-Entra em cena o [React][fac01].
+Se você já fez algum aplicativo web, sabe que existem diversas ferramentas para te ajudar a renderizar os seus dados no HTML final que o navegador vai mostrar ao usuário.
+Em algumas delas, você cria um arquivo com uma extensão específica e ele compila para o HTML, normalmente no lado do servidor, como no caso do Jade/Pug (NodeJS), Razor (C#) e Erb (Ruby).
+Já em outras, você altera o HTML e o JavaScript utiliza as marcações para se guiar e reescrever a página com os dados direto no navegador, como é o caso do AngularJS v1.
+Por último, você pode esquecer as ferramentas e escrever os dados em string direto e mandar escrever no HTML.
+
+Entra em cena o [React][fac01]. 
+
+Criado pela equipe do Facebook, React tem como visão trazer a lógica de renderização de templates para o código JavaScript, podendo funcionar tanto do lado cliente quanto do lado servidor.
+Além disso, conta com um conceito chamado "Virtual DOM" que otimiza a alteração do HTML, de forma que apenas o que é necessário é (re)escrito na página. 
+Dessa forma, mesmo podendo ser usado para tornar dinamico apenas uma região da tua página, é uma ótima biblioteca para criar [Single Page Apps][wik02].
+
+E SPAs são ótimas coisas de se ter dentro do Electron.
+Nada te impede de ter embarcado um web-app tradicional, porém leve em consideração que ainda vai existir a necessidade de buscar em disco um arquivo HTML toda vez que você clicar num link, e esperar ele ser carregado pelo browser interno do Electron.
+
+Outra coisa que é altamente recomendado pelo React é o uso de arquivos [JSX][fac02]. Nessa extensão da sintaxe do JavaScript (e**X**tensão **J**ava**S**cript, entendeu? :smiley: ) você pode escrever tags HTML diretamente no JavaScript e utilizar algum tipo de transcompilador, normalmente o Babel, que entenda essa extensão para transformar em um arquivo `.js` normal para o navegador entender.
+
+Por falar nisso.
 
 ## TypeScript
 
+Não usaremos o Babel nesse tutorial, mas sim [TypeScript][typ01]. 
+Esse transpiler entende arquivos `.jsx` e introduz um detalhe que ajuda e muito o desenvolvimento: tipagem em tempo de compilação.
+
+Se lembra daquela aplicação Node que você fez que deve ter umas 5 mil linhas de código?
+Se lembra quando você teve que mudar os parâmetros daquela função que era usado em quase toda a aplicação?
+Não gostaria que tivesse alguma ferramenta que mostrasse pra você não só todos os cantos onde essa função é chamada, mas apenas aonde os parâmetros pudessem causar um bug?
+Pois é. Bem-vindo ao clube.
+
+Com a sintaxe de tipos do TypeScript, o transpiler não só te dá "warnings" durante a compilação para todos cantos onde objetos mal-estruturados podem causar bugs de tempo de execução, como provê um serviço de linguagem que se integra muito bem com vários editores e IDEs modernos de forma que você pode ver esses erros sem nem rodar o executável.
+
+A linguagem foi feita pela Microsoft para projetos grandes, com grande base de código, não para pequenos projetos de tutorial que você lê na internet.
+Mas eu tenho certeza que você vai encontrar algum projeto maior e vai gostar muito se a sua equipe utilizar uma ferramenta como essa.
+Que tal praticar com algo menor?
+
 ## O Projeto
 
+Tá. Agora vou explicar o que nós vamos fazer nos próximos posts: Uma lista de coisas a fazer, ou "to-do list". 
+Por que eu escolhi esse projeto? <s>Porque tá na moda.</s> Porque é simples.
+
+Não. Sério. O meu objetivo é guiar você por todos os pequenos detalhes que me deixou coçando a cabeça para fazer minha aplicação começar a parecer uma aplicação.
+Após isso, espero que você tenha capacidade para mudar a aplicação para algo mais complexo.
+
 ## O Fim do Começo
+
+E com isso eu termino esse post, não quero me extender muito.
+Vocês sabem o que vai ser esse tutorial, porque eu escolhi essas ferramentas e como eu escrevo.
+Já dá pra ter uma ideia como os próximos vão ser.
+
+No próximo post devo mostrar como configurar o seu ambiente e nos familiarizaremos com o Electron e o compilador TypeScript.
+
+Qualquer dúvida ou sugestão, pode deixar nos comentários logo abaixo.
+
+Até a próxima, e que a Força esteja com você.
 
 
 [apa01]: https://cordova.apache.org/ "Documentação Oficial do Cordova (em inglês)"
 [ele01]: https://electron.atom.io/ "Página Oficial do Electron (em inglês)"
 [fac01]: https://facebook.github.io/react/ "Documentação Oficial do React (em inglês)"
+[fac02]: https://facebook.github.io/jsx/ "Especificação do JSX para os curiosos (em inglês)"
 [red01]: https://www.reddit.com/r/programming/comments/5x9j77/insomniacs_web_tools_a_postmortem/ "Post no Reddit com o link dos slides e uma ótima discussão sobre. (em inglês)"
+[typ01]: https://www.typescriptlang.org/ "Página Oficial do TypeScript (em inglês)"
 [wik01]: https://pt.wikipedia.org/wiki/Chromium "Página da Wikipedia sobre o Chromium"
+[wik02]: https://en.wikipedia.org/wiki/Single-page_application "Página da Wikipedia sobre SPAs (em inglês)"
 
 -----
 Esse é a primeira tentativa de um tutorial nesse blog.
