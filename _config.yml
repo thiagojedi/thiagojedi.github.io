@@ -10,6 +10,7 @@ gems:
   - jekyll-mentions
   - jekyll-paginate
   - jekyll-auto-image
+  - jemoji
 
 exclude:
   - bootstrap\less\

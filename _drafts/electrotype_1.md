@@ -7,7 +7,14 @@ category: blog
 Primeiro de uma série de quatro posts de um tutorial de como usar Electron e React, em conjunto com TypeScript.
 Nesse post explico as ferramentas usadas.
 
-## Antes de começar
+<aside class="alert alert-info" lang="en">
+<strong>Info:</strong> For any english reader who end up here. 
+Sorry but I have no english version for this tutorial. Yet!
+I think I'm very proficient in english, but writing a tutorial AND thinking in a second language is a little tiresome.
+Until I finish the english version, you may use Google Translator. :grin:
+</aside>
+
+## Antes de começarmos
 
 Primeiro eu gostaria de explicar o que me motivou a fazer esse tutorial: um projeto falho.
 Quer dizer, um bom projeto, com grande potencial mas que por um motivo ou por outro chegou ao fim.
