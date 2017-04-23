@@ -14,14 +14,14 @@ TODO
     - Definir projeto - OK - Aplicativo de Lista de Compras
     - Procurar APIs
 
-- Post 1 - Basic Stuff
+- Post 1 - Basic Stuff - OK
     - Apresentação - OK
     - Disclaimer - OK
     - Escopo - OK
     - Resumo das tecnologias
         - Electron - OK
-        - React
-        - TypeScript
+        - React - OK
+        - TypeScript - OK
 
 - Post 2 - Getting things Done
     - Instalação
