@@ -52,7 +52,7 @@ O [Electron][ele01] foi criado pensando nisso.
 Em suma ele é o [Chromium][wik01] com o NodeJS para rodar os scripts, ao invés da engine V8 pura.
 Pra quem conhece o [Apache Cordova][apa01], pense no Electron como uma versão desktop do Cordova.
 Usando Electron, seu web app será na verdade um app híbrido e terá acesso a APIs de acesso a várias integrações com o sistema operacional no qual ele está rodando.
-Multiplataforma, há a garantia que seu app vai rodar nos principais sistemas operacionais de desktop.
+Assim como o Chromium, ele é multiplataforma, desse modo há a garantia que seu app vai rodar nos principais sistemas operacionais de desktop.
 Além disso, por rodar o Node.JS, permite a utilização de (quase) todos os pacotes disponíveis no NPM sem a necessidade de uma fase de empacotamento.
 
 <aside class="alert alert-info">
