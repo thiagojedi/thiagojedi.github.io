@@ -24,8 +24,8 @@ TODO
         - TypeScript - OK
 
 - Post 2 - Getting things Done
-    - Instalação
-    - Configuração do ambiente
+    - Instalação - OK
+    - Configuração do ambiente - OK
     - Hello World Electron
 
 - Post 3 - Diving a little deeper
