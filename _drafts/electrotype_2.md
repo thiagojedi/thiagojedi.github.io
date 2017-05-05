@@ -22,7 +22,7 @@ Vamos organizar nosso projeto da seguinte forma:
 electrotype/
 - img/  # imagens
 - css/  # folhas de estilo
-- src/  # aqui vai ficar os códigos
+- src/  # aqui vão ficar os códigos
     - main.ts
     - index.html
 - package.json
@@ -47,6 +47,8 @@ O arquivo `package.json` vai ficar nesse formato:
   },
   "license": "MIT",
   "devDependencies": {
+    "@types/electron": "^1.4.37",
+    "@types/node": "^6.0.70",
     "electron": "1.6.6",
     "typescript": "^2.2.2"
   }
@@ -101,6 +103,8 @@ Mas isso é tema para outro post.
 <strong>Dica:</strong> Um arquivo <code>tsconfig.json</code> básico pode ser criado usando o comando <code>tsc --init</code>.
 </aside>
 
+Já podemos rodar o comando `npm install` dentro do nosso diretório para garantir que temos todas as nossas bibliotecas no lugar.
+
 Com isso, já temos tudo pra começar a programar de verdade.
 
 ## Olá, Electron!
@@ -120,23 +124,143 @@ No meu, eu vou colocar, dentro da tag `<body>`, o seguinte:
 Nada demais, uh?
 É só para termos algo para mostrar mesmo.
 
+Agora vamos com calma no código para mostrar essa página.
 Abra seu arquivo `main.ts` e digite o seguinte:
 
-```ts
+```
 import * as Electron from 'electron'
 
-let janela: Electron.BrowserWindow
+let janela: Electron.BrowserWindow //Linha A
 
-function criarJanela() {
+function criarJanela() { //Linha B
 	janela = new Electron.BrowserWindow({
 		width: 800,
 		height: 600
 	})
+
+    janela.loadURL(`file://${__dirname}/index.html`)
+}
+
+Electron.app.on("ready", criarJanela) //Linha C
+```
+
+Esse é o código mínimo para termos uma janela em branco na tela.
+Perceba que, como nossa aplicação é bem simples e vai ter apenas uma janela, ela vai ficar como variável global (Linha A), e avisamos pro compilador do TypeScript que essa variável será uma BrowserWindow.
+Após declararmos a janela, criamos uma função (Linha B) para instanciarmos ela e chamamos essa função quando a aplicação estiver pronta (Linha C).
+
+Note que nós carregamos o `index.html` do nosso sistema de arquivos, por isso o protocolo `file://`.
+Também utilizamos a variável `__dirname`, [setada pelo Node.JS][nod01], para garantir que o caminho é relativo ao local do arquivo que estamos rodando.
+
+Rode o comando `npm start`, você deve ter algo parecido com isso:
+
+![Hello, Electron](/blog/images/electron_1.png) 
+
+E fim! Temos um aplicativo! Quer dizer... quase.
+
+## Evoluindo no Darwin
+
+Lembre-se que o Electron é multiplataforma.
+Então existem algumas alterações que precisam ser feitas para o seu aplicativo funcionar bem no [macOS][mac01].
+
+É o comportamento padrão de um aplicativo no macOS que, ao clicar no botão de fechar, o aplicativo não termine.
+O aplicativo só pode se terminar se o usuário pedir por isso ativamente.
+
+Dito isso, vamos mudar a função de criar a janela para o seguinte:
+
+```
+function criarJanela() {
+    janela = new Electron.BrowserWindow({
+        width: 800,
+        height: 600
+    })
+    
+    janela.loadURL(`file://${__dirname}/index.html`)
+    
+    janela.on("close", function() {
+        janela = null
+    })
+}
+```
+
+Vamos tornar a nossa janela nula quando ela for fechada, liberando espaço em memória.
+Além disso, no escopo principal, adicionaremos código para dois eventos do nosso `Electron.app`:
+
+```
+Electron.app.on("window-all-closed", function() {
+    if (process.platform !== 'darwin')
+        Electron.app.quit()
+})
+
+Electron.app.on("activate", function() {
+    if (janela === null)
+        criarJanela()
+})
+```
+
+O que fizemos aqui foi dizer pro `app` só sair(quit) após todas as janelas forem fechadas somente se não estivermos no macOS (que usa o kernel "darwin").
+Quando não há janelas, mas o aplicativo ainda está rodando, o usuário pode ativar o ícone e uma nova janela será criada e exibida.
+
+Tente rodar novamente o `npm start` para testar esse nosso código.
+Você deve ver algo nesse sentido:
+
+``` 
+src/main.ts(14,9): error TS2322: Type 'null' is not assignable to type 'BrowserWindow'. 
+```
+
+Se lembra que configuramos o compilador com o parâmetro `strictNullChecks: true`?
+É exatamente pra isso que ele serve. 
+O que aconteceu é que nós tentamos setar a variável `janela` para `null` mas essa variável não pode ser nula.
+Isso é bastante útil quando estamos tratando com variáveis globais que podem ser utilizadas em vários locais do código.
+É bom que saibamos que esse código pode interferir na nossa lógica.
+
+Como esse arquivo é pequeno, e nós sabemos todos os locais que a `janela` é chamada, vamos apenas mudar a declaração dela para: `let janela: Electron.BrowserWindow | null`. Ou seja, a janela pode ser uma BrowserWindow OU nula.
+
+Eis o código final:
+
+```
+import * as Electron from 'electron'
+
+let janela: Electron.BrowserWindow | null
+
+function criarJanela() {
+    janela = new Electron.BrowserWindow({
+        width: 800,
+        height: 600,
+        
+    })
+
+    janela.loadURL(`file://${__dirname}/index.html`)
+
+    janela.on("close", () => {
+        janela = null
+    })
 }
 
 Electron.app.on("ready", criarJanela)
+
+Electron.app.on("window-all-closed", () => {
+    if (process.platform !== 'darwin')
+        Electron.app.quit()
+})
+
+Electron.app.on("activate", () => {
+    if (janela === null)
+        criarJanela()
+})
 ```
 
+Agora sim. Teminamos por hoje.
 
-----
-[typ01]: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
+Se você utiliza algum editor com plugin do TypeScript, não copie e cole esses códigos, digite-os você mesmo.
+Perceba que ao digitar você não só já vê os erros como o da janela nula, como também deve ter sugestões de códigos bem mais sucintas que se você estivesse escrevendo apenas JavaScript.
+
+No próximo post, nós veremos como tornar a nossa página html em uma aplicação usando o ReactJS.
+Até lá, veja a [documentação do Electron][ele01] para brincar com os parâmetros do construtor de BrowserWindow (eu gosto muito de `frame: false` e `kiosk: true`)
+
+Que a Força esteja com vocês!
+
+
+[mac01]: https://en.wikipedia.org/wiki/MacOS#macOS "O nome é macOS agora :D"
+[nod01]: https://nodejs.org/docs/latest/api/globals.html#globals_dirname "Documentação sobre o dirname."
+[typ01]: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html "Documentação do compilador do TS."
+[ele01]: https://electron.atom.io/docs/api/browser-window/#new-browserwindowoptions "Documentação do BrowserWindow"
