@@ -174,7 +174,7 @@ function criarJanela() {
         height: 600
     })
     
-    janela.loadURL(`file://${__dirname}/index.html`)
+    janela.loadURL("file://" + __dirname + "/index.html")
     
     janela.on("close", function() {
         janela = null
@@ -229,7 +229,7 @@ function criarJanela() {
         
     })
 
-    janela.loadURL(`file://${__dirname}/index.html`)
+    janela.loadURL("file://" + __dirname + "/index.html")
 
     janela.on("close", () => {
         janela = null
