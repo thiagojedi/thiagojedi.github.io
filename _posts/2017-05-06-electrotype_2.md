@@ -138,7 +138,7 @@ function criarJanela() { //Linha B
 		height: 600
 	})
 
-    janela.loadURL(`file://${__dirname}/index.html`)
+    janela.loadURL("file://" + __dirname "/index.html")
 }
 
 Electron.app.on("ready", criarJanela) //Linha C
