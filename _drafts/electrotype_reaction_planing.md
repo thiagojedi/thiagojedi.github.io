@@ -26,7 +26,7 @@ TODO
 - Post 2 - Getting things Done
     - Instalação - OK
     - Configuração do ambiente - OK
-    - Hello World Electron
+    - Hello World Electron - OK
 
 - Post 3 - Diving a little deeper
     - ReactJS

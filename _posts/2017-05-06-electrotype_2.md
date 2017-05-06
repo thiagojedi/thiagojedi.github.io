@@ -13,7 +13,7 @@ Sem muita conversa: vamos por a mão na massa.
 Como eu disse no blog anterior, todas as ferramentas que nós vamos usar dependem da linguagem JavaScript, e já que _ainda_ não estamos rodando nada num navegador, precisamos do [Node.js][nod01] instalado com o npm.
 
 Além disso, o TypeScript é muito melhor aproveitado se programado em algum editor que tenha o plugin de autocomplete dele.
-O [site oficial][typ01] contém links para alguns editores e seus plugins.
+O site oficial contém links para alguns [editores e seus plugins][typ02].
 Recomendo fortemente a utilização de algum deles durante esse tutorial.
 
 Vamos organizar nosso projeto da seguinte forma:
@@ -263,4 +263,5 @@ Que a Força esteja com vocês!
 [mac01]: https://en.wikipedia.org/wiki/MacOS#macOS "O nome é macOS agora :D"
 [nod01]: https://nodejs.org/docs/latest/api/globals.html#globals_dirname "Documentação sobre o dirname."
 [typ01]: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html "Documentação do compilador do TS."
+[typ02]: https://www.typescriptlang.org/index.html#download-links "Área de downloads do TypeScript"
 [ele01]: https://electron.atom.io/docs/api/browser-window/#new-browserwindowoptions "Documentação do BrowserWindow"
