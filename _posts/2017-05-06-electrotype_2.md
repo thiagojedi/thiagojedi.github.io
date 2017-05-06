@@ -127,7 +127,7 @@ Nada demais, uh?
 Agora vamos com calma no código para mostrar essa página.
 Abra seu arquivo `main.ts` e digite o seguinte:
 
-```
+```ts
 import * as Electron from 'electron'
 
 let janela: Electron.BrowserWindow //Linha A
@@ -167,7 +167,7 @@ O aplicativo só pode se terminar se o usuário pedir por isso ativamente.
 
 Dito isso, vamos mudar a função de criar a janela para o seguinte:
 
-```
+```ts
 function criarJanela() {
     janela = new Electron.BrowserWindow({
         width: 800,
@@ -185,7 +185,7 @@ function criarJanela() {
 Vamos tornar a nossa janela nula quando ela for fechada, liberando espaço em memória.
 Além disso, no escopo principal, adicionaremos código para dois eventos do nosso `Electron.app`:
 
-```
+```ts
 Electron.app.on("window-all-closed", function() {
     if (process.platform !== 'darwin')
         Electron.app.quit()
@@ -217,7 +217,7 @@ Como esse arquivo é pequeno, e nós sabemos todos os locais que a `janela` é c
 
 Eis o código final:
 
-```
+```ts
 import * as Electron from 'electron'
 
 let janela: Electron.BrowserWindow | null
