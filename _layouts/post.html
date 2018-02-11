@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 
-	<title>{% include var_titulo.html %}</title>
+	<title>{% include var_titulo.html %} - {{ page.title }}</title>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -17,7 +17,7 @@
 	<meta name="twitter:creator" content="@jedi_thiago" />
 	<meta name="twitter:description" content="{{ page.excerpt | remove: '<p>' | remove: '</p>' | strip_html }}" />
 	{% if page.image %}
-    <meta name="twitter:image:src" content="{{ page.image | prepend: site.baseurl | prepend: site.url }}">
+    <meta name="twitter:image:src" content="{{ page.image | absolute_url }}">
 	{% else %}
 	<meta name="twitter:image" content="{{ site.image }}">
     {% endif %}
@@ -33,17 +33,6 @@
 </head>
 
 <body>
-	<!-- Facebook SDK -->
-	<div id="fb-root"></div>
-	<script>
-		(function (d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) return;
-			js = d.createElement(s); js.id = id;
-			js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.0";
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-	</script>
 
 	{% include main_header.html %}
 
@@ -70,10 +59,6 @@
 			<aside class="col-lg-3 col-sm-4" style="margin-top: 12px;">
 				{% include side_bar.html %}
 			</aside>
-			<div id="comentarios" class="comments col-lg-9 col-sm-8">
-				<div class="fb-comments" data-href="https://thiagoabreu.github.io{{page.url}}" data-numposts="5" data-colorscheme="light"
-				 data-width="100%"></div>
-			</div>
 		</div>
 	</div>
 	<footer class="text-center container">
