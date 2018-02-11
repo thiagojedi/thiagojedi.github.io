@@ -9,7 +9,7 @@ permalink: none
 plugins:
   - jekyll-mentions
   - jekyll-paginate
- - jekyll-auto-image
+  - jekyll-auto-image
   - jemoji
 
 exclude:
