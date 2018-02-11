@@ -6,10 +6,10 @@ paginate: 3
 
 permalink: none
 
-gems:
+plugins:
   - jekyll-mentions
   - jekyll-paginate
-  - jekyll-auto-image
+ - jekyll-auto-image
   - jemoji
 
 exclude:
