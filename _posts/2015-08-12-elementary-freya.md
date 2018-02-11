@@ -3,6 +3,7 @@ layout: post
 title: elementaryOS, uma bela surpresa
 category: blog 
 tags: [opensource, opinioes]
+image: /blog/images/ssTerminal.png
 ---
 
 Durante o último ano, principalmente nos últimos seis meses, eu me afastei um pouco do mundo Unix/Linux. 
@@ -34,7 +35,7 @@ Como disse muito bem minha irmã:
 
 Nunca parei pra notar isso, até ver os papéis de parede do elementaryOS, que são uma agradável exceção à regra.
 
-![Minha Área de Trabalho](./images/ssDesktop.png)
+![Minha Área de Trabalho](images/ssDesktop.png)
 
 A imagem aí de cima é a minha área de trabalho atual.
 Bonita né?
@@ -76,7 +77,7 @@ O únicos "bugs" que eu achei foram um *glitch* no cursor do mouse quando se arr
 
 Já falei que achei o terminal muito bonito?
 
-![Terminal](./images/ssTerminal.png) 
+![Terminal](images/ssTerminal.png) 
 
 ### Conclusão
 
