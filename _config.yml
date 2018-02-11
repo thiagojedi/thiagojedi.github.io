@@ -1,3 +1,7 @@
+title: JediComp
+author: Thiago 'Jedi' Abreu
+
+lang: pt_BR
 timezone: America/Recife
 markdown: kramdown
 
@@ -7,9 +11,10 @@ paginate: 3
 permalink: none
 
 plugins:
+  - jekyll-feed
   - jekyll-mentions
-  - jekyll-paginate
-  - jekyll-auto-image
+  - jekyll-seo-tag
+  - jekyll-sitemap
   - jemoji
 
 exclude:
@@ -20,3 +25,13 @@ exclude:
   - Pretzel.exe
 
 image: https://github.com/thiagoabreu.png
+
+twitter:
+  username: Jedi_Thiago
+
+social:
+    name: Thiago 'Jedi' Abreu
+    links:
+      - https://twitter.com/Jedi_Thiago
+      - https://fb.com/thiagojedi
+      - https://github.com/thiagoabreu
