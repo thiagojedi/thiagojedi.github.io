@@ -15,7 +15,7 @@
 	<meta name="twitter:card" content="{% if page.image %}summary_large_image{% else %}summary{% endif %}">
 	<meta name="twitter:title" content="{{ page.title }}" />
 	<meta name="twitter:creator" content="@jedi_thiago" />
-	<meta name="twitter:description" content="{{ page.excerpt | remove: '<p>' | remove: '</p>' }}" />
+	<meta name="twitter:description" content="{{ page.excerpt | remove: '<p>' | remove: '</p>' | strip_html }}" />
 	{% if page.image %}
     <meta name="twitter:image:src" content="{{ page.image | prepend: site.baseurl | prepend: site.url }}">
 	{% else %}
