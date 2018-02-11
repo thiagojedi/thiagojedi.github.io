@@ -3,7 +3,7 @@ layout: post
 title: elementaryOS, uma bela surpresa
 category: blog 
 tags: [opensource, opinioes]
-image: /blog/images/ssTerminal.png
+image: /blog/images/ssDesktop.png
 ---
 
 Durante o último ano, principalmente nos últimos seis meses, eu me afastei um pouco do mundo Unix/Linux. 
