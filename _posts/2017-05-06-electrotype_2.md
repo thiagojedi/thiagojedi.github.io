@@ -203,7 +203,7 @@ Quando não há janelas, mas o aplicativo ainda está rodando, o usuário pode a
 Tente rodar novamente o `npm start` para testar esse nosso código.
 Você deve ver algo nesse sentido:
 
-``` 
+```config
 src/main.ts(14,9): error TS2322: Type 'null' is not assignable to type 'BrowserWindow'. 
 ```
 
@@ -259,9 +259,21 @@ Até lá, veja a [documentação do Electron][ele01] para brincar com os parâme
 
 Que a Força esteja com vocês!
 
+---
+#### UPDATE (<time datetime="2018-02-11T00:00">11/02/2018</time>):
+
+Essa parte do tutorial pode ser substituída utilizando a ferramenta [Electron Forge][ele02]. Para utilizar o ReactJS com Typescript deve-se utilizar o seguinte comando para criar o projeto:
+
+```console
+$ electron-forge init meu-novo-projeto --template=react-typescript
+```
+
+Esse comando cria uma pasta chamada "meu-novo-projeto" com tudo o que você precisa para criar um aplicativo nos moldes desse tutorial.
+
 
 [mac01]: https://en.wikipedia.org/wiki/MacOS#macOS "O nome é macOS agora :D"
 [nod01]: https://nodejs.org/docs/latest/api/globals.html#globals_dirname "Documentação sobre o dirname."
 [typ01]: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html "Documentação do compilador do TS."
 [typ02]: https://www.typescriptlang.org/index.html#download-links "Área de downloads do TypeScript"
 [ele01]: https://electron.atom.io/docs/api/browser-window/#new-browserwindowoptions "Documentação do BrowserWindow"
+[ele02]: https://electronforge.io/ "Site oficial do Electron Forge"
