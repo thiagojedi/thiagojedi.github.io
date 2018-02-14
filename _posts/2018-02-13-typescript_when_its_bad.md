@@ -3,6 +3,7 @@ layout: post
 title: "TypeScript: When it's a bad idea?"
 category: blog
 tags: typescript ts english
+image: /blog/images/typescript.png
 ---
 
 I'm a huge advocate that knowning when *not* to use a tool is as important as knowing when to use it.
@@ -67,6 +68,8 @@ You don't need a new language, use what the browsers run.
 
 Remember that HTML attributes may not be the types you expect and the static typing might [confuse your debugging][js02].
 
+![img01]
+
 ## Conclusion
 
 The bottom line is: where JavaScript is strong, keep it there.
@@ -91,6 +94,7 @@ Any questions, you may find me on twitter.
 
 Cya.
 
+[img01]: /blog/images/typescript.png
 [js01]: https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f "How it feels to learn javascript in 2016"
 [js02]: https://blog.jayway.com/2016/05/06/typescript-web-and-the-illusive-type-safety-advantage/ "TypeScript, web and the illusive type-safety-advantage"
 [ts01]: https://typescriptlang.org "TypeScript's official page"
