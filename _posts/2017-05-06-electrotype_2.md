@@ -203,7 +203,7 @@ Quando não há janelas, mas o aplicativo ainda está rodando, o usuário pode a
 Tente rodar novamente o `npm start` para testar esse nosso código.
 Você deve ver algo nesse sentido:
 
-```config
+```
 src/main.ts(14,9): error TS2322: Type 'null' is not assignable to type 'BrowserWindow'. 
 ```
 
