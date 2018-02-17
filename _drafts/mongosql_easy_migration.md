@@ -25,19 +25,18 @@ There are a lot of NoSQL db's around with diferent data structures that are used
 Like [graphs][wik02] for networks of links, peoples, cities; or associative arrays (or KV, [key-value][wik03]) used for caching.
 And there are the document-oriented db's that uses syntax like XML or JSON to handle data, [MongoDB][mon01] is one of them.
 
-The thing they have in common is that they tend to avoid use classic "Structured Query Language" for querying data.
+The thing they have in common is that they tend to avoid use classic "Structured Query Language" for retrieving data.
 **N**ot **o**nly **SQL**, they say.
 
 _But is it too different from SQL?_
 
 It may be. 
-They favor other syntaxes because they're better suited for its data structure or use case.
+They favor other syntaxes because they're better suited for its data structure or use case.*
 So if you have a KV structure, you only need the key to search the value, no projection needed.
 
 That's not the case for MongoDB.
 
-> There are some differences in distributing data, network partition and other stuff like the [CAP Theorem][wik01].
-> But let's not focus on this today.
+<small>\* There are some differences in distributing data, network partition and other stuff like the [CAP Theorem][wik01]. But I don't want to go there today.</small>
 
 ## The same concepts, different structure
 
@@ -111,6 +110,18 @@ Let's translate it to the language MongoDB understand, which happens to be JavaS
 ```js
 db.movies.find({"studio.name": "Warner"}, {"title": 1, "_id": 0}).sortBy({"publish_date": -1});
 ```
+
+or, if you want to be organized:
+
+```js
+var filter = {"studio.name": "Warner"};
+var projection = {"title": 1, "publish_date": 1, "_id": 0};
+var order = {"publish_date": -1};
+
+db.movies.find(filter, projection).sortBy(order);
+```
+
+Notice that the `SELECT` clause is converted to a `projection` json object; the `ORDER BY` goes inside the `sortBy` method, with the `-1` indicating it's descending; and the `WHERE` is the `filter`, with a little help of the denormalization.
 
 
 [mon01]: https://www.mongodb.com/
