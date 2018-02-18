@@ -10,9 +10,17 @@ h1.jedicomp {
     vertical-align: bottom;
 }
 
-h1.jedicomp a, h1.jedicomp a:visited {
+h1.jedicomp a {
     text-decoration: none;
     color: inherit;
+}
+
+h1.jedicomp a:visited {
+    color: inherit;
+}
+
+h1.jedicomp small {
+    color: gray !important;
 }
 
 header {
@@ -24,7 +32,7 @@ img#profile-pic {
     max-height: 150px;
 }
 
-article h1, a, a:hover, a:visited {
+article h1, a, a:hover {
     color: seagreen;
 }
 
