@@ -51,3 +51,7 @@ article h1, a, a:hover {
     white-space: pre;
     overflow-x: auto;
 }
+
+.post pre.lineno {
+    padding-right: 6px;
+}
