@@ -2,16 +2,14 @@
 layout: post
 title: "Relational NoSQL with MongoDB"
 category: blog
-excerpt_separator: <!--more-->
 ---
 
-I had a conversation with a colleague of mine, who is a SQL Server <acronym title="Database administrator">DBA</acronym>.
+I had this conversation with a colleague of mine, who is a SQL Server DBA.
 She said she knows almost nothing about "NoSQL" but believed "it's the future!".
 Here I am to tell you that, if you know relational databases, you already know some basic MongoDB, one of the most used NoSQL databases out there.
+Maybe you are ready for the future!
 
-<!--more-->
-
-## The ~~scary~~ world of NoSQL
+## The _scary_ world of NoSQL
 
 So, what is NoSQL?
 
@@ -43,12 +41,13 @@ That's not the case for MongoDB.
 Imagine we have a Video On Demand (a.k.a. VOD) application for superhero movies.
 Today you may go ahead and create a relational database with a `Movie` table for our catalog, like this one:
 
+{:.table.table-striped.table-sm}
 |id |title                          |year   |publish_date   |studio_fk  |
 |-  |-                              |-      |-              |-          |
 | 1 |"Justice League"               |2017   |2018-02-10     |1          |
-| 2 |"Wonder Woman"                 |2017   |2017-09-19     |1          |
-| 3 |"Captain America: Civil War"   |2016   |2017-09-19     |2          |
-| 4 |"Deadpool"                     |2016   |2017-10-19     |3          |
+| 2 |"Deadpool"                     |2016   |2017-10-19     |3          |
+| 3 |"Wonder Woman"                 |2017   |2017-09-19     |1          |
+| 4 |"Captain America: Civil War"   |2016   |2017-09-19     |2          |
 
 Along with a `Studio` table.
 Indexes, foreign keys, normalization and stuff.
@@ -60,7 +59,7 @@ So, how, say, the "Deadpool" entry would look like?
 
 ```js
 {
-    "_id": 4,
+    "_id": 2,
     "title": "Deadpool",
     "year": 2016,
     "publish_date": Date("2017-10-19"),
@@ -73,7 +72,7 @@ So, how, say, the "Deadpool" entry would look like?
 
 _Wow! Not that different!_
 
-Did you see the pattern, then?
+You did see the pattern, right?
 There do are some odd stuff, but mostly the columns' names are translated to JSON `fields` and the values are atributted accordingly.
 
 Other thing in common in this case is that the `_id` acts like a Primary Key: it must exist and its value must be unique.
@@ -85,10 +84,11 @@ The indexes are defined for every collection of documents called... well... `col
 And collections act pretty much like tables.
 The only real difference is that you do not need to specify the schema of the data.
 If the index can't find the key it treats it as `null` or forbides you to insert the document, depends on how you created the index.
+[Pretty much like in SQL Server.][sta01]
 
 _Nice! And the studio thing there in the end?_
 
-So... If you need to [denormalizate][wik04] your data, for performance (or even sanity) reasons, you may embed another document inside your own, and even query it.
+Oh! I almost forgot it! If you need to [denormalizate][wik04] your data, for performance (or even sanity) reasons, you may embed another document inside your own, and even query it.
 
 ## Speaking of queries
 
@@ -99,7 +99,8 @@ If you need the list of the movie titles from the "Warner" studio, in the revers
 
 ```sql
 SELECT title, publish_date FROM movies
-WHERE studio_fk in (SELECT TOP(1) id FROM studio WHERE name='Warner')
+JOIN studio ON movies.studio_fk = studio.id
+WHERE studio.name='Warner'
 ORDER BY publish_date DESC
 
 -- See? I know some SQL too! :D
@@ -123,7 +124,7 @@ db.movies.find(filter, projection).sortBy(order);
 
 Notice that the `SELECT` clause is converted to a `projection` json object; the `ORDER BY` goes inside the `sortBy` method, with the `-1` indicating it's descending; and the `WHERE` is the `filter`, with a little help of the denormalization.
 
-
+[sta01]: https://stackoverflow.com/a/20687291/5150453
 [mon01]: https://www.mongodb.com/
 [wik01]: https://en.wikipedia.org/wiki/CAP_theorem 
 [wik02]: https://en.wikipedia.org/wiki/Graph_database

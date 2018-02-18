@@ -57,10 +57,10 @@ O arquivo `package.json` vai ficar nesse formato:
 
 Algumas coisas a serem comentadas sobre esse arquivo:
 
-1-  Perceba que existe na linha `"main": "src/main.js"` estamos indicando que vamos rodar um arquivo `.js` que ainda não existe.
-    Não se preocupe pois ele será gerado pelo compilador do TypeScript.
+1- Perceba que existe na linha `"main": "src/main.js"` estamos indicando que vamos rodar um arquivo `.js` que ainda não existe.
+   Não se preocupe pois ele será gerado pelo compilador do TypeScript.
 
-2-  Para garantir que não vamos esquecer de compilar as mudanças feitas nos arquivos `.ts`, a linha `"prestart": "tsc -p ."` faz o npm rodar o compilador antes de iniciar o programa.
+2- Para garantir que não vamos esquecer de compilar as mudanças feitas nos arquivos `.ts`, a linha `"prestart": "tsc -p ."` faz o npm rodar o compilador antes de iniciar o programa.
 
 3- O Electron não recomenda atualização automática dele mesmo como dependencia, por isso colocamos `"electron": "1.6.6"` e não `"electron": "^1.6.6"`, por exemplo.
 
