@@ -47,11 +47,8 @@ article h1, a, a:hover {
     display: inline;
 }
 
-.post pre code {
-    white-space: pre;
-    overflow-x: auto;
-}
-
 .post pre.lineno {
     padding-right: 6px;
+    border-right: 1px solid lightgrey;
+    text-align: right;
 }
