@@ -124,8 +124,44 @@ db.movies.find(filter, projection).sortBy(order);
 
 Notice that the `SELECT` clause is converted to a `projection` json object; the `ORDER BY` goes inside the `sortBy` method, with the `-1` indicating it's descending; and the `WHERE` is the `filter`, with a little help of the denormalization.
 
-[sta01]: https://stackoverflow.com/a/20687291/5150453
+## Equal but not the Same
+
+There's a lot common in both database systems, but what's really different in MongoDB?
+Besides the data structure and the query language, there are a few things that the developers of MongoDB decided to keep aside.
+Mostly because, in their vision, those features make it dificult to deal with distributed data the way they do.
+
+The biggest one I think is the absence of Transactions.
+
+That's why many developers and dba's make use of embed documents when designing a MongoDB database.
+Of course, when you use embed documents, there's a limit for the document size, and sometimes it may cause some updates absurdly complex and slow.
+I recommend to use it with caution.
+There's a great tutorial on [how to create transaction-like operations][mon02] in the MongoDB docs, so you may "normalize" your data across collections and treat some complex updates on more than one document.
+
+## Summing it up
+
+Let's see what we know now:
+
+* The JSON documents in MongoDB are basically tuples with `{}`
+* Collections are like Tables
+* `_id` is a obrigatory PrimaryKey
+* When querying MongoDB we use all the elements from a SQL query, but written in javascript.
+* There's no transaction
+
+That's the basic.
+I hope you'll feel more confortable to search more info about NoSQL databases after knowing that it's not that different.
+Maybe it will help you to improve your SQL skills and mindset.
+Who knows?
+
+I used MongoDB as an example because of this similarities.
+If you want to know more databases, with other paradigms, I recommend the book [Seven Databases in Seven Weeks][pra01].
+
+And that's a wrap.
+May the Force be with you.
+
 [mon01]: https://www.mongodb.com/
+[mon02]: https://docs.mongodb.com/manual/core/write-operations-atomicity/
+[pra01]: https://www.amazon.com.br/Seven-Databases-Weeks-Modern-Movement/dp/1934356921
+[sta01]: https://stackoverflow.com/a/20687291/5150453
 [wik01]: https://en.wikipedia.org/wiki/CAP_theorem 
 [wik02]: https://en.wikipedia.org/wiki/Graph_database
 [wik03]: https://en.wikipedia.org/wiki/Key-value_database
