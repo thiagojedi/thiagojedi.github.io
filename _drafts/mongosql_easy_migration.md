@@ -28,7 +28,7 @@ The thing they have in common is that they tend to avoid use classic "Structured
 
 _But is it too different from SQL?_
 
-It may be. 
+It may be.
 They favor other syntaxes because they're better suited for its data structure or use case.*
 So if you have a KV structure, you only need the key to search the value, no projection needed.
 
@@ -39,7 +39,7 @@ That's not the case for MongoDB.
 ## The same concepts, different structure
 
 Imagine we have a Video On Demand (a.k.a. VOD) application for superhero movies.
-Today you may go ahead and create a relational database with a `Movie` table for our catalog, like this one:
+Today you may go ahead and create a relational database with a `Movies` table for our catalog, like this one:
 
 {:.table.table-striped.table-sm}
 |id |title                          |year   |publish_date   |studio_fk  |
@@ -49,7 +49,7 @@ Today you may go ahead and create a relational database with a `Movie` table for
 | 3 |"Wonder Woman"                 |2017   |2017-09-19     |1          |
 | 4 |"Captain America: Civil War"   |2016   |2017-09-19     |2          |
 
-Along with a `Studio` table.
+Along with a `Studios` table.
 Indexes, foreign keys, normalization and stuff.
 You know the drill.
 Let's not think about it for now.
@@ -64,8 +64,8 @@ So, how, say, the "Deadpool" entry would look like?
     "year": 2016,
     "publish_date": Date("2017-10-19"),
     "studio": {
-        name: "21th Century Fox",
-        logo: "url_to_fox_logo.png"
+        "name": "21th Century Fox",
+        "logo": "url_to_fox_logo.png"
     }
 }
 ```
@@ -76,6 +76,7 @@ You did see the pattern, right?
 There do are some odd stuff, but mostly the columns' names are translated to JSON `fields` and the values are atributted accordingly.
 
 Other thing in common in this case is that the `_id` acts like a Primary Key: it must exist and its value must be unique.
+If you don't provide it when inserting an entry, the database generates one for you.
 
 _So, there is a PK. Are there indexes too?_
 
@@ -98,8 +99,9 @@ I'll start with the SQL syntax again.
 If you need the list of the movie titles from the "Warner" studio, in the reverse order of publish date, you'll write something like this:
 
 ```sql
-SELECT title, publish_date FROM movies
-JOIN studio ON movies.studio_fk = studio.id
+SELECT title, publish_date
+FROM dbo.Movies AS movie
+JOIN dbo.Studios AS studio ON movie.studio_fk = studios.id
 WHERE studio.name='Warner'
 ORDER BY publish_date DESC
 
@@ -109,12 +111,6 @@ ORDER BY publish_date DESC
 Let's translate it to the language MongoDB understand, which happens to be JavaScript.
 
 ```js
-db.movies.find({"studio.name": "Warner"}, {"title": 1, "_id": 0}).sortBy({"publish_date": -1});
-```
-
-or, if you want to be organized:
-
-```js
 var filter = {"studio.name": "Warner"};
 var projection = {"title": 1, "publish_date": 1, "_id": 0};
 var order = {"publish_date": -1};
@@ -122,7 +118,13 @@ var order = {"publish_date": -1};
 db.movies.find(filter, projection).sortBy(order);
 ```
 
-Notice that the `SELECT` clause is converted to a `projection` json object; the `ORDER BY` goes inside the `sortBy` method, with the `-1` indicating it's descending; and the `WHERE` is the `filter`, with a little help of the denormalization.
+Notice the similarities!
+The `db.movies` means we are dealing with the `movies` collection in current db, just like the `FROM` clause.
+The `filter` acts like the `WHERE`, with a little help of the denormalization here.
+The `SELECT` clause is converted to a `projection` json object.
+The `ORDER BY` goes inside the `sortBy` method, with the `-1` indicating the descending order.
+
+The main difference in this example is that you need to explicity indicate the `_id` field should not be retrieved with a `"_id": 0` in the `projection`, as the default is that it's always retrieved.
 
 ## Equal but not the Same
 
@@ -162,7 +164,7 @@ May the Force be with you.
 [mon02]: https://docs.mongodb.com/manual/core/write-operations-atomicity/
 [pra01]: https://www.amazon.com.br/Seven-Databases-Weeks-Modern-Movement/dp/1934356921
 [sta01]: https://stackoverflow.com/a/20687291/5150453
-[wik01]: https://en.wikipedia.org/wiki/CAP_theorem 
+[wik01]: https://en.wikipedia.org/wiki/CAP_theorem
 [wik02]: https://en.wikipedia.org/wiki/Graph_database
 [wik03]: https://en.wikipedia.org/wiki/Key-value_database
 [wik04]: https://en.wikipedia.org/wiki/Denormalization
