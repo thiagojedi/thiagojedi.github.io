@@ -2,6 +2,7 @@
 layout: post
 title: "Relational NoSQL with MongoDB"
 category: blog
+image: /blog/images/sql.png
 ---
 
 I had this conversation with a colleague of mine, who is a SQL Server DBA.
@@ -143,18 +144,18 @@ There's a great tutorial on [how to create transaction-like operations][mon02] i
 
 Let's see what we know now:
 
-* The JSON documents in MongoDB are basically tuples with `{}`
+* The JSON documents in MongoDB are basically SQL entries with `{}`
 * Collections are like Tables
-* `_id` is a obrigatory PrimaryKey
-* When querying MongoDB we use all the elements from a SQL query, but written in javascript.
-* There's no transaction
+* `_id` is an obrigatory PrimaryKey
+* When querying MongoDB we use all the elements from a SQL query, but written in JavaScript.
+* There are no Transactions
 
 That's the basic.
 I hope you'll feel more confortable to search more info about NoSQL databases after knowing that it's not that different.
 Maybe it will help you to improve your SQL skills and mindset.
 Who knows?
 
-I used MongoDB as an example because of this similarities.
+I used MongoDB as an example because of those similarities.
 If you want to know more databases, with other paradigms, I recommend the book [Seven Databases in Seven Weeks][pra01].
 
 And that's a wrap.
