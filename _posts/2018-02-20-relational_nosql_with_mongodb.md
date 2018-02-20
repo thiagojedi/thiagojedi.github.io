@@ -161,7 +161,7 @@ If you want to know more databases, with other paradigms, I recommend the book [
 And that's a wrap.
 May the Force be with you.
 
-_Thanks to my colleague and friend [Mariana Sampaio](https://br.linkedin.com/in/mariana-serni-sampaio-9bb110116 "") for reviewing this post_
+_Thanks to my colleague and friend [Mariana Sampaio][mar01] for reviewing this post_
 
 [mon01]: https://www.mongodb.com/
 [mon02]: https://docs.mongodb.com/manual/core/write-operations-atomicity/
@@ -171,3 +171,4 @@ _Thanks to my colleague and friend [Mariana Sampaio](https://br.linkedin.com/in/
 [wik02]: https://en.wikipedia.org/wiki/Graph_database
 [wik03]: https://en.wikipedia.org/wiki/Key-value_database
 [wik04]: https://en.wikipedia.org/wiki/Denormalization
+[mar01]: https://br.linkedin.com/in/mariana-serni-sampaio-9bb110116
