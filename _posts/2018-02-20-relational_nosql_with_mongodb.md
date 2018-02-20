@@ -161,6 +161,8 @@ If you want to know more databases, with other paradigms, I recommend the book [
 And that's a wrap.
 May the Force be with you.
 
+_Thanks to my colleague and friend [Mariana Sampaio][https://br.linkedin.com/in/mariana-serni-sampaio-9bb110116] for reviewing this post_
+
 [mon01]: https://www.mongodb.com/
 [mon02]: https://docs.mongodb.com/manual/core/write-operations-atomicity/
 [pra01]: https://www.amazon.com.br/Seven-Databases-Weeks-Modern-Movement/dp/1934356921
