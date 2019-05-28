@@ -25,6 +25,7 @@ exclude:
   - .git
   - taste.bat
   - Pretzel.exe
+  - vendor
 
 image: https://github.com/thiagoabreu.png
 
