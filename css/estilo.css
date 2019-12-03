@@ -3,6 +3,12 @@
     src: url(/fonts/steelfish_rg.ttf);
 }
 
+@media (max-width: 240px) {
+    html {
+        font-size: 10px;
+    }
+}
+
 h1.jedicomp {
     font-family: Steelfish;
     letter-spacing: 0.15em;
