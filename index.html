@@ -2,49 +2,55 @@
 layout: default
 ---
 
-<section class="row">
-	<div class="col-12">
-		<h2>Blog</h2>
-	</div>
-	{% for post in site.posts limit:3 %}
-	<article class="col-xl-4 {% unless forloop.first %} col-sm-6 d-none d-sm-block {% endunless %}">
-		<h3>
-			<a href="{{post.url}}">{{post.title}}</a>
-		</h3>
-		<span class="text-muted">
-			<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%d&nbsp;/&nbsp;%m&nbsp;/&nbsp;%Y'}}</time>
-		</span>
-		<p>
-			{{ post.excerpt | strip_html }}
-		</p>
-		<p>
-			<a href="{{ post.url }}" title="Keep reading">Continuar lendo</a>
-		</p>
-	</article>
-	{% endfor %}
-	<div class="col-md-12 text-right">
-		<a href="/blog" class="btn btn-default" title="More posts">Mais postagens</a>
-	</div>
+<section>
+  <h2>Blog</h2>
+  <div>
+    {% for post in site.posts limit:3 %}
+    <article>
+      <small>
+        <time datetime="{{ post.date | date_to_xmlschema }}"
+          >{{ post.date | date: '%d&nbsp;/&nbsp;%m&nbsp;/&nbsp;%Y'}}</time
+        >
+      </small>
+      <h3>
+        <a href="{{post.url}}">{{post.title}}</a>
+      </h3>
+      <p>
+        {{ post.excerpt | strip_html }}
+      </p>
+      <p>
+        <a href="{{ post.url }}" title="Keep reading">Continuar lendo</a>
+      </p>
+    </article>
+    {% endfor %}
+  </div>
+  <a href="/blog" title="More posts">Mais postagens</a>
 </section>
-<section class="row">
-	<h2 class="col-sm-12">Open-Source</h2>
-	{% assign repos = site.github.public_repositories | sort: 'pushed_at' | reverse %} 
-	{% for repo in repos limit:6 offset:1 %}
-	<div class="repo col-sm-6 col-lg-4 {% if forloop.index > 4 %}d-none d-lg-block{% endif %}">
-		<h4>
-			<a href="{{ repo.html_url }}" title="{{ repo.name }}">{{ repo.name }}</a>
-			{% if repo.language %}
-			<small class="text-muted">({{ repo.language }})</small>
-			{% endif %}
-		</h4>
-		<p>{{ repo.description }}</p>
-		<p title="Last commit">
-			{% if repo.fork %}Contribuição - {% endif %} Último commit:
-			<time datetime="{{ repo.pushed_at | date_to_xmlschema }}">{{ repo.pushed_at | date: '%d&nbsp;/&nbsp;%m&nbsp;/&nbsp;%Y' }}</time>
-		</p>
-	</div>
-	{% endfor %}
-	<div class="col-sm-12 text-right">
-		<a href="https://github.com/thiagoabreu" class="btn btn-default" title="More at Github">Mais no GitHub</a>
-	</div>
+<section>
+  <h2>Open-Source</h2>
+  <div>
+    {% assign repos = site.github.public_repositories | sort: 'pushed_at' | reverse %}
+    {% for repo in repos limit:6 offset:1 %}
+    <div>
+      {% if repo.language %}
+      <small>({{ repo.language }})</small>
+      {% endif %}
+      <h4>
+        <a href="{{ repo.html_url }}" title="{{ repo.name }}"
+          >{{ repo.name }}</a
+        >
+      </h4>
+      <p>{{ repo.description }}</p>
+      <p title="Last commit">
+        {% if repo.fork %}Contribuição - {% endif %} Último commit:
+        <time datetime="{{ repo.pushed_at | date_to_xmlschema }}">
+          {{ repo.pushed_at | date: '%d&nbsp;/&nbsp;%m&nbsp;/&nbsp;%Y' }}
+        </time>
+      </p>
+    </div>
+    {% endfor %}
+  </div>
+  <a href="https://github.com/thiagoabreu" title="More at Github"
+    >Mais no GitHub</a
+  >
 </section>

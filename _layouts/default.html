@@ -1,49 +1,47 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
-	<meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' https: 'unsafe-inline';"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline';">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	{% seo %}
+    <meta name="copyright" content="Copyright (C) Thiago 'Jedi' Abreu" />
 
-	<meta name="copyright" content="Copyright (C) Thiago 'Jedi' Abreu">
+    {% seo %}
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/estilo.css" />
+  </head>
 
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+  <body>
+    {% include main_header.html %}
 
-	<link rel="stylesheet" type="text/css" href="/css/estilo.css" />
-</head>
+    <main>
+      <nav aria-label="breadcrumb">
+        <ul>
+          <li>
+            <a href="/">Página Inicial</a>
+          </li>
+          {% if page.url == "/blog/" %} /
+          <li aria-current="page">Blog</li>
+          {% endif %}
+        </ul>
+      </nav>
 
-<body>
-	{% include main_header.html %}
-	<div class="container">
-		<nav aria-label="breadcrumb">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item">
-					<a href="/">Página Inicial</a>
-				</li>
-				{% if page.url == "/blog/" %}
-				<li class="breadcrumb-item active" aria-current="page">Blog</li>
-				{% endif %}
-			</ol>
-		</nav>
-		<div class="row">
-			<main class="col-xs-12 col-md-8 col-lg-9">
-				{{content}}
-			</main>
-			<aside class="col-xs-12 col-md-4 col-lg-3">
-				{% include side_bar.html %}
-			</aside>
-		</div>
-	</div>
-	<footer class="text-center container">
-		{% include footer.html %}
-	</footer>
-</body>
+      <div>
+        {{content}}
+      </div>
 
+      <aside>
+        {% include side_bar.html %}
+      </aside>
+    </main>
+    <footer>
+      {% include footer.html %}
+    </footer>
+  </body>
 </html>
