@@ -8,9 +8,9 @@ layout: default
     {% for post in site.posts limit:3 %}
     <article>
       <small>
-        <time datetime="{{ post.date | date_to_xmlschema }}"
-          >{{ post.date | date: '%d&nbsp;/&nbsp;%m&nbsp;/&nbsp;%Y'}}</time
-        >
+        <time datetime="{{ post.date | date_to_xmlschema }}">
+          {{ post.date | date: '%d&nbsp;/&nbsp;%m&nbsp;/&nbsp;%Y'}}
+        </time>
       </small>
       <h3>
         <a href="{{post.url}}">{{post.title}}</a>
@@ -33,12 +33,12 @@ layout: default
     {% for repo in repos limit:6 offset:1 %}
     <div>
       {% if repo.language %}
-      <small>({{ repo.language }})</small>
+      <small>{{ repo.language }}</small>
       {% endif %}
       <h4>
-        <a href="{{ repo.html_url }}" title="{{ repo.name }}"
-          >{{ repo.name }}</a
-        >
+        <a href="{{ repo.html_url }}" title="{{ repo.name }}">
+          {{ repo.name }}
+        </a>
       </h4>
       <p>{{ repo.description }}</p>
       <p title="Last commit">
@@ -50,7 +50,7 @@ layout: default
     </div>
     {% endfor %}
   </div>
-  <a href="https://github.com/thiagoabreu" title="More at Github"
-    >Mais no GitHub</a
-  >
+  <a href="https://github.com/thiagoabreu" title="More at Github">
+    Mais no GitHub
+  </a>
 </section>
