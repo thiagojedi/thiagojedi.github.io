@@ -77,6 +77,10 @@ article img.emoji {
   display: inline;
 }
 
+article > div {
+  overflow: auto;
+}
+
 article pre.lineno {
   padding-right: 6px;
   border-right: 1px solid lightgrey;
