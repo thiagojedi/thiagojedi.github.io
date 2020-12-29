@@ -20,28 +20,22 @@
   <body>
     {% include main_header.html %}
 
+    <nav aria-label="breadcrumb">
+      <ul>
+        <li>
+          <a href="/">Página Inicial</a>
+        </li>
+        {% if page.url == "/blog/" %} /
+        <li aria-current="page">Blog</li>
+        {% endif %}
+      </ul>
+    </nav>
+
     <main>
-      <nav aria-label="breadcrumb">
-        <ul>
-          <li>
-            <a href="/">Página Inicial</a>
-          </li>
-          {% if page.url == "/blog/" %} /
-          <li aria-current="page">Blog</li>
-          {% endif %}
-        </ul>
-      </nav>
+      <div>{{content}}</div>
 
-      <div>
-        {{content}}
-      </div>
-
-      <aside>
-        {% include side_bar.html %}
-      </aside>
+      <aside>{% include side_bar.html %}</aside>
     </main>
-    <footer>
-      {% include footer.html %}
-    </footer>
+    <footer>{% include footer.html %}</footer>
   </body>
 </html>

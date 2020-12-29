@@ -5,7 +5,7 @@ repository: thiagoabreu/thiagoabreu.github.io
 
 lang: pt_BR
 timezone: America/Recife
-markdown: kramdown
+markdown: CommonMarkGhPages
 
 paginate_path: "blog/page:num/"
 paginate: 3
@@ -40,11 +40,6 @@ social:
     - https://fb.com/thiagojedi
     - https://github.com/thiagoabreu
 
-kramdown:
-  syntax_highlighter: rouge
-  syntax_highlighter_opts:
-    span:
-      line_numbers: false
-    block:
-      line_numbers: true
-      start_line: 1
+commonmark:
+  options: ["SMART", "FOOTNOTES"]
+  extensions: ["strikethrough", "autolink", "table", "tagfilter"]

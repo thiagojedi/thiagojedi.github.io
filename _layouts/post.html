@@ -19,25 +19,25 @@
   <body>
     {% include main_header.html %}
 
-    <main>
-      <nav aria-label="breadcrumb">
-        <ul>
-          <li>
-            <a href="/">Página Inicial</a>
-          </li>
-          /
-          <li>
-            <a href="/blog/">Blog</a>
-          </li>
-          /
-          <li aria-current="page">Post</li>
-        </ul>
-      </nav>
+    <nav aria-label="breadcrumb">
+      <ul>
+        <li>
+          <a href="/">Página Inicial</a>
+        </li>
+        /
+        <li>
+          <a href="/blog/">Blog</a>
+        </li>
+        /
+        <li aria-current="page">Post</li>
+      </ul>
+    </nav>
 
+    <main>
       <article>
         <small>
           <time class="dateline" datetime="{{ page.date | date_to_xmlschema }}"
-          >{{ page.date | date: "%d&nbsp;/&nbsp;%m&nbsp;/&nbsp;%Y" }}</time
+            >{{ page.date | date: "%d&nbsp;/&nbsp;%m&nbsp;/&nbsp;%Y" }}</time
           >
         </small>
         <h1>{{ page.title }}</h1>
@@ -45,12 +45,8 @@
         {{ content }}
       </article>
 
-      <aside>
-        {% include side_bar.html %}
-      </aside>
+      <aside>{% include side_bar.html %}</aside>
     </main>
-    <footer>
-      {% include footer.html %}
-    </footer>
+    <footer>{% include footer.html %}</footer>
   </body>
 </html>
