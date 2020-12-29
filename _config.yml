@@ -20,13 +20,12 @@ plugins:
   - jemoji
 
 exclude:
-  - bootstrap\less\
   - .gitignore
   - .git
   - taste.bat
   - Pretzel.exe
   - vendor
-  - .idea\
+  - .idea
 
 image: https://github.com/thiagoabreu.png
 
