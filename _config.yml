@@ -26,6 +26,7 @@ exclude:
   - taste.bat
   - Pretzel.exe
   - vendor
+  - .idea\
 
 image: https://github.com/thiagoabreu.png
 
@@ -33,12 +34,11 @@ twitter:
   username: Jedi_Thiago
 
 social:
-    name: Thiago 'Jedi' Abreu
-    links:
-      - https://twitter.com/Jedi_Thiago
-      - https://fb.com/thiagojedi
-      - https://github.com/thiagoabreu
-
+  name: Thiago 'Jedi' Abreu
+  links:
+    - https://twitter.com/Jedi_Thiago
+    - https://fb.com/thiagojedi
+    - https://github.com/thiagoabreu
 
 kramdown:
   syntax_highlighter: rouge
