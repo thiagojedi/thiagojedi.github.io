@@ -1,4 +1,2 @@
-_site/
-*.sublime-workspace
-*.sublime-project
-vendor/
+.next
+node_modules
