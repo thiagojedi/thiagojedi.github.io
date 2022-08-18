@@ -1,0 +1,57 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import BlogList from '../components/blog-list.tsx';
+import Header from '../components/header.tsx';
+import Sidebar from '../components/sidebar.tsx';
+
+import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
+import dayjs from 'dayjs';
+import * as customParseFormat from 'dayjs/plugin/customParseFormat';
+dayjs.extend(customParseFormat);
+
+// Use Astro.glob() to fetch all posts, and then sort them by date.
+const allPosts = await Astro.glob('./blog/*.{md,mdx}');
+
+const drafts = allPosts.filter((post) => post.frontmatter.draft);
+
+const normalPosts = allPosts
+  .filter((post) => !post.frontmatter.draft)
+  .sort(
+    (a, b) =>
+      dayjs(b.frontmatter.pubDate, 'DD/MM/YYYY').valueOf() -
+      dayjs(a.frontmatter.pubDate, 'DD/MM/YYYY').valueOf(),
+  );
+
+const posts = [...drafts, ...normalPosts];
+---
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <BaseHead />
+  </head>
+
+  <body>
+    <Header />
+
+    <nav aria-label="breadcrumb">
+      <ul>
+        <li>
+          <a href="/">Página Inicial</a>
+        </li>
+		<li aria-current="page">Blog</li>
+      </ul>
+    </nav>
+
+    <main>
+      <div>
+        <BlogList posts={posts} />
+      </div>
+
+      <aside>
+        <Sidebar />
+      </aside>
+    </main>
+    <footer></footer>
+  </body>
+</html>

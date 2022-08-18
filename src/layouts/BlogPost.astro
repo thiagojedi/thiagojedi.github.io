@@ -1,0 +1,66 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/header.tsx";
+import Footer from "../components/Footer.astro";
+import Sidebar from '../components/sidebar.tsx';
+
+export interface Props {
+	content: {
+		title: string;
+		description: string;
+		pubDate?: string;
+		updatedDate?: string;
+		heroImage?: string;
+	};
+}
+
+const {
+	content: { title, description, pubDate, updatedDate, heroImage },
+} = Astro.props as Props;
+---
+
+<html>
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+
+	<body>
+		<Header />
+
+		<nav aria-label="breadcrumb">
+			<ul>
+			  <li>
+				<a href="/">Página Inicial</a>
+			  </li>
+			  /
+			  <li>
+				<a href="/blog/">Blog</a>
+			  </li>
+			  /
+			  <li aria-current="page">Post</li>
+			</ul>
+		  </nav>
+
+		<main>
+			<article>
+        <small>
+        {pubDate && <time>{pubDate}</time>}
+				{updatedDate && <div>Last updated on <time>{updatedDate}</time></div>}
+        </small>
+        <h1>{title}</h1>
+
+        <slot />
+      </article>
+
+	  <aside>
+		<Sidebar/>
+	  </aside>
+		</main>
+
+		
+
+		<footer>
+			<Footer />
+		</footer>
+	</body>
+</html>

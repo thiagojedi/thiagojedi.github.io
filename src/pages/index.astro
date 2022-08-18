@@ -1,0 +1,80 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/header.tsx';
+import Footer from '../components/Footer.astro';
+import Sidebar from '../components/sidebar.tsx';
+import Excerpt from '../components/excerpt.tsx';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
+
+import dayjs from 'dayjs';
+import * as customParseFormat from 'dayjs/plugin/customParseFormat';
+dayjs.extend(customParseFormat);
+
+const posts = (await Astro.glob('./blog/*.{md,mdx}'))
+  .filter((post) => !post.frontmatter.draft)
+  .sort(
+    (a, b) =>
+      dayjs(b.frontmatter.pubDate, 'DD/MM/YYYY').valueOf() -
+      dayjs(a.frontmatter.pubDate, 'DD/MM/YYYY').valueOf(),
+  )
+  .slice(0, 3);
+---
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <BaseHead />
+  </head>
+
+  <body>
+    <Header />
+
+    <nav aria-label="breadcrumb">
+      <ul>
+        <li>
+          <a href="/">Página Inicial</a>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <section>
+        <h2>Blog</h2>
+        <div>
+          {
+            posts.map((post, index) => {
+              return (
+                <article key={index}>
+                  <small class="text-muted">
+                    <time datetime={post.frontmatter.pubDate}>
+                      {dayjs(post.frontmatter.pubDate, 'DD/MM/YYYY').format(
+                        'DD/MM/YY',
+                      )}
+                    </time>
+                  </small>
+                  <h3>
+                    <a href={post.url}>{post.frontmatter.title}</a>
+                  </h3>
+                  <Excerpt content={post.compiledContent()} />
+                  <p>
+                    <a href={post.url} title="Keep reading">
+                      Continuar lendo...
+                    </a>
+                  </p>
+                </article>
+              );
+            })
+          }
+        </div>
+        <a href="/blog" title="More posts">Mais postagens</a>
+      </section>
+
+      <aside>
+        <Sidebar />
+      </aside>
+    </main>
+    <footer>
+      <Footer />
+    </footer>
+  </body>
+</html>
