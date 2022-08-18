@@ -6,7 +6,7 @@ import Sidebar from '../components/sidebar.tsx';
 
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 import dayjs from 'dayjs';
-import * as customParseFormat from 'dayjs/plugin/customParseFormat';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 dayjs.extend(customParseFormat);
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
@@ -39,7 +39,7 @@ const posts = [...drafts, ...normalPosts];
         <li>
           <a href="/">Página Inicial</a>
         </li>
-		<li aria-current="page">Blog</li>
+        <li aria-current="page">Blog</li>
       </ul>
     </nav>
 

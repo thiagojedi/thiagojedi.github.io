@@ -31,7 +31,7 @@
   },
   "prettier": "@agilecontent/prettier-config",
   "lint-staged": {
-    "*.{md,json}": "prettier --write",
+    "*.{md,json,astro}": "prettier --write",
     "src/**/*.{js,jsx,ts,tsx}": [
       "eslint --fix",
       "prettier --write"
