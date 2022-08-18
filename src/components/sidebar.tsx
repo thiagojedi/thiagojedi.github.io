@@ -52,6 +52,7 @@ const Sidebar = () => <div>
     </a>
   </dd>
 </dl>
+
 </div>
 
 export default Sidebar;
