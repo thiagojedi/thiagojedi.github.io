@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../config';
 
 const Header = () => (
