@@ -1,8 +1,12 @@
-import { Fragment, FunctionalComponent } from 'preact';
+import { Fragment, FunctionalComponent as FC } from 'preact';
 import Excerpt from './excerpt';
 import { formatDate } from '../helpers/date';
 
-const BlogList: FunctionalComponent<{ posts: any[] }> = ({ posts }) => (
+type BlogListProps = {
+  posts: Array<Post>;
+};
+
+const BlogList: FC<BlogListProps> = ({ posts }) => (
   <Fragment>
     {posts.map((post) => (
       <article class="post">
@@ -21,7 +25,9 @@ const BlogList: FunctionalComponent<{ posts: any[] }> = ({ posts }) => (
         <Excerpt content={post.compiledContent()} />
 
         <p>
-          <a href={post.url}>Continuar lendo...</a>
+          <a title="Keep reading" href={post.url}>
+            Continuar lendo...
+          </a>
         </p>
       </article>
     ))}

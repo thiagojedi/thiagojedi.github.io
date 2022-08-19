@@ -3,20 +3,18 @@ import BaseHead from '../components/BaseHead.astro';
 import BlogList from '../components/blog-list.jsx';
 import Header from '../components/header.astro';
 import Sidebar from '../components/sidebar.astro';
+import Footer from '../components/Footer.astro';
 
-import dayjs from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { sortByDate } from '../helpers/date';
-dayjs.extend(customParseFormat);
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
-const allPosts = await Astro.glob('./blog/*.{md,mdx}');
+const allPosts: Post[] = await Astro.glob('./blog/*.{md,mdx}');
 
 const drafts = allPosts.filter((post) => post.frontmatter.draft);
 
 const normalPosts = allPosts
   .filter((post) => !post.frontmatter.draft)
-  .sort(sortByDate((x) => x.frontmatter.pubDate));
+  .sort(sortByDate((x) => x.frontmatter.pubDate!));
 
 const posts = [...drafts, ...normalPosts];
 ---
@@ -48,6 +46,8 @@ const posts = [...drafts, ...normalPosts];
         <Sidebar />
       </aside>
     </main>
-    <footer></footer>
+    <footer>
+      <Footer />
+    </footer>
   </body>
 </html>

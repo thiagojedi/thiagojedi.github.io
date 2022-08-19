@@ -4,16 +4,17 @@ import Header from '../components/header.astro';
 import Footer from '../components/Footer.astro';
 import Sidebar from '../components/sidebar.astro';
 import Excerpt from '../components/excerpt.jsx';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { sortByDate } from '../helpers/date';
 dayjs.extend(customParseFormat);
 
-const posts = (await Astro.glob('./blog/*.{md,mdx}'))
+const posts: Post[] = await Astro.glob('./blog/*.{md,mdx}');
+
+const highlightPosts = posts
   .filter((post) => !post.frontmatter.draft)
-  .sort(sortByDate((x) => x.frontmatter.pubDate))
+  .sort(sortByDate((x) => x.frontmatter.pubDate!))
   .slice(0, 3);
 ---
 
@@ -39,28 +40,26 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}'))
         <h2>Blog</h2>
         <div>
           {
-            posts.map((post, index) => {
-              return (
-                <article key={index}>
-                  <small class="text-muted">
-                    <time datetime={post.frontmatter.pubDate}>
-                      {dayjs(post.frontmatter.pubDate, 'DD/MM/YYYY').format(
-                        'DD/MM/YY',
-                      )}
-                    </time>
-                  </small>
-                  <h3>
-                    <a href={post.url}>{post.frontmatter.title}</a>
-                  </h3>
-                  <Excerpt content={post.compiledContent()} />
-                  <p>
-                    <a href={post.url} title="Keep reading">
-                      Continuar lendo...
-                    </a>
-                  </p>
-                </article>
-              );
-            })
+            highlightPosts.map((post, index) => (
+              <article>
+                <small class="text-muted">
+                  <time datetime={post.frontmatter.pubDate}>
+                    {dayjs(post.frontmatter.pubDate, 'DD/MM/YYYY').format(
+                      'DD/MM/YY',
+                    )}
+                  </time>
+                </small>
+                <h3>
+                  <a href={post.url}>{post.frontmatter.title}</a>
+                </h3>
+                <Excerpt content={post.compiledContent()} />
+                <p>
+                  <a href={post.url} title="Keep reading">
+                    Continuar lendo...
+                  </a>
+                </p>
+              </article>
+            ))
           }
         </div>
         <a href="/blog" title="More posts">Mais postagens</a>
