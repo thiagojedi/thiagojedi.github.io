@@ -1,4 +1,6 @@
-const Excerpt = ({ content }) => {
+import type { FunctionalComponent } from 'preact';
+
+const Excerpt: FunctionalComponent<{ content: string }> = ({ content }) => {
   const firstHash = content.indexOf('</p>');
 
   const excerpt = content.substring(0, firstHash).replace('<p>', '');

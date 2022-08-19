@@ -1,12 +1,12 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import BlogList from '../components/blog-list.tsx';
-import Header from '../components/header.tsx';
-import Sidebar from '../components/sidebar.tsx';
+import BlogList from '../components/blog-list.jsx';
+import Header from '../components/header.astro';
+import Sidebar from '../components/sidebar.astro';
 
-import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
+import { sortByDate } from '../helpers/date';
 dayjs.extend(customParseFormat);
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
@@ -16,11 +16,7 @@ const drafts = allPosts.filter((post) => post.frontmatter.draft);
 
 const normalPosts = allPosts
   .filter((post) => !post.frontmatter.draft)
-  .sort(
-    (a, b) =>
-      dayjs(b.frontmatter.pubDate, 'DD/MM/YYYY').valueOf() -
-      dayjs(a.frontmatter.pubDate, 'DD/MM/YYYY').valueOf(),
-  );
+  .sort(sortByDate((x) => x.frontmatter.pubDate));
 
 const posts = [...drafts, ...normalPosts];
 ---

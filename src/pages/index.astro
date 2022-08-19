@@ -1,22 +1,19 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/header.tsx';
+import Header from '../components/header.astro';
 import Footer from '../components/Footer.astro';
-import Sidebar from '../components/sidebar.tsx';
-import Excerpt from '../components/excerpt.tsx';
+import Sidebar from '../components/sidebar.astro';
+import Excerpt from '../components/excerpt.jsx';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
+import { sortByDate } from '../helpers/date';
 dayjs.extend(customParseFormat);
 
 const posts = (await Astro.glob('./blog/*.{md,mdx}'))
   .filter((post) => !post.frontmatter.draft)
-  .sort(
-    (a, b) =>
-      dayjs(b.frontmatter.pubDate, 'DD/MM/YYYY').valueOf() -
-      dayjs(a.frontmatter.pubDate, 'DD/MM/YYYY').valueOf(),
-  )
+  .sort(sortByDate((x) => x.frontmatter.pubDate))
   .slice(0, 3);
 ---
 

@@ -1,8 +1,6 @@
 import { Fragment, FunctionalComponent } from 'preact';
-import dayjs from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
 import Excerpt from './excerpt';
-dayjs.extend(customParseFormat);
+import { formatDate } from '../helpers/date';
 
 const BlogList: FunctionalComponent<{ posts: any[] }> = ({ posts }) => (
   <Fragment>
@@ -15,9 +13,7 @@ const BlogList: FunctionalComponent<{ posts: any[] }> = ({ posts }) => (
               'Draft'
             ) : (
               <time dateTime={post.frontmatter.pubDate}>
-                {dayjs(post.frontmatter.pubDate, 'DD/MM/YYYY').format(
-                  'DD/MM/YY',
-                )}
+                {formatDate(post.frontmatter.pubDate)}
               </time>
             )}
           </small>
