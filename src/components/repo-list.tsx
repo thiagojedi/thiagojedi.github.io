@@ -1,7 +1,8 @@
 import { Fragment, FunctionComponent as FC } from 'preact';
 import dayjs from 'dayjs';
+import type { GithubRepos } from '../services/github';
 
-const RepoList: FC<{ repos: Repository[] }> = ({ repos }) => (
+const RepoList: FC<{ repos: GithubRepos }> = ({ repos }) => (
   <section>
     <h2>Open-Source</h2>
     <div>
@@ -9,21 +10,16 @@ const RepoList: FC<{ repos: Repository[] }> = ({ repos }) => (
         <div>
           {repo.language && <small>{repo.language}</small>}
           <h4>
-            <a href="" title="">
+            <a href={repo.url} title={repo.name}>
               {repo.name}
             </a>
           </h4>
           <p>{repo.description}</p>
           <p title="Last commit">
-            {repo.pushed_at && (
-              <Fragment>
-                {repo.fork && <Fragment>Contribuição - </Fragment>}Último
-                commit:
-                <time dateTime={repo.pushed_at}>
-                  {dayjs(repo.pushed_at).format('DD/MM/YYYY')}
-                </time>
-              </Fragment>
-            )}
+            {repo.fork && <Fragment>Contribuição - </Fragment>}Último commit:{' '}
+            <time dateTime={repo.updated_at}>
+              {dayjs(repo.updated_at).format('DD/MM/YYYY')}
+            </time>
           </p>
         </div>
       ))}

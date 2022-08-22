@@ -16,7 +16,13 @@ const highlightPosts = posts
   .sort(sortByDate((x) => x.frontmatter.pubDate!))
   .slice(0, 3);
 
-const repos = await getPublicRepositories();
+const repos = (await getPublicRepositories())
+  .filter((r) => r.description)
+  .sort(
+    (a, b) =>
+      new Date(b.updated_at).valueOf() - new Date(a.updated_at).valueOf(),
+  )
+  .slice(0, 6);
 ---
 
 <!DOCTYPE html>
@@ -42,24 +48,26 @@ const repos = await getPublicRepositories();
           <h2>Blog</h2>
           <div>
             {
-              highlightPosts.map((post) => (
-                <article>
-                  <small class="text-muted">
-                    <time datetime={post.frontmatter.pubDate}>
-                      {formatDate(post.frontmatter.pubDate!)}
-                    </time>
-                  </small>
-                  <h3>
-                    <a href={post.url}>{post.frontmatter.title}</a>
-                  </h3>
-                  <Excerpt content={post.compiledContent()} />
-                  <p>
-                    <a href={post.url} title="Keep reading">
-                      Continuar lendo...
-                    </a>
-                  </p>
-                </article>
-              ))
+              highlightPosts.map((post) => {
+                return (
+                  <article>
+                    <small class="text-muted">
+                      <time datetime={post.frontmatter.pubDate}>
+                        {formatDate(post.frontmatter.pubDate!)}
+                      </time>
+                    </small>
+                    <h3>
+                      <a href={post.url}>{post.frontmatter.title}</a>
+                    </h3>
+                    <Excerpt content={post.compiledContent()} />
+                    <p>
+                      <a href={post.url} title="Keep reading">
+                        Continuar lendo...
+                      </a>
+                    </p>
+                  </article>
+                );
+              })
             }
           </div>
           <a href="/blog" title="More posts">Mais postagens</a>
