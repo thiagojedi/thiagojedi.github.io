@@ -11,3 +11,11 @@ type Post = {
     | { draft?: false; pubDate: string }
   );
 };
+
+type Repository = {
+  language?: string | null;
+  name: string;
+  description: string | null;
+  pushed_at?: string | null;
+  fork: boolean;
+};
