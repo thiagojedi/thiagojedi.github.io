@@ -12,9 +12,9 @@ you will. And I think I found it.
 
 Before get into the specifics, I should introduce this "new" architecture.
 
-The _Islands Architecture_ was first introduced by the Etsy architect [Katie
-Sylor-Miller][twitter01] and later spread by Jason Miller [on his blog][developit01]. It's fairly
-new concept but it's all the rage right now with modern framworks like [Astro][astro01] and others.
+The _Islands Architecture_ was first introduced by the Etsy architect [Katie Sylor-Miller][twitter01] 
+and later spread by Jason Miller [on his blog][developit01]. It's fairly new concept but it's all the
+rage right now with modern framworks like [Astro][astro01] and others.
 
 The concept by itself is very simple and is very similar to the _microfrontends_ pattern, with the
 webpage being static html (the sea) with few pockets of interactivity (the islands). Each island is
@@ -225,5 +225,5 @@ Now, go write some fresh new code!
 [github03]: https://github.com/czottmann
 [github04]: https://github.com/thiagojedi/fresh-with-redux
 [preact01]: https://preactjs.com
-[twiiter01]: https://twitter.com/ksylor
 [redux01]: https://react-redux.js.org
+[twitter01]: https://twitter.com/ksylor
