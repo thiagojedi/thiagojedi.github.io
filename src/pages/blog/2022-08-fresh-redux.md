@@ -1,8 +1,7 @@
 ---
 layout: '../../layouts/BlogPost.astro'
 title: Using Redux on Islands
-pubDate: 29/08/2022
-draft: true
+pubDate: 28/08/2022
 ---
 
 So. I've been trying to wrap myself around the Island Pattern/Architecture for some time now. The
