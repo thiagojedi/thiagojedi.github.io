@@ -4,7 +4,7 @@ title: Using Redux on Islands
 pubDate: 28/08/2022
 ---
 
-So. I've been trying to wrap myself around the Island Pattern/Architecture for some time now. The
+I've been trying to wrap myself around the Island Pattern/Architecture for some time now. The
 last piece of the puzzle was state management and how to get the islands to comunicate, a bridge if
 you will. And I think I found it.
 
@@ -201,7 +201,36 @@ export const useBindedDispatch = () => store.dispatch;
 ```
 
 With this, you may use the `useBindedSelector` and `useBindedDispatch` instead of the default hooks,
-without a Provider.
+without a `Provider`.
+
+_/islands/Counter.tsx_:
+
+```tsx
+// ... other imports and stuff
+import { 
+  useBindedSelector as useSelector, 
+  useBindedDispatch as useDispatch, 
+} from '../hooks.ts';
+
+export default function Counter(props: CounterProps) {
+  // Instead of this:
+  // const [count, setCount] = useState(props.start);
+  // Add the following:
+  const count = useSelector((state) => state.count.quantity);
+  const dispatch = useDispatch();
+  return (
+    <div>
+      <p>{count}</p>
+      {/* Delete this 
+      <Button onClick={() => setCount(count - 1)}>-1</Button>
+      <Button onClick={() => setCount(count + 1)}>+1</Button>
+      And write the following: */}
+      <Button onClick={() => dispatch({ type: 'decrement', payload: 1 })}>-1</Button>
+      <Button onClick={() => dispatch({ type: 'increment', payload: 1 })}>+1</Button>
+    </div>
+  );
+}
+```
 
 ## Conclusion
 
