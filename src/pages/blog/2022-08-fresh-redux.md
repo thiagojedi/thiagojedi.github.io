@@ -85,7 +85,7 @@ export default counterReducer;
 _store.ts_
 
 ```typescript
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 
 import counterReducer from './counter-reducer.ts';
 
