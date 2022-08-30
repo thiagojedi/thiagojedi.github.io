@@ -16,7 +16,7 @@ const normalPosts = allPosts
   .filter((post) => !post.frontmatter.draft)
   .sort(sortByDate((x) => x.frontmatter.pubDate!));
 
-const posts = [...drafts, ...normalPosts];
+const posts = import.meta.env.DEV ? [...drafts, ...normalPosts] : normalPosts;
 ---
 
 <!DOCTYPE html>
