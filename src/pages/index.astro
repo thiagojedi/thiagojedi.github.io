@@ -3,11 +3,11 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/header.astro';
 import Footer from '../components/Footer.astro';
 import Sidebar from '../components/sidebar.astro';
-import Excerpt from '../components/excerpt.jsx';
 import RepoList from '../components/repo-list';
 
 import { formatDate, sortByDate } from '../helpers/date';
 import { getPublicRepositories } from '../services/github';
+import { excerpt } from '../helpers/text';
 
 const posts: Post[] = await Astro.glob('./blog/*.{md,mdx}');
 
@@ -26,7 +26,7 @@ const repos = (await getPublicRepositories())
 ---
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
   <head>
     <BaseHead />
   </head>
@@ -59,7 +59,10 @@ const repos = (await getPublicRepositories())
                     <h3>
                       <a href={post.url}>{post.frontmatter.title}</a>
                     </h3>
-                    <Excerpt content={post.compiledContent()} />
+                    <p>
+                      {post.frontmatter.description ||
+                        excerpt(post.compiledContent())}
+                    </p>
                     <p>
                       <a href={post.url} title="Keep reading">
                         Continuar lendo...
@@ -67,7 +70,7 @@ const repos = (await getPublicRepositories())
                     </p>
                   </article>
                 );
-              })
+              });
             }
           </div>
           <a href="/blog" title="More posts">Mais postagens</a>

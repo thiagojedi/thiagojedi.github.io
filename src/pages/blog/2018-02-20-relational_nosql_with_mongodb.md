@@ -4,6 +4,7 @@ title: 'Relational NoSQL with MongoDB'
 category: blog
 image: /images/sql.png
 pubDate: 20/02/2018
+lang: en-US
 ---
 
 I had this conversation with a colleague of mine, who is a SQL Server DBA. She said she knows almost

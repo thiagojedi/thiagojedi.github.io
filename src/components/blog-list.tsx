@@ -1,6 +1,6 @@
 import { Fragment, FunctionalComponent as FC } from 'preact';
-import Excerpt from './excerpt';
 import { formatDate } from '../helpers/date';
+import { excerpt } from '../helpers/text';
 
 type BlogListProps = {
   posts: Array<Post>;
@@ -22,7 +22,8 @@ const BlogList: FC<BlogListProps> = ({ posts }) => (
             )}
           </small>
         </h2>
-        <Excerpt content={post.compiledContent()} />
+
+        <p>{post.frontmatter.description || excerpt(post.compiledContent())}</p>
 
         <p>
           <a title="Keep reading" href={post.url}>

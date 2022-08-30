@@ -4,11 +4,11 @@ title: "TypeScript: When it's a bad idea?"
 category: blog
 tags: typescript ts english
 image: /images/typescript.png
-lang: en_US
+lang: en-US
 pubDate: 13/02/2018
 ---
 
-I'm a huge advocate that knowing when _not_ to use a tool is as important as knowing when to use it.
+I'm a huge advocate that knowing when not to use a tool is as important as knowing when to use it.
 That's why, when someone try to sell me a new tech I go ahead and ask: Ok, where's the catch? This
 is my answer to that question about TypeScript.
 

@@ -2,12 +2,13 @@
 layout: '../../layouts/BlogPost.astro'
 title: Using Redux on Islands
 pubDate: 28/08/2022
-image: /images/bridge.jpg
+image: '/images/bridge.jpg'
+lang: en-US
+description:
+  I've been trying to wrap myself around the Island Pattern/Architecture for some time now. The last
+  piece of the puzzle was state management and how to get the islands to comunicate, a bridge if you
+  will. And I think I found it.
 ---
-
-I've been trying to wrap myself around the Island Pattern/Architecture for some time now. The last
-piece of the puzzle was state management and how to get the islands to comunicate, a bridge if you
-will. And I think I found it.
 
 ## New land on sight
 

@@ -3,6 +3,7 @@ type Post = {
   compiledContent: () => string;
   frontmatter: {
     title: string;
+    description?: string;
   } & (
     | {
         draft: true;
