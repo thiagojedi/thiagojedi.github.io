@@ -10,7 +10,7 @@ export default defineConfig({
   integrations: [mdx(), sitemap(), preact()],
   markdown: {
     shikiConfig: {
-      theme: 'github-light'
+      theme: 'css-variables'
     }
   }
 });

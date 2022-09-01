@@ -10,21 +10,65 @@
 }
 
 /* Variables */
-html {
+:root {
   --basic-spacing: 1rem;
-  --color-highlight: seagreen;
+  --width-max-content: 1000px;
+  --color-bg: #fff;
   --color-bg-darker: dimgrey;
   --color-bg-lighter: lightgrey;
-  --width-max-content: 1000px;
+  --color-text-normal: black;
+  --color-text-lighter: #777;
+  --color-text-highlight: seagreen;
+  --color-image-shadow: black;
+  --astro-code-color-text: black;
+  --astro-code-token-keyword: #060;
+  --astro-code-token-constant: #060;
+  --astro-code-token-function: #090;
+  --astro-code-color-background: #f1f1f1;
+  --astro-code-token-comment: #444;
+  --astro-code-token-string-expression: #00a;
+  --astro-code-token-parameter: black;
+  --astro-code-token-punctuation: black;
+  --astro-code-token-link: black;
+  --astro-code-token-string: black;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #333;
+    --color-bg-darker: #000;
+    --color-bg-lighter: rgb(39 39 39);
+    --color-text-normal: #eee;
+    --color-text-lighter: lightgray;
+    --color-text-highlight: #0a0;
+    --color-image-shadow: #777;
+    --astro-code-color-text: lightgray;
+    --astro-code-token-keyword: #0a0;
+    --astro-code-token-constant: #0f0;
+    --astro-code-token-function: #090;
+    --astro-code-color-background: #000;
+    --astro-code-token-comment: rgb(121 121 121);
+    --astro-code-token-string-expression: rgb(87 87 255);
+    --astro-code-token-parameter: lightgray;
+    --astro-code-token-punctuation: lightgray;
+    --astro-code-token-link: lightgray;
+    --astro-code-token-string: lightgray;
+  }
 }
 
 html,
 body {
   margin: 0;
+  background-color: var(--color-bg);
   padding: 0;
+  color: var(--color-text-normal);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol';
+}
+
+small {
+  color: var(--color-text-lighter);
 }
 
 small + h1,
@@ -55,17 +99,17 @@ footer {
 }
 
 a {
-  color: var(--color-highlight);
+  color: var(--color-text-highlight);
 }
 
 article h1 {
-  color: var(--color-highlight);
+  color: var(--color-text-highlight);
 }
 
 article img {
   display: block;
   margin: 12px auto;
-  box-shadow: 0 4px 10px black;
+  box-shadow: 0 4px 10px var(--color-image-shadow);
   max-width: 100%;
   max-height: 360px;
 }
@@ -114,7 +158,7 @@ header h1 a {
 }
 
 a:hover {
-  color: var(--color-highlight);
+  color: var(--color-text-highlight);
 }
 
 header h1 a:visited {
@@ -124,7 +168,6 @@ header h1 a:visited {
 
 header h1 small {
   display: none;
-  color: gray !important;
 }
 
 @media screen and (min-width: 768px) {
@@ -193,4 +236,8 @@ nav li {
   section > div article:first-of-type {
     grid-column: unset;
   }
+}
+
+.astro-code {
+  padding: var(--basic-spacing);
 }
