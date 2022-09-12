@@ -51,7 +51,7 @@ Let's start creating a new fresh project with
 
 > deno run -A -r https://fresh.deno.dev fresh-with-redux
 
-The we add the redux toolkit to the `import_map.json`:
+Then we add the redux toolkit to the `import_map.json`:
 
 ```json
 {
@@ -124,7 +124,7 @@ Now change the `Counter` island to access the store instead of having a useState
 
 _/islands/Counter.tsx_:
 
-```tsx
+```jsx
 // ... other imports and stuff
 import { useSelector, useDispatch } from 'react-redux';
 
