@@ -42,8 +42,8 @@ the islands to send data to each other?
 
 As I was researching this topic, I was glad to found out that [I'm not the only one][github01]. The
 best solution I came about was from [Carlo Zottman][carlo01] (a.k.a. [@czottmann][github03]) using
-[Statery][github02]. So I said to myself _what a wonderful world..._, I mean, I think I can do this
-with Redux too!
+[Statery][github02]. So I said to myself ~~what a wonderful world...~~ I think I can do this with
+Redux too!
 
 ## Making bridges
 
