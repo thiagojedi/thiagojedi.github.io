@@ -10,7 +10,7 @@ const RepoList: FC<{ repos: GithubRepos }> = ({ repos }) => (
         <div>
           {repo.language && <small>{repo.language}</small>}
           <h4>
-            <a href={repo.url} title={repo.name}>
+            <a href={repo.html_url} title={repo.name}>
               {repo.name}
             </a>
           </h4>
