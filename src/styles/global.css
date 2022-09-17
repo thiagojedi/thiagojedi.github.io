@@ -94,6 +94,12 @@ aside {
   padding: var(--basic-spacing);
 }
 
+aside img {
+  margin: var(--basic-spacing) 0;
+  border-radius: 50%;
+  max-width: 100%;
+}
+
 footer {
   text-align: center;
 }
@@ -131,11 +137,6 @@ article pre.lineno {
 article blockquote footer {
   text-align: right;
   font-style: italic;
-}
-
-img#profile-pic {
-  margin: var(--basic-spacing) 0;
-  max-width: 100%;
 }
 
 /* Header positioning */
