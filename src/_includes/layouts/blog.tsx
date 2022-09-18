@@ -1,8 +1,9 @@
-import { Fragment } from "https://deno.land/x/lume@v1.11.4/deps/preact_runtime.ts";
+import { FunctionComponent as FC } from "preact";
+import { PostData } from "../../types.ts";
 
-const BlogLayout = ({ title, description, children }) => {
+const BlogLayout: FC<PostData> = ({ title, description, children }) => {
   return (
-    <html>
+    <html lang="pt-br">
       <head>
         <link rel="stylesheet" href="/global.css" />
       </head>
