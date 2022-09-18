@@ -1,33 +1,38 @@
-import { Fragment } from "https://deno.land/x/lume@v1.11.4/deps/preact_runtime.ts"
+import { Fragment } from "https://deno.land/x/lume@v1.11.4/deps/preact_runtime.ts";
 
-const BlogLayout = ({title, description, children}) => {
-    return <html>
-        <body>
+const BlogLayout = ({ title, description, children }) => {
+  return (
+    <html>
+      <head>
+        <link rel="stylesheet" href="/global.css" />
+      </head>
+      <body>
         <nav aria-label="breadcrumb">
-      <ul>
-        <li>
-          <a href="/">Página Inicial</a>
-        </li>
-        /
-        <li>
-          <a href="/blog/">Blog</a>
-        </li>
-        /
-        <li aria-current="page">Post</li>
-      </ul>
-    </nav>
+          <ul>
+            <li>
+              <a href="/">Página Inicial</a>
+            </li>
+            /
+            <li>
+              <a href="/blog/">Blog</a>
+            </li>
+            /
+            <li aria-current="page">Post</li>
+          </ul>
+        </nav>
 
-    <main>
-        <article>
+        <main>
+          <article>
             <h1>{title}</h1>
-            
+
             {description && <p>{description}</p>}
 
             {children}
-        </article>
-    </main>
-        </body>
-    </html>;
-}
+          </article>
+        </main>
+      </body>
+    </html>
+  );
+};
 
 export default BlogLayout;

@@ -4,10 +4,11 @@ import metas from "lume/plugins/metas.ts";
 import prism from "lume/plugins/prism.ts";
 
 const site = lume({
-    location: new URL("https://thiagojedi.github.io"),
-    src: './src/',
-}).copy("public")
-.ignore('helpers', 'services');
+  location: new URL("https://thiagojedi.github.io"),
+  src: "./src/",
+}).ignore("helpers", "services", "types")
+  .loadAssets([".css"])
+  .copy('assets', '.');
 
 site.use(jsx_preact());
 site.use(metas());

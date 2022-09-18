@@ -1,55 +1,44 @@
-import type { Page } from 'lume/core.ts'
-import { Fragment, FunctionalComponent as FC } from 'preact';
-import {formatDate} from '../helpers/date.ts'
+import dayjs from "dayjs";
+
+import { Fragment, FunctionalComponent as FC } from "preact";
+import { formatDate } from "../helpers/date.ts";
+import { Post } from "../types.ts";
 
 type BlogListProps = {
-  posts: Array<Page>;
+  posts: Array<Post>;
 };
 
-const BlogList: FC<BlogListProps> = ({ posts }) => (
-  <Fragment>
-    {posts.map(post => post.data && (
-      <article class='post'>
-        <h2>
-          <a href={post.data.url as string}>
-            {post.data.title as string}
-          </a> <small class='text-muted'>
-            {post.data.draft && 'Draft'} 
-            {post.data.date && 
-            <span>
-              {
-                post.data.date
-              }</span>}
-          </small>
-        </h2>
-      </article>
-    ))}
-    {/* {posts.map((post) => (
-      <article class="post">
-        <h2>
-          <a href={post.url}>{post.frontmatter.title}</a>{' '}
-          <small class="text-muted">
-            {post.frontmatter.draft ? (
-              'Draft'
-            ) : (
-              <time dateTime={post.frontmatter.pubDate}>
-                {formatDate(post.frontmatter.pubDate)}
-              </time>
-            )}
-          </small>
-        </h2>
+const BlogList: FC<BlogListProps> = ({ posts }) => {
+  return (
+    <Fragment>
+      {posts.map((post) =>
+        post.data && (
+          <article class="post">
+            <h2>
+              <a href={post.data.url}>{post.data.title}</a>{" "}
+              <small class="text-muted">
+                {post.data.draft && "Draft - "}
 
-        <p>{post.frontmatter.description || excerpt(post.compiledContent())}</p>
+                <time dateTime={post.data.date?.toDateString()}>
+                  {formatDate(post.data.date)}
+                </time>
+              </small>
+            </h2>
 
-        <p>
-          <a title="Keep reading" href={post.url}>
-            Continuar lendo...
-          </a>
-        </p>
-      </article> 
-    ))}
-    */}
-  </Fragment>
-);
+            {post.data.description
+              ? <p>{post.data.description}</p>
+              : <p>{post.data.content.split("\n\n")[0]}</p>}
+
+            <p>
+              <a title="Keep reading" href={post.data.url}>
+                Continuar lendo...
+              </a>
+            </p>
+          </article>
+        )
+      )}
+    </Fragment>
+  );
+};
 
 export default BlogList;
