@@ -1,8 +1,6 @@
 ---
 title: Atualizando app do Circular
-
 tags: [opensource, apps]
-pubDate: 14/10/2015
 ---
 
 Estou, aos poucos voltando a desenvolver no meu tempo livre aplicativos para a plataforma Windows

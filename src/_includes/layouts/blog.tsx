@@ -1,10 +1,11 @@
 import { FunctionComponent as FC } from "preact";
 import { PostData } from "../../types.ts";
 
-const BlogLayout: FC<PostData> = ({ title, description, children }) => {
+const BlogLayout: FC<PostData> = ({ title, description, lang, children }) => {
   return (
-    <html lang="pt-br">
+    <html lang={lang ?? "pt-br"}>
       <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
         <link rel="stylesheet" href="/global.css" />
       </head>
       <body>

@@ -1,7 +1,6 @@
 ---
 title: 'Relational NoSQL with MongoDB'
 image: /images/sql.png
-pubDate: 20/02/2018
 lang: en-US
 ---
 

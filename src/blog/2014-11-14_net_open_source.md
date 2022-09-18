@@ -1,7 +1,10 @@
 ---
 title: .NET virou Open Source. E agora?
-pubDate: 14/11/2014
 tags: [opensource, opinioes]
+description:
+  Finalmente consegui acompanhar, em detalhes, a abertura de código do ambiente .NET pela Microsoft.
+  Se você ainda não viu, a dois dias atrás a Microsoft começou a liberar o código fonte do .NET Framework.
+  Tem monte de novidades técnicas que podem não fazer sentido pra você, então resolvi explicar um pouco essa história toda.
 ---
 
 Finalmente consegui acompanhar, em detalhes, a abertura de código do ambiente .NET pela Microsoft.

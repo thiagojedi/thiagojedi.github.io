@@ -1,6 +1,5 @@
 ---
 title: Using Redux on Islands
-pubDate: 28/08/2022
 image: '/images/bridge.jpg'
 lang: en-US
 description:

@@ -3,7 +3,6 @@ title: "TypeScript: When it's a bad idea?"
 tags: typescript ts english
 image: /images/typescript.png
 lang: en-US
-pubDate: 13/02/2018
 ---
 
 I'm a huge advocate that knowing when not to use a tool is as important as knowing when to use it.

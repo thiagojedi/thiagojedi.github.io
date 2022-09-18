@@ -2,7 +2,6 @@
 title: elementaryOS, uma bela surpresa
 tags: [opensource, opinioes]
 image: /images/ssDesktop.png
-pubDate: 12/08/2015
 ---
 
 Durante o último ano, principalmente nos últimos seis meses, eu me afastei um pouco do mundo

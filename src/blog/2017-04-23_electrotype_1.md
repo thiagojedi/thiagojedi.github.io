@@ -1,6 +1,5 @@
 ---
 title: 'ElectroType Reaction: Basic Stuff'
-pubDate: 23/04/2017
 ---
 
 Primeiro de uma série de quatro posts de um tutorial de como usar Electron e React, em conjunto com

@@ -1,6 +1,5 @@
 ---
 title: 'ElectroType Reaction: Getting things Done'
-pubDate: 06/05/2017
 ---
 
 Nesse segundo post de uma série de quatro, vou explicar o ambiente de trabalho para desenvolvermos

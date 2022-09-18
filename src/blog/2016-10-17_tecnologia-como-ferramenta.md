@@ -1,6 +1,5 @@
 ---
 title: Sua caixa de ferramentas durante as mudanças
-pubDate: 17/10/2016
 ---
 
 Na empresa que trabalho, estamos passando por uma séria necessidade de mudança tecnológica. Existem
