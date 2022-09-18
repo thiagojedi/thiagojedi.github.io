@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html><head></head><body><nav aria-label="breadcrumb"><ul><li><a href="/">Página Inicial</a></li>/<li><a href="/blog/">Blog</a></li>/<li aria-current="page">Post</li></ul></nav><main><article><h1>ElectroType Reaction: Basic Stuff</h1><div><p>Primeiro de uma série de quatro posts de um tutorial de como usar Electron e React, em conjunto com
+TypeScript. Nesse post explico as ferramentas usadas.</p>
+<aside class="alert alert-info" lang="en">
+<strong>Info:</strong> For any english reader who end up here. 
+Sorry but I have no english version for this tutorial. Yet!
+I think I'm very proficient in english, but writing a tutorial AND thinking in a second language is a little tiresome.
+Until I finish the english version, you may use Google Translator. :grin:
+</aside>
+<h2>Antes de começarmos</h2>
+<p>Primeiro eu gostaria de explicar o que me motivou a fazer esse tutorial: um projeto falho. Quer
+dizer, um bom projeto, com grande potencial mas que por um motivo ou por outro chegou ao fim.</p>
+<p>Um colega me mandou um <a href="https://www.reddit.com/r/programming/comments/5x9j77/insomniacs_web_tools_a_postmortem/" title="Post no Reddit com o link dos slides e uma ótima discussão sobre. (em inglês)">postmortem</a> ministrado na GDC 2017 pela Insomniac Games. Ao invés de
+falarem de um jogo específico, eles falaram da experiência que tiveram com o desenvolvimento de
+ferramentas internas de desenvolvimento. Os detalhes estão no link para os curiosos, mas basicamente
+eles tentaram fazer uma aplicação web, em JavaScript, pra rodar no navegador, e tiveram muitas
+dificuldades.</p>
+<p>O que me chamou a atenção é que, como um bom postmortem, eles explicaram como eles acham que
+poderiam ter dado continuidade a essa ferramenta: utilizar TypeScript; utilizar um navegador
+embutido; e estar ciente da cultura de desenvolvimento da sua equipe.</p>
+<p>Essa última é bem dependente do contexto da sua organização, seja ela uma grande empresa ou só você.
+No máximo eu posso ajudar escrevendo esse tutorial da melhor forma que eu consigo. Então, vou me
+focar nos outros pontos.</p>
+<h2>Escopo</h2>
+<p>Visto que todas as ferramentas utilizadas nesse tutorial se baseiam de alguma forma em JavaScript,
+assumo que você tenha algum tipo de conhecimento nessa linguagem. Vou apontar links para coisas mais
+novas e/ou bibliotecas externas, então não se preocupe muito com isso.</p>
+<p>O projeto desenvolvido nesse tutorial é apenas uma base para início ao desenvolvimento com esse
+stack. Sinta-se livre para incrementar com qualquer outra ferramenta que você tenha familiaridade.</p>
+<p>Vamos lá.</p>
+<h2>Electron</h2>
+<p>Quando você pensa em fazer uma aplicação web você pensa nos passos: Vou desenvolver em uma página,
+hospedar em algum lugar e todo mundo vai poder acessar pelo navegador.</p>
+<p>Aí você publica o app, e começa a descobrir que a tua página não carrega no Edge ou no Opera, e que
+aquela API de notificação não funciona no Firefox no Linux nem no Safari no macOS. Daí vem uma briga
+para fazer tudo rodar.</p>
+<p>Além disso, uma aplicação web não tem acesso a APIs nativas do sistema do seu cliente. Atalhos no
+Iniciar, opção no menu "Abrir com...", integração com a barra de notificações, etc., são alguns
+exemplos que são bem difíceis de alcançar. Isso se forem possíveis!</p>
+<p>O <a href="https://electron.atom.io/" title="Página Oficial do Electron (em inglês)">Electron</a> foi criado pensando nisso.</p>
+<p>Em suma ele é o <a href="https://pt.wikipedia.org/wiki/Chromium" title="Página da Wikipedia sobre o Chromium">Chromium</a> com o NodeJS para rodar os scripts, ao invés da engine V8 pura.
+Pra quem conhece o <a href="https://cordova.apache.org/" title="Documentação Oficial do Cordova (em inglês)">Apache Cordova</a>, pense no Electron como uma versão desktop do Cordova.
+Usando Electron, seu web app será na verdade um app híbrido e terá acesso a APIs de acesso a várias
+integrações com o sistema operacional no qual ele está rodando. Assim como o Chromium, ele é
+multiplataforma, desse modo há a garantia que seu app vai rodar nos principais sistemas operacionais
+de desktop. Além disso, por rodar o Node.JS, permite a utilização de (quase) todos os pacotes
+disponíveis no NPM sem a necessidade de uma fase de empacotamento.</p>
+<aside class="alert alert-info">
+<strong>Opa!</strong> Eu falei "sem a necessidade". Ainda sim, esse tipo de ferramenta é muito útil por outros motivos, que eu explicarei nos futuros posts. Ok?
+</aside>
+<p>Com isso ele acaba sendo uma ótima "cama" onde sua aplicação web pode se deitar e relaxar. Mas pra
+isso é preciso ter uma APLICAÇÃO web.</p>
+<h2>React</h2>
+<p>Se você já fez algum aplicativo web, sabe que existem diversas ferramentas para te ajudar a
+renderizar os seus dados no HTML final que o navegador vai mostrar ao usuário. Em algumas delas,
+você cria um arquivo com uma extensão específica e ele compila para o HTML, normalmente no lado do
+servidor, como no caso do Jade/Pug (NodeJS), Razor (C#) e Erb (Ruby). Já em outras, você altera o
+HTML e o JavaScript utiliza as marcações para se guiar e reescrever a página com os dados direto no
+navegador, como é o caso do AngularJS v1. Por último, você pode esquecer as ferramentas e escrever
+os dados em string direto e mandar escrever no HTML.</p>
+<p>Entra em cena o <a href="https://facebook.github.io/react/" title="Documentação Oficial do React (em inglês)">React</a>.</p>
+<p>Criado pela equipe do Facebook, React tem como visão trazer a lógica de renderização de templates
+para o código JavaScript, podendo funcionar tanto do lado cliente quanto do lado servidor. Além
+disso, conta com um conceito chamado "Virtual DOM" que otimiza a alteração do HTML, de forma que
+apenas o que é necessário é (re)escrito na página. Dessa forma, mesmo podendo ser usado para tornar
+dinamico apenas uma região da tua página, é uma ótima biblioteca para criar <a href="https://en.wikipedia.org/wiki/Single-page_application" title="Página da Wikipedia sobre SPAs (em inglês)">Single Page
+Apps</a>.</p>
+<p>E SPAs são ótimas coisas de se ter dentro do Electron. Nada te impede de ter embarcado um web-app
+tradicional, porém leve em consideração que ainda vai existir a necessidade de buscar em disco um
+arquivo HTML toda vez que você clicar num link, e esperar ele ser carregado pelo browser interno do
+Electron.</p>
+<p>Outra coisa que é altamente recomendado pelo React é o uso de arquivos <a href="https://facebook.github.io/jsx/" title="Especificação do JSX para os curiosos (em inglês)">JSX</a>. Nessa extensão
+da sintaxe do JavaScript (e<strong>X</strong>tensão <strong>J</strong>ava<strong>S</strong>cript, entendeu? :smiley: ) você pode escrever
+tags HTML diretamente no JavaScript e utilizar algum tipo de trans-compilador, normalmente o Babel,
+que entenda essa extensão para transformar em um arquivo <code>.js</code> normal para o navegador entender.</p>
+<p>Por falar nisso.</p>
+<h2>TypeScript</h2>
+<p>Não usaremos o Babel nesse tutorial, mas sim <a href="https://www.typescriptlang.org/" title="Página Oficial do TypeScript (em inglês)">TypeScript</a>. Esse transpiler entende arquivos
+<code>.jsx</code> e introduz um detalhe que ajuda e muito o desenvolvimento: tipagem em tempo de compilação.</p>
+<p>Se lembra daquela aplicação Node que você fez que deve ter umas 5 mil linhas de código? Se lembra
+quando você teve que mudar os parâmetros daquela função que era usado em quase toda a aplicação? Não
+gostaria que tivesse alguma ferramenta que mostrasse pra você não só todos os cantos onde essa
+função é chamada, mas apenas aonde os parâmetros pudessem causar um bug? Pois é. Bem-vindo ao clube.</p>
+<p>Com a sintaxe de tipos do TypeScript, o transpiler não só te dá "warnings" durante a compilação para
+todos cantos onde objetos mal-estruturados podem causar bugs de tempo de execução, como provê um
+serviço de linguagem que se integra muito bem com vários editores e IDEs modernos de forma que você
+pode ver esses erros sem nem rodar o executável.</p>
+<p>A linguagem foi feita pela Microsoft para projetos grandes, com grande base de código, não para
+pequenos projetos de tutorial que você lê na internet. Mas eu tenho certeza que você vai encontrar
+algum projeto maior e vai gostar muito se a sua equipe utilizar uma ferramenta como essa. Que tal
+praticar com algo menor?</p>
+<h2>O Projeto</h2>
+<p>Tá. Agora vou explicar o que nós vamos fazer nos próximos posts: Uma lista de coisas a fazer, ou
+"to-do list". Por que eu escolhi esse projeto? <s>Porque tá na moda.</s> Porque é simples.</p>
+<p>Não. Sério. O meu objetivo é guiar você por todos os pequenos detalhes que me deixou coçando a
+cabeça para fazer minha aplicação começar a parecer uma aplicação. Após isso, espero que você tenha
+capacidade para mudar a aplicação para algo mais complexo.</p>
+<h2>O Fim do Começo</h2>
+<p>E com isso eu termino esse post, não quero me extender muito. Vocês sabem o que vai ser esse
+tutorial, porque eu escolhi essas ferramentas e como eu escrevo. Já dá pra ter uma ideia como os
+próximos vão ser.</p>
+<p>No próximo post devo mostrar como configurar o seu ambiente e nos familiarizaremos com o Electron e
+o compilador TypeScript.</p>
+<p>Qualquer dúvida ou sugestão, pode deixar nos comentários logo abaixo.</p>
+<p>Até a próxima, e que a Força esteja com você.</p>
+<hr>
+<p>Esse é a primeira tentativa de um tutorial nesse blog. Tenho planejado fazer posts nesse sentido
+desde o começo, mas nunca separei tempo nem tive um bom material que me inspirasse a fazer um.
+Finalmente tenho.</p>
+<p>Obrigado a @guzfskaib por fazer a revisão desse texto.</p>
+</div></article></main></body></html>

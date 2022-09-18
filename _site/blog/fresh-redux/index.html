@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html><head></head><body><nav aria-label="breadcrumb"><ul><li><a href="/">Página Inicial</a></li>/<li><a href="/blog/">Blog</a></li>/<li aria-current="page">Post</li></ul></nav><main><article><h1>Using Redux on Islands</h1><p>I've been trying to wrap myself around the Island Pattern/Architecture for some time now. The last piece of the puzzle was state management and how to get the islands to comunicate, a bridge if you will. And I think I found it.</p><div><h2>New land on sight</h2>
+<p>Before get into the specifics, I should introduce this "new" architecture.</p>
+<p>The <em>Islands Architecture</em> was first introduced by the Etsy architect <a href="https://twitter.com/ksylor">Katie
+Sylor-Miller</a> and later spread by Jason Miller <a href="https://jasonformat.com/islands-architecture/">on his blog</a>. It's fairly
+new concept but it's all the rage right now with modern framworks like <a href="http://astro.build">Astro</a> and others.</p>
+<p>The concept by itself is very simple and is very similar to the <em>microfrontends</em> pattern, with the
+webpage being static html (the sea) with few pockets of interactivity (the islands). Each island is
+self contained, which enables them to be load independently from the others.</p>
+<h2>Fresh knowledge</h2>
+<p>One of the last entries in the "Islands Frameworks" was <a href="http://fresh.deno.dev">Fresh</a> by the devs of
+<a href="http://deno.land">Deno</a>, using the <a href="https://preactjs.com">Preact</a> component library, which makes the pattern very
+simple<u><span title="I know is a little more complicated than that, but bear with me">*</span></u>:</p>
+<ul>
+<li>A folder for the static content: <strong>routes/</strong></li>
+<li>A folder for the dynamic content: <strong>islands/</strong></li>
+</ul>
+<p>All the components imported in the routes' files will be rendered to static html unless it's from
+the island folder. The catch is, for this to work, there are <a href="https://fresh.deno.dev/docs/concepts/islands">a few restrictions</a> for the
+type of props (parameters) you may pass to those islands, with the major one been you cannot pass it
+a child component.</p>
+<p>Which lead me to a question: what if I need the same data in two (or more) islands? Should I need to
+fetch it in the backend? What about client only data like authentication status? Is there a way for
+the islands to send data to each other?</p>
+<p>As I was researching this topic, I was glad to found out that <a href="https://github.com/denoland/fresh/discussions?discussions_q=state">I'm not the only one</a>. The
+best solution I came about was from <a href="https://zottmann.org/2022/07/31/how-to-use.html">Carlo Zottman</a> (a.k.a. <a href="https://github.com/czottmann">@czottmann</a>) using
+<a href="https://github.com/hmans/statery">Statery</a>. So I said to myself <s>what a wonderful world...</s> I think I can do this with
+Redux too!</p>
+<h2>Making bridges</h2>
+<p>Let's start creating a new fresh project with</p>
+<blockquote>
+<p>deno run -A -r https://fresh.deno.dev fresh-with-redux</p>
+</blockquote>
+<p>Then we add the redux toolkit to the <code>import_map.json</code>:</p>
+<pre class="language-json" tabindex="0"><code class="language-json">{
+  "imports": {
+    // ... other deps
+    "@reduxjs/toolkit": "https://cdn.skypack.dev/@reduxjs/toolkit?dts"
+  }
+}
+</code></pre>
+<p>With that, we can create our reducer and configure our store:</p>
+<p><em>counter_reducer.ts</em></p>
+<pre class="language-typescript" tabindex="0"><code class="language-typescript">import { createReducer } from '@reduxjs/toolkit';
+
+const initialState = { quantity: 0 };
+
+const counterReducer = createReducer(initialState, {
+  increment: (state, action) =&gt; ({
+    quantity: state.quantity + (action.payload ?? 1),
+  }),
+  decrement: (state, action) =&gt; ({
+    quantity: state.quantity - (action.payload ?? 1),
+  }),
+  reset: () =&gt; initialState,
+});
+
+export default counterReducer;
+</code></pre>
+<p><em>store.ts</em></p>
+<pre class="language-typescript" tabindex="0"><code class="language-typescript">import { configureStore } from '@reduxjs/toolkit';
+
+import counterReducer from './counter-reducer.ts';
+
+const store = configureStore({
+  reducer: {
+    count: counterReducer,
+  },
+});
+
+export default store;
+</code></pre>
+<p>By the way, for the purposes of this post, I'll be skipping the type definitions.</p>
+<p>Now that we have our store configured, there are two ways to integrate with our islands.</p>
+<h3>React-Redux</h3>
+<p>The first one, is integrating with <a href="https://react-redux.js.org">react-redux</a>, using the context and hooks provided by
+the lib.</p>
+<p>Add the following to the <em>import_map.json</em>:</p>
+<pre class="language-json" tabindex="0"><code class="language-json">{
+  "imports": {
+    // ... other deps
+    "react-redux": "https://esm.sh/react-redux@8.0.2?alias=react:preact/compat&amp;external=preact/compat"
+  }
+}
+</code></pre>
+<p>Now change the <code>Counter</code> island to access the store instead of having a useState hook.</p>
+<p><em>/islands/Counter.tsx</em>:</p>
+<pre class="language-jsx" tabindex="0"><code class="language-jsx">// ... other imports and stuff
+import { useSelector, useDispatch } from 'react-redux';
+
+export default function Counter(props: CounterProps) {
+  // Instead of this:
+  // const [count, setCount] = useState(props.start);
+  // Add the following:
+  const count = useSelector((state) =&gt; state.count.quantity);
+  const dispatch = useDispatch();
+  return (
+    &lt;div&gt;
+      &lt;p&gt;{count}&lt;/p&gt;
+      {/* Delete this 
+      &lt;Button onClick={() =&gt; setCount(count - 1)}&gt;-1&lt;/Button&gt;
+      &lt;Button onClick={() =&gt; setCount(count + 1)}&gt;+1&lt;/Button&gt;
+      */}
+      &lt;Button onClick={() =&gt; dispatch({ type: 'decrement', payload: 1 })}&gt;-1&lt;/Button&gt;
+      &lt;Button onClick={() =&gt; dispatch({ type: 'increment', payload: 1 })}&gt;+1&lt;/Button&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+<p>Now, if you try to run your project, you'll get an error. That's because, for each island, you'll
+need to <strong>provide</strong> that component tree with a <code>store</code>. Let's to that for the Counter Island</p>
+<pre class="language-tsx" tabindex="0"><code class="language-tsx">// Add the import for the store
+import store from '../store.ts';
+
+// remove the export and default flags here
+function Counter(props: CounterProps) {
+  // ... the counter we have so far
+}
+
+export default function CounterIsland(props: CounterProps) {
+  return (
+    &lt;Provider store={store}&gt;
+      &lt;Counter {...props} /&gt;
+    &lt;/Provider&gt;
+  );
+}
+</code></pre>
+<p>That's it! Now your island is using the global store that is shared! Try to create other islands
+using this pattern and you'll see the same values across all islands!</p>
+<h3>Binding hooks</h3>
+<p>The problem with the previous approach is that you'll have use a provider for every island, and you
+cannot access the store in the "root" component for that island. For simple components, this might
+be overkill. Let's remove the needing of a <code>Provider</code>.</p>
+<p>Create a file called <em>hooks.ts</em>, where we'll be creating our own <code>useSelectors</code> and <code>useDispatch</code>
+hooks.</p>
+<pre class="language-ts" tabindex="0"><code class="language-ts">import store from './store.ts';
+
+export function useBindedSelector(fn) {
+  const [result, setResult] = useState(fn(store.getState()));
+
+  useEffect(() =&gt; {
+    const unsubscribe = store.subscribe(() =&gt; {
+      setResult(fn(store.getState()));
+    });
+    return () =&gt; {
+      unsubscribe();
+    };
+  }, []);
+
+  return result;
+}
+
+export const useBindedDispatch = () =&gt; store.dispatch;
+</code></pre>
+<p>With this, you may use the <code>useBindedSelector</code> and <code>useBindedDispatch</code> instead of the default hooks,
+without a <code>Provider</code>.</p>
+<p><em>/islands/Counter.tsx</em>:</p>
+<pre class="language-tsx" tabindex="0"><code class="language-tsx">// ... other imports and stuff
+import { useBindedSelector as useSelector, useBindedDispatch as useDispatch } from '../hooks.ts';
+
+export default function Counter(props: CounterProps) {
+  // Instead of this:
+  // const [count, setCount] = useState(props.start);
+  // Add the following:
+  const count = useSelector((state) =&gt; state.count.quantity);
+  const dispatch = useDispatch();
+  return (
+    &lt;div&gt;
+      &lt;p&gt;{count}&lt;/p&gt;
+      {/* Delete this 
+      &lt;Button onClick={() =&gt; setCount(count - 1)}&gt;-1&lt;/Button&gt;
+      &lt;Button onClick={() =&gt; setCount(count + 1)}&gt;+1&lt;/Button&gt;
+      And write the following: */}
+      &lt;Button onClick={() =&gt; dispatch({ type: 'decrement', payload: 1 })}&gt;-1&lt;/Button&gt;
+      &lt;Button onClick={() =&gt; dispatch({ type: 'increment', payload: 1 })}&gt;+1&lt;/Button&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+<h2>Conclusion</h2>
+<p>That's it, folks. Sure, I skipped some steps along the way, but I believe with this you may have a
+idea on how to integrate your islands using redux.</p>
+<p>I made a <a href="https://github.com/thiagojedi/fresh-with-redux">github repository</a> using both approaches in this post, showing how to use them
+side-by-side along with the correct type definitions. If you have any questions, open a issue there
+or contact me on twitter.</p>
+<p>Now, go write some fresh new code!</p>
+</div></article></main></body></html>

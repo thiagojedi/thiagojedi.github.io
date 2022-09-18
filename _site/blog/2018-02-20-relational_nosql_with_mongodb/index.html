@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html><head></head><body><nav aria-label="breadcrumb"><ul><li><a href="/">Página Inicial</a></li>/<li><a href="/blog/">Blog</a></li>/<li aria-current="page">Post</li></ul></nav><main><article><h1>Relational NoSQL with MongoDB</h1><div><p>I had this conversation with a colleague of mine, who is a SQL Server DBA. She said she knows almost
+nothing about "NoSQL" but believed "it's the future!". Here I am to tell you that, if you know
+relational databases, you already know some basic MongoDB, one of the most used NoSQL databases out
+there. Maybe you are ready for the future!</p>
+<h2>The <em>scary</em> world of NoSQL</h2>
+<p>So, what is NoSQL?</p>
+<p><em>I know! I know! It's all about JSON and stuff!</em></p>
+<p>Well... no. I mean, not really. The difference is more in the way you retrieve data than the way it
+is stored.</p>
+<p>There are a lot of NoSQL db's around with different data structures that are used for specific
+problems. Like <a href="https://en.wikipedia.org/wiki/Graph_database">graphs</a> for networks of links, peoples, cities; or associative arrays (or KV,
+<a href="https://en.wikipedia.org/wiki/Key-value_database">key-value</a>) used for caching. And there are the document-oriented db's that uses syntax like
+XML or JSON to handle data, <a href="https://www.mongodb.com/">MongoDB</a> is one of them.</p>
+<p>The thing they have in common is that they tend to avoid use classic "Structured Query Language" for
+retrieving data. <strong>N</strong>ot <strong>o</strong>nly <strong>SQL</strong>, they say.</p>
+<p><em>But is it too different from SQL?</em></p>
+<p>It may be. They favor other syntaxes because they're better suited for its data structure or use
+case.* So if you have a KV structure, you only need the key to search the value, no projection
+needed.</p>
+<p>That's not the case for MongoDB.</p>
+<p><small>* There are some differences in distributing data, network partition and other stuff like
+the <a href="https://en.wikipedia.org/wiki/CAP_theorem">CAP Theorem</a>. But I don't want to go there today.</small></p>
+<h2>The same concepts, different structure</h2>
+<p>Imagine we have a Video On Demand (a.k.a. VOD) application for superhero movies. Today you may go
+ahead and create a relational database with a <code>Movies</code> table for our catalog, like this one:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th style="text-align:left">title</th>
+<th>year</th>
+<th style="text-align:center">publish_date</th>
+<th style="text-align:center">studio_fk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:left">"Justice League"</td>
+<td>2017</td>
+<td style="text-align:center">2018-02-10</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:left">"Deadpool"</td>
+<td>2016</td>
+<td style="text-align:center">2017-10-19</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:left">"Wonder Woman"</td>
+<td>2017</td>
+<td style="text-align:center">2017-09-19</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align:left">"Captain America: Civil War"</td>
+<td>2016</td>
+<td style="text-align:center">2017-09-19</td>
+<td style="text-align:center">2</td>
+</tr>
+</tbody>
+</table>
+<p>Along with a <code>Studios</code> table. Indexes, foreign keys, normalization and stuff. You know the drill.
+Let's not think about it for now.</p>
+<p>I already told you MongoDB uses JSON-like syntax to store data, not tables. So, how, say, the
+"Deadpool" entry would look like?</p>
+<pre class="language-js" tabindex="0"><code class="language-js"><span class="token punctuation">{</span>
+    <span class="token string-property property">"_id"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"title"</span><span class="token operator">:</span> <span class="token string">"Deadpool"</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"year"</span><span class="token operator">:</span> <span class="token number">2016</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"publish_date"</span><span class="token operator">:</span> <span class="token function">Date</span><span class="token punctuation">(</span><span class="token string">"2017-10-19"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"studio"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string-property property">"name"</span><span class="token operator">:</span> <span class="token string">"21th Century Fox"</span><span class="token punctuation">,</span>
+        <span class="token string-property property">"logo"</span><span class="token operator">:</span> <span class="token string">"url_to_fox_logo.png"</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><em>Wow! Not that different!</em></p>
+<p>You did see the pattern, right? There do are some odd stuff, but mostly the columns' names are
+translated to JSON <code>fields</code> and the values are attributed accordingly.</p>
+<p>Other thing in common in this case is that the <code>_id</code> acts like a Primary Key: it must exist and its
+value must be unique. If you don't provide it when inserting an entry, the database generates one
+for you.</p>
+<p><em>So, there is a PK. Are there indexes too?</em></p>
+<p>Yes, there are. The indexes are defined for every collection of documents called... well...
+<code>collections</code>! And collections act pretty much like tables. The only real difference is that you do
+not need to specify the schema of the data. If the index can't find the key it treats it as <code>null</code>
+or forbids you to insert the document, depends on how you created the index. <a href="https://stackoverflow.com/a/20687291/5150453">Pretty much like in
+SQL Server.</a></p>
+<p><em>Nice! And the studio thing there in the end?</em></p>
+<p>Oh! I almost forgot it! If you need to <a href="https://en.wikipedia.org/wiki/Denormalization">denormalizate</a> your data, for performance (or even
+sanity) reasons, you may embed another document inside your own, and even query it.</p>
+<h2>Speaking of queries</h2>
+<p>How can you ask for data in this database? I'll start with the SQL syntax again.</p>
+<p>If you need the list of the movie titles from the "Warner" studio, in the reverse order of publish
+date, you'll write something like this:</p>
+<pre class="language-sql" tabindex="0"><code class="language-sql">SELECT title, publish_date
+FROM dbo.Movies AS movie
+JOIN dbo.Studios AS studio ON movie.studio_fk = studios.id
+WHERE studio.name='Warner'
+ORDER BY publish_date DESC
+
+-- See? I know some SQL too! :D
+</code></pre>
+<p>Let's translate it to the language MongoDB understand, which happens to be JavaScript.</p>
+<pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">var</span> filter <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string-property property">'studio.name'</span><span class="token operator">:</span> <span class="token string">'Warner'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> projection <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token literal-property property">publish_date</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token literal-property property">_id</span><span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> order <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">publish_date</span><span class="token operator">:</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+db<span class="token punctuation">.</span>movies<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>filter<span class="token punctuation">,</span> projection<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sortBy</span><span class="token punctuation">(</span>order<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Notice the similarities! The <code>db.movies</code> means we are dealing with the <code>movies</code> collection in
+current db, just like the <code>FROM</code> clause. The <code>filter</code> acts like the <code>WHERE</code>, with a little help of
+the denormalization here. The <code>SELECT</code> clause is converted to a <code>projection</code> json object. The
+<code>ORDER BY</code> goes inside the <code>sortBy</code> method, with the <code>-1</code> indicating the descending order.</p>
+<p>The main difference in this example is that you need to explicitly indicate the <code>_id</code> field should
+not be retrieved with a <code>"_id": 0</code> in the <code>projection</code>, as the default is that it's always
+retrieved.</p>
+<h2>Equal but not the Same</h2>
+<p>There's a lot common in both database systems, but what's really different in MongoDB? Besides the
+data structure and the query language, there are a few things that the developers of MongoDB decided
+to keep aside. Mostly because, in their vision, those features make it difficult to deal with
+distributed data the way they do.</p>
+<p>The biggest one I think is the absence of Transactions.</p>
+<p>That's why many developers and dba's make use of embed documents when designing a MongoDB database.
+Of course, when you use embed documents, there's a limit for the document size, and sometimes it may
+cause some updates absurdly complex and slow. I recommend to use it with caution. There's a great
+tutorial on <a href="https://docs.mongodb.com/manual/core/write-operations-atomicity/">how to create transaction-like operations</a> in the MongoDB docs, so you may
+"normalize" your data across collections and treat some complex updates on more than one document.</p>
+<h2>Summing it up</h2>
+<p>Let's see what we know now:</p>
+<ul>
+<li>The JSON documents in MongoDB are basically SQL entries with <code>{}</code></li>
+<li>Collections are like Tables</li>
+<li><code>_id</code> is an obligatory PrimaryKey</li>
+<li>When querying MongoDB we use all the elements from a SQL query, but written in JavaScript.</li>
+<li>There are no Transactions</li>
+</ul>
+<p>That's the basic. I hope you'll feel more comfortable to search more info about NoSQL databases
+after knowing that it's not that different. Maybe it will help you to improve your SQL skills and
+mindset. Who knows?</p>
+<p>I used MongoDB as an example because of those similarities. If you want to know more databases, with
+other paradigms, I recommend the book <a href="https://www.amazon.com.br/Seven-Databases-Weeks-Modern-Movement/dp/1934356921">Seven Databases in Seven Weeks</a>.</p>
+<p>And that's a wrap. May the Force be with you.</p>
+<p><em>Thanks to my colleague and friend <a href="https://br.linkedin.com/in/mariana-serni-sampaio-9bb110116">Mariana Sampaio</a> for reviewing this post</em></p>
+</div></article></main></body></html>
