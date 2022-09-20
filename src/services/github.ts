@@ -12,5 +12,9 @@ export type GithubRepos = Array<{
 }>;
 
 export const getPublicRepositories = async () => {
-  return [];
+  const repos = await octokit.rest.repos.listForUser({
+    username: "thiagojedi",
+  });
+
+  return repos.data.slice(0, 6);
 };
