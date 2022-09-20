@@ -1,6 +1,8 @@
+import { Fragment } from "preact";
+
 const Sidebar = () => {
   return (
-    <div>
+    <Fragment>
       <img
         src="https://github.com/thiagojedi.png"
         alt="Thiago Abreu"
@@ -45,7 +47,7 @@ const Sidebar = () => {
           </a>
         </dd>
       </dl>
-    </div>
+    </Fragment>
   );
 };
 

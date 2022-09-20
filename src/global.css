@@ -209,7 +209,7 @@ nav li {
   main {
     display: grid;
     grid-template-areas: ". aside";
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: minmax(100px, 3fr) 1fr;
     grid-gap: var(--basic-spacing);
   }
 
@@ -243,4 +243,5 @@ pre {
   color: var(--code-color-text);
   padding: var(--basic-spacing);
   background-color: var(--code-color-background);
+  overflow: auto;
 }

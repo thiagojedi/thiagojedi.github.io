@@ -1,7 +1,9 @@
 import { FunctionComponent as FC } from "preact";
 import { PostData } from "../../types.ts";
 
-const BlogLayout: FC<PostData> = ({ title, description, lang, children }) => {
+const BlogLayout: FC<PostData> = (
+  { title, description, lang, children, comp: { Footer, Header, Sidebar } },
+) => {
   return (
     <html lang={lang ?? "pt-br"}>
       <head>
@@ -10,6 +12,9 @@ const BlogLayout: FC<PostData> = ({ title, description, lang, children }) => {
         <link rel="stylesheet" href="/code-highlight.css" />
       </head>
       <body>
+        <header>
+          <Header />
+        </header>
         <nav aria-label="breadcrumb">
           <ul>
             <li>
@@ -32,7 +37,13 @@ const BlogLayout: FC<PostData> = ({ title, description, lang, children }) => {
 
             {children}
           </article>
+          <aside>
+            <Sidebar/>
+          </aside>
         </main>
+        <footer>
+          <Footer />
+        </footer>
       </body>
     </html>
   );
