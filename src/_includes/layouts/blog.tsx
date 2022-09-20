@@ -7,6 +7,7 @@ const BlogLayout: FC<PostData> = ({ title, description, lang, children }) => {
       <head>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
         <link rel="stylesheet" href="/global.css" />
+        <link rel="stylesheet" href="/code-highlight.css" />
       </head>
       <body>
         <nav aria-label="breadcrumb">

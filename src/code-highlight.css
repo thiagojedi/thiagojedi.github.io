@@ -1,0 +1,40 @@
+pre > code .token.punctuation {
+  color: var(--code-token-punctuation);
+}
+
+pre > code .token.attr {
+  color: var(--code-token-string);
+}
+
+pre > code .token.comment {
+  color: var(--code-token-comment);
+}
+
+pre > code .token.string {
+  color: var(--code-token-string-expression);
+}
+
+pre > code .token.keyword {
+  color: var(--code-token-keyword);
+}
+
+pre > code .token.function {
+  color: var(--code-token-function);
+}
+
+pre > code .token.tag {
+  color: var(--code-token-function);
+}
+
+pre > code .token.params {
+  color: var(--code-token-parameter);
+}
+
+pre > code .token.number {
+  color: var(--code-color-text);
+}
+
+pre > code .token.class-name {
+  color: var(--code-token-function);
+  font-weight: 600;
+}

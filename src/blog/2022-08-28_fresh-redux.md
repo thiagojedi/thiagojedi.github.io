@@ -1,6 +1,6 @@
 ---
 title: Using Redux on Islands
-image: '/images/bridge.jpg'
+image: "/images/bridge.jpg"
 lang: en-US
 description:
   I've been trying to wrap myself around the Island Pattern/Architecture for some time now. The last
@@ -64,8 +64,8 @@ With that, we can create our reducer and configure our store:
 
 _counter_reducer.ts_
 
-```typescript
-import { createReducer } from '@reduxjs/toolkit';
+```ts
+import { createReducer } from "@reduxjs/toolkit";
 
 const initialState = { quantity: 0 };
 
@@ -84,10 +84,10 @@ export default counterReducer;
 
 _store.ts_
 
-```typescript
-import { configureStore } from '@reduxjs/toolkit';
+```ts
+import { configureStore } from "@reduxjs/toolkit";
 
-import counterReducer from './counter-reducer.ts';
+import counterReducer from "./counter-reducer.ts";
 
 const store = configureStore({
   reducer: {
@@ -122,9 +122,9 @@ Now change the `Counter` island to access the store instead of having a useState
 
 _/islands/Counter.tsx_:
 
-```jsx
+```tsx
 // ... other imports and stuff
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Counter(props: CounterProps) {
   // Instead of this:
@@ -139,8 +139,12 @@ export default function Counter(props: CounterProps) {
       <Button onClick={() => setCount(count - 1)}>-1</Button>
       <Button onClick={() => setCount(count + 1)}>+1</Button>
       */}
-      <Button onClick={() => dispatch({ type: 'decrement', payload: 1 })}>-1</Button>
-      <Button onClick={() => dispatch({ type: 'increment', payload: 1 })}>+1</Button>
+      <Button onClick={() => dispatch({ type: "decrement", payload: 1 })}>
+        -1
+      </Button>
+      <Button onClick={() => dispatch({ type: "increment", payload: 1 })}>
+        +1
+      </Button>
     </div>
   );
 }
@@ -151,7 +155,7 @@ need to **provide** that component tree with a `store`. Let's to that for the Co
 
 ```tsx
 // Add the import for the store
-import store from '../store.ts';
+import store from "../store.ts";
 
 // remove the export and default flags here
 function Counter(props: CounterProps) {
@@ -180,7 +184,7 @@ Create a file called _hooks.ts_, where we'll be creating our own `useSelectors` 
 hooks.
 
 ```ts
-import store from './store.ts';
+import store from "./store.ts";
 
 export function useBindedSelector(fn) {
   const [result, setResult] = useState(fn(store.getState()));
@@ -207,7 +211,10 @@ _/islands/Counter.tsx_:
 
 ```tsx
 // ... other imports and stuff
-import { useBindedSelector as useSelector, useBindedDispatch as useDispatch } from '../hooks.ts';
+import {
+  useBindedSelector as useSelector,
+  useBindedDispatch as useDispatch,
+} from "../hooks.ts";
 
 export default function Counter(props: CounterProps) {
   // Instead of this:
@@ -222,8 +229,12 @@ export default function Counter(props: CounterProps) {
       <Button onClick={() => setCount(count - 1)}>-1</Button>
       <Button onClick={() => setCount(count + 1)}>+1</Button>
       And write the following: */}
-      <Button onClick={() => dispatch({ type: 'decrement', payload: 1 })}>-1</Button>
-      <Button onClick={() => dispatch({ type: 'increment', payload: 1 })}>+1</Button>
+      <Button onClick={() => dispatch({ type: "decrement", payload: 1 })}>
+        -1
+      </Button>
+      <Button onClick={() => dispatch({ type: "increment", payload: 1 })}>
+        +1
+      </Button>
     </div>
   );
 }
