@@ -37,7 +37,7 @@ parede padrão de todas. Como disse muito bem minha irmã:
 Nunca parei pra notar isso, até ver os papéis de parede do elementaryOS, que são uma agradável
 exceção à regra.
 
-![Minha Área de Trabalho](images/ssDesktop.png)
+![Minha Área de Trabalho](/images/ssDesktop.png)
 
 A imagem aí de cima é a minha área de trabalho atual. Bonita né? O papel de parede tá na seleção que
 veio junto do sistema.
@@ -81,7 +81,7 @@ acho que é culpa da própria Google mesmo).
 
 Já falei que achei o terminal muito bonito?
 
-![Terminal](images/ssTerminal.png)
+![Terminal](/images/ssTerminal.png)
 
 ### Conclusão
 
