@@ -2,7 +2,7 @@
   "imports": {
     "dayjs": "https://esm.sh/dayjs@1.11.5",
     "dayjs/": "https://esm.sh/dayjs@1.11.5/",
-    "lume/": "https://deno.land/x/lume@v1.11.4/",
+    "lume/": "https://raw.githubusercontent.com/lumeland/lume/8c456e1e06689139b9f4e5fad38ffb4904f46dc9/",
     "preact": "https://esm.sh/preact@10.10.6",
     "preact/": "https://esm.sh/preact@10.10.6/",
     "preact/jsx-dev-runtime": "https://esm.sh/preact@10.10.6/jsx-dev-runtime",
