@@ -1,1 +1,1 @@
-export default ({text}) => (<button>{text}</button>)
+export default ({ text }) => <button>{text}</button>;

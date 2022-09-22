@@ -2,10 +2,12 @@ import { FunctionComponent as FC } from "preact";
 
 import { NormalPageData } from "../../types.ts";
 
-const DefaultLayout: FC<NormalPageData> = ({ children, comp: {BaseHead} }) => {
+const DefaultLayout: FC<NormalPageData> = (
+  { children, comp: { BaseHead } },
+) => {
   return (
     <html lang="pt-br">
-      <BaseHead/>
+      <BaseHead />
       <body>
         {children}
       </body>

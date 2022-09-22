@@ -3,7 +3,8 @@ title: 'ElectroType Reaction: Le Planejamento'
 draft: true
 ---
 
-Aqui vai estar o planejamento do primeiro tutorial desse blog. Nunca deverá sair da pasta `/_draft`
+Aqui vai estar o planejamento do primeiro tutorial desse blog. Nunca deverá sair
+da pasta `/_draft`
 
 ## TODO
 

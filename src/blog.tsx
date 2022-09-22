@@ -3,7 +3,7 @@ import { Fragment } from "preact";
 
 export const layout = "layouts/default.tsx";
 
-const BlogPage = ({ search, comp: {BlogList, Footer} }: PageData) => {
+const BlogPage = ({ search, comp: { BlogList, Footer } }: PageData) => {
   const posts = search.pages("blog", "date=desc");
 
   return (
@@ -23,7 +23,7 @@ const BlogPage = ({ search, comp: {BlogList, Footer} }: PageData) => {
         </div>
       </main>
       <footer>
-      <Footer/>
+        <Footer />
       </footer>
     </Fragment>
   );
