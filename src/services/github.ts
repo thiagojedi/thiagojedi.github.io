@@ -1,4 +1,4 @@
-import { Octokit } from "https://cdn.skypack.dev/octokit?dts";
+import { Octokit } from "octokit";
 
 const octokit = new Octokit();
 
@@ -13,10 +13,10 @@ export type GithubRepos = Array<{
 
 export const getPublicRepositories = async () => {
   const repos = await octokit.rest.repos.listForUser({
-    username: 'thiagojedi',
+    username: "thiagojedi",
     per_page: 6,
-    sort: 'updated',
-    direction: 'desc',
+    sort: "updated",
+    direction: "desc",
   });
 
   return repos.data as GithubRepos;
