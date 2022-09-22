@@ -25,7 +25,7 @@ const RepoList: FC<{ repos: GithubRepos }> = ({ repos }) => (
         </div>
       ))}
     </div>
-    <a href="https://github.com/thiagoabreu" title="More at Github">
+    <a href="https://github.com/thiagojedi" title="More at Github">
       Mais no GitHub
     </a>
   </section>
