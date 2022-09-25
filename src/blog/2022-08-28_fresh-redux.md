@@ -145,10 +145,15 @@ export default function Counter(props: CounterProps) {
       <p>{count}</p>
       {
         /* Delete this
-      <Button onClick={() => setCount(count - 1)}>-1</Button>
-      <Button onClick={() => setCount(count + 1)}>+1</Button>
-      */
+      <Button onClick={() => setCount(count - 1)}>
+        -1
+      </Button>
+      <Button onClick={() => setCount(count + 1)}>
+        +1
+      </Button>
+        */
       }
+      {/* Write the following: */}
       <Button onClick={() => dispatch({ type: "decrement", payload: 1 })}>
         -1
       </Button>
@@ -240,10 +245,15 @@ export default function Counter(props: CounterProps) {
       <p>{count}</p>
       {
         /* Delete this
-      <Button onClick={() => setCount(count - 1)}>-1</Button>
-      <Button onClick={() => setCount(count + 1)}>+1</Button>
-      And write the following: */
+      <Button onClick={() => setCount(count - 1)}>
+        -1
+      </Button>
+      <Button onClick={() => setCount(count + 1)}>
+        +1
+      </Button>
+        */
       }
+      {/* Write the following: */}
       <Button onClick={() => dispatch({ type: "decrement", payload: 1 })}>
         -1
       </Button>

@@ -7,11 +7,17 @@
   },
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "preact"
+    "jsxImportSource": "preact",
+    "noUnusedLocals": true
   },
   "fmt": {
     "options": {
       "proseWrap": "always"
+    }
+  },
+  "lint": {
+    "rules": {
+      "tags": ["recommended"]
     }
   }
 }

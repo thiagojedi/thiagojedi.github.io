@@ -1,5 +1,3 @@
-import dayjs from "dayjs";
-
 import { Fragment, FunctionalComponent as FC } from "preact";
 import { formatDate } from "../helpers/date.ts";
 import { Post } from "../types.ts";
@@ -7,6 +5,7 @@ import { Post } from "../types.ts";
 type BlogListProps = {
   posts: Array<Post>;
 };
+
 
 const BlogList: FC<BlogListProps> = ({ posts }) => {
   return (

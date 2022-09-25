@@ -12,6 +12,8 @@ export interface PostData extends NormalPageData {
   content: string;
   lang?: string;
   image?: string;
+  draft?: boolean;
+  date?: Date;
 }
 
 export interface Post extends Page {
