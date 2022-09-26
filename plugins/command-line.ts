@@ -25,6 +25,14 @@ type CommandLineOptions = {
    * @example PS C:\>
    */
   prompt: string;
+  /**
+   * Text to indicate the line is continuation. Defaults to ">"
+   */
+  continuationString: string;
+  /**
+   * Char to indicate the next line should be marked as continuation.
+   */
+  continuationPrompt: string;
 };
 
 export default function commandLine(
@@ -32,6 +40,8 @@ export default function commandLine(
     user: defaultUser = "user",
     server: defaultServer = "localhost",
     prompt: defaultPrompt,
+    continuationString: defaultContString = ">",
+    continuationPrompt: defaultContPrompt,
   }: Partial<CommandLineOptions> = {},
 ) {
   return (site: Site) => {
@@ -45,6 +55,11 @@ export default function commandLine(
         const dataUser = getAttribute(element, "user");
         const dataServer = getAttribute(element, "server");
         const dataPrompt = getAttribute(element, "prompt");
+
+        const continuationString =
+          getAttribute(element, "continuation-string") ?? defaultContString;
+        const continuationPrompt =
+          getAttribute(element, "continuation-prompt") ?? defaultContPrompt;
 
         let promptText;
         if (dataPrompt) {
@@ -67,14 +82,23 @@ export default function commandLine(
         const promptColumn = document.createElement("span");
         promptColumn.className = "command-line-prompt";
 
+        let continuationLine = false;
         for (let index = 0; index < numberOfLines; index++) {
           const prompt = document.createElement("span");
-          prompt.textContent = promptText + " ";
+
+          prompt.textContent =
+            (continuationLine ? continuationString : promptText) + " ";
 
           const br = document.createElement("br");
 
           promptColumn.appendChild(prompt);
           promptColumn.appendChild(br);
+
+          if (continuationPrompt) {
+            continuationLine = codeLines[index].endsWith(
+              continuationPrompt,
+            );
+          }
         }
 
         element.insertBefore(promptColumn, element.firstChild);
