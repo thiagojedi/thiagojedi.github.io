@@ -2,14 +2,14 @@ import { Octokit } from "octokit";
 
 const octokit = new Octokit();
 
-export type GithubRepos = Array<{
+export type GithubRepo = {
   language?: string;
   html_url: string;
   name: string;
   description: string;
   fork: boolean;
   updated_at: string;
-}>;
+};
 
 export const getPublicRepositories = async () => {
   const repos = await octokit.rest.repos.listForUser({
@@ -19,5 +19,5 @@ export const getPublicRepositories = async () => {
     direction: "desc",
   });
 
-  return repos.data as GithubRepos;
+  return repos.data as GithubRepo[];
 };
