@@ -45,3 +45,8 @@ pre > code .token.class-name {
   color: var(--code-token-function);
   font-weight: 600;
 }
+
+pre > code .token.prompt {
+  color: var(--code-token-comment);
+  user-select: none;
+}

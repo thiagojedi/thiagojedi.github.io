@@ -292,7 +292,7 @@ Essa parte do tutorial pode ser substituída utilizando a ferramenta
 o seguinte comando para criar o projeto:
 
 ```console
-$ electron-forge init meu-novo-projeto --template=react-typescript
+electron-forge init meu-novo-projeto --template=react-typescript
 ```
 
 Esse comando cria uma pasta chamada "meu-novo-projeto" com tudo o que você

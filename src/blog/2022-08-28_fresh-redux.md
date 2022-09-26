@@ -53,7 +53,7 @@ can do this with Redux too!
 Let's start creating a new fresh project with
 
 ```console
-$ deno run -A -r https://fresh.deno.dev fresh-with-redux
+deno run -A -r https://fresh.deno.dev fresh-with-redux
 ```
 
 Then we add the redux toolkit to the `import_map.json`:
