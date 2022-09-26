@@ -1,5 +1,7 @@
 import type { Site } from "lume/core.ts";
 
+const defaultStyle = "display: block; float: left; text-align: right;";
+
 const getAttribute = (e: unknown, attr: string) => {
   const element = <Element> e;
   const value = element.getAttribute(attr);
@@ -81,6 +83,7 @@ export default function commandLine(
 
         const promptColumn = document.createElement("span");
         promptColumn.className = "command-line-prompt";
+        promptColumn.setAttribute("style", defaultStyle);
 
         let continuationLine = false;
         for (let index = 0; index < numberOfLines; index++) {
