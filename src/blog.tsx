@@ -1,4 +1,4 @@
-import type { Page, PageData } from "lume/core.ts";
+import type { PageData } from "lume/core.ts";
 import { Fragment } from "preact";
 
 export const layout = "layouts/default.tsx";
