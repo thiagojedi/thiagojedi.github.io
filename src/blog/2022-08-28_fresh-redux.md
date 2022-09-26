@@ -52,7 +52,7 @@ can do this with Redux too!
 
 Let's start creating a new fresh project with
 
-```console
+```console {user=you server=your-machine}
 deno run -A -r https://fresh.deno.dev fresh-with-redux
 ```
 

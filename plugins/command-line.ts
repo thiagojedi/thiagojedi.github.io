@@ -1,10 +1,15 @@
 import type { Site } from "lume/core.ts";
 
+const getAttribute = (e: unknown, attr: string) => {
+  const element = <Element> e;
+  const value = element.getAttribute(attr);
+  element.removeAttribute(attr);
+  return value;
+};
+
 export default function commandLine(
   { user = "user", server = "localhost" } = {},
 ) {
-  const promptText = `${user}@${server} $ `;
-
   return (site: Site) => {
     site.process([".html"], ({ document }) => {
       if (!document) {
@@ -13,6 +18,11 @@ export default function commandLine(
 
       const elements = document.querySelectorAll("pre > code.language-console");
       elements.forEach((element) => {
+        const dataUser = getAttribute(element, "user");
+        const dataServer = getAttribute(element, "server");
+
+        const promptText = `${dataUser ?? user}@${dataServer ?? server} $ `;
+
         const codeLines = element.firstChild.textContent.trim().split("\n");
 
         element.removeChild(element.firstChild);

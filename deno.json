@@ -8,7 +8,11 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "preact",
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "lib": [
+      "deno.window",
+      "dom"
+    ]
   },
   "fmt": {
     "options": {
