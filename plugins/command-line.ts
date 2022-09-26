@@ -13,12 +13,12 @@ const getAttribute = (e: unknown, attr: string) => {
 
 type CommandLineOptions = {
   /**
-   * User in the prompt. Defaults to "user"
+   * Default user in the prompt. Defaults to "user"
    * @example user@server $
    */
   user: string;
   /**
-   * Server in the prompt. Defaults to "localhost"
+   * Default server in the prompt. Defaults to "localhost"
    * @example user@localhost $
    */
   server: string;
@@ -30,11 +30,11 @@ type CommandLineOptions = {
   /**
    * Text to indicate the line is continuation. Defaults to ">"
    */
-  continuationString: string;
+  continuationPrompt: string;
   /**
    * Char to indicate the next line should be marked as continuation.
    */
-  continuationPrompt: string;
+  continuationMark: string;
 };
 
 export default function commandLine(
@@ -42,8 +42,8 @@ export default function commandLine(
     user: defaultUser = "user",
     server: defaultServer = "localhost",
     prompt: defaultPrompt,
-    continuationString: defaultContString = ">",
-    continuationPrompt: defaultContPrompt,
+    continuationPrompt: defaultContPrompt = ">",
+    continuationMark: defaultContMark,
   }: Partial<CommandLineOptions> = {},
 ) {
   return (site: Site) => {
@@ -58,10 +58,10 @@ export default function commandLine(
         const dataServer = getAttribute(element, "server");
         const dataPrompt = getAttribute(element, "prompt");
 
-        const continuationString =
-          getAttribute(element, "continuation-string") ?? defaultContString;
         const continuationPrompt =
           getAttribute(element, "continuation-prompt") ?? defaultContPrompt;
+        const continuationMark = getAttribute(element, "continuation-mark") ??
+          defaultContMark;
 
         let promptText;
         if (dataPrompt) {
@@ -90,16 +90,16 @@ export default function commandLine(
           const prompt = document.createElement("span");
 
           prompt.textContent =
-            (continuationLine ? continuationString : promptText) + " ";
+            (continuationLine ? continuationPrompt : promptText) + " ";
 
           const br = document.createElement("br");
 
           promptColumn.appendChild(prompt);
           promptColumn.appendChild(br);
 
-          if (continuationPrompt) {
+          if (continuationMark) {
             continuationLine = codeLines[index].endsWith(
-              continuationPrompt,
+              continuationMark,
             );
           }
         }
