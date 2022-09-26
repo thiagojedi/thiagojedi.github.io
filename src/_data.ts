@@ -4,7 +4,8 @@ const data = {
   layout: "layouts/default.tsx",
   getPublicRepositories,
   metas: {
-    site: "JEDI Comp",
+    site: "JediComp",
+    description: "desenvolvendo à Força",
     twitter: "@Jedi_Thiago",
     lang: "pt-br",
     generator: true,
