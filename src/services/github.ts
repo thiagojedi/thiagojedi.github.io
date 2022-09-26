@@ -11,13 +11,19 @@ export type GithubRepo = {
   updated_at: string;
 };
 
-export const getPublicRepositories = async () => {
-  const repos = await octokit.rest.repos.listForUser({
-    username: "thiagojedi",
-    per_page: 6,
-    sort: "updated",
-    direction: "desc",
-  });
+export async function getPublicRepositories(): Promise<GithubRepo[]> {
+  try {
+    const repos = await octokit.rest.repos.listForUser({
+      username: "thiagojedi",
+      per_page: 6,
+      sort: "updated",
+      direction: "desc",
+    });
 
-  return repos.data as GithubRepo[];
-};
+    return repos.data;
+  } catch {
+    console.error("error trying to get repos from github");
+  }
+
+  return [];
+}
