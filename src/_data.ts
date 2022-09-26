@@ -5,7 +5,6 @@ const data = {
   getPublicRepositories,
   metas: {
     site: "JediComp",
-    description: "desenvolvendo à Força",
     twitter: "@Jedi_Thiago",
     lang: "pt-br",
     generator: true,
