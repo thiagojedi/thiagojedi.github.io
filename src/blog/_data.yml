@@ -1,3 +1,5 @@
 layout: layouts/blog.tsx
 tags:
   - blog
+metas:
+  type: article

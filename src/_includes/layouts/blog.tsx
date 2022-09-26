@@ -3,17 +3,19 @@ import { PostData } from "../../types.ts";
 
 const BlogLayout: FC<PostData> = (
   {
-    title,
-    description,
     image,
-    lang,
+    metas: {
+      title,
+      description,
+      lang,
+    } = {},
     children,
     comp: { BaseHead, Footer, Header, Sidebar },
   },
 ) => {
   return (
     <html lang={lang ?? "pt-br"}>
-      <BaseHead>
+      <BaseHead title={title}>
         <link rel="stylesheet" href="/code-highlight.css" />
       </BaseHead>
       <body>
@@ -47,9 +49,8 @@ const BlogLayout: FC<PostData> = (
             <Sidebar />
           </aside>
         </main>
-        <footer>
-          <Footer />
-        </footer>
+
+        <Footer />
       </body>
     </html>
   );

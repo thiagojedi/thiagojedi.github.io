@@ -3,13 +3,17 @@ import { FunctionComponent as FC } from "preact";
 import { NormalPageData } from "../../types.ts";
 
 const DefaultLayout: FC<NormalPageData> = (
-  { children, comp: { BaseHead } },
+  { title, children, comp: { BaseHead, Header, Footer, } },
 ) => {
   return (
     <html lang="pt-br">
-      <BaseHead />
+      <BaseHead title={title} />
       <body>
+        <Header />
+
         {children}
+
+        <Footer />
       </body>
     </html>
   );

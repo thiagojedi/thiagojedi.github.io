@@ -1,7 +1,9 @@
 ---
-title: elementaryOS, uma bela surpresa
 tags: [opensource, opinioes]
 image: /images/ssDesktop.png
+metas:
+    title: elementaryOS, uma bela surpresa
+    image: /images/ssDesktop.png
 ---
 
 Durante o último ano, principalmente nos últimos seis meses, eu me afastei um

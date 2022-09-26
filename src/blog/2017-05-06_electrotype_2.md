@@ -1,5 +1,6 @@
 ---
-title: 'ElectroType Reaction: Getting things Done'
+metas: 
+  title: 'ElectroType Reaction: Getting things Done'
 ---
 
 Nesse segundo post de uma série de quatro, vou explicar o ambiente de trabalho

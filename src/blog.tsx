@@ -2,9 +2,15 @@ import type { PageData } from "lume/core.ts";
 import { Fragment } from "preact";
 
 export const layout = "layouts/default.tsx";
+export const title = "Blog";
 
-const BlogPage = ({ search, comp: { BlogList, Footer } }: PageData) => {
-  const posts = search.pages("blog", "date=desc");
+export const meta = {
+  title
+}
+
+const BlogPage = ({ search, comp: { BlogList, Sidebar } }: PageData) => {
+  const posts = search.pages("blog", "date=desc")
+    .filter(p => p.data.url);
 
   return (
     <Fragment>
@@ -21,10 +27,11 @@ const BlogPage = ({ search, comp: { BlogList, Footer } }: PageData) => {
         <div>
           <BlogList posts={posts} />
         </div>
+
+        <aside>
+          <Sidebar />
+        </aside>
       </main>
-      <footer>
-        <Footer />
-      </footer>
     </Fragment>
   );
 };

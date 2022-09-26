@@ -1,8 +1,6 @@
-import { Fragment } from "preact";
-
 const Footer = () => {
   return (
-    <Fragment>
+    <footer>
       <hr />
 
       <p>
@@ -28,7 +26,7 @@ const Footer = () => {
         </q>{" "}
         - Yoda em <cite>O Retorno de Jedi</cite>.
       </p>
-    </Fragment>
+    </footer>
   );
 };
 

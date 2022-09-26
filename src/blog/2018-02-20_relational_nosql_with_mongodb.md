@@ -1,7 +1,9 @@
 ---
-title: 'Relational NoSQL with MongoDB'
 image: /images/sql.png
-lang: en-US
+metas: 
+  title: 'Relational NoSQL with MongoDB'
+  lang: en-US
+
 ---
 
 I had this conversation with a colleague of mine, who is a SQL Server DBA. She

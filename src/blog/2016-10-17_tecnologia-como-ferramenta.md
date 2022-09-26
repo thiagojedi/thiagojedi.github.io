@@ -1,5 +1,6 @@
 ---
-title: Sua caixa de ferramentas durante as mudanças
+metas:
+    title: Sua caixa de ferramentas durante as mudanças
 ---
 
 Na empresa que trabalho, estamos passando por uma séria necessidade de mudança

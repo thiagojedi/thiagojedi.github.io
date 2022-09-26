@@ -1,6 +1,7 @@
 ---
-title: Atualizando app do Circular
 tags: [opensource, apps]
+metas:
+    title: Atualizando app do Circular
 ---
 
 Estou, aos poucos voltando a desenvolver no meu tempo livre aplicativos para a

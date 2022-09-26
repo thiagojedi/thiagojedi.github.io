@@ -1,19 +1,14 @@
 import type { Page, PageData } from "lume/core.ts";
-import { GithubRepos } from "./services/github.ts";
+import { GithubRepo } from "./services/github.ts";
 
 export interface NormalPageData extends PageData {
-  getPublicRepositories: () => Promise<GithubRepos>;
+  getPublicRepositories: () => Promise<GithubRepo[]>;
 }
 
 export interface PostData extends NormalPageData {
-  title: string;
-  url: string;
-  description?: string;
   content: string;
-  lang?: string;
   image?: string;
   draft?: boolean;
-  date?: Date;
 }
 
 export interface Post extends Page {

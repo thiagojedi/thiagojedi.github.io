@@ -1,9 +1,12 @@
+import { Fragment } from "preact";
 import { NormalPageData } from "./types.ts";
+
+export const layout = "layouts/default.tsx";
+
 
 const Index = async (
   {
     comp: {
-      Header,
       HighlightPost,
       RepoList,
       Sidebar,
@@ -17,43 +20,33 @@ const Index = async (
   const repos = await getPublicRepositories();
 
   return (
-    <html lang="pt-BR">
-      <head>
-      </head>
+    <Fragment>
+      <nav aria-label="breadcrumb">
+        <ul>
+          <li>
+            <a href="/">Página Inicial</a>
+          </li>
+        </ul>
+      </nav>
 
-      <body>
-        <Header />
+      <main>
+        <div>
+          <section>
+            <h2>Blog</h2>
+            <div>
+              {highlightPosts.map((post) => <HighlightPost post={post} />)}
+            </div>
+            <a href="/blog" title="More posts">Mais postagens</a>
+          </section>
 
-        <nav aria-label="breadcrumb">
-          <ul>
-            <li>
-              <a href="/">Página Inicial</a>
-            </li>
-          </ul>
-        </nav>
+          <RepoList repos={repos} />
+        </div>
 
-        <main>
-          <div>
-            <section>
-              <h2>Blog</h2>
-              <div>
-                {highlightPosts.map((post) => <HighlightPost post={post} />)}
-              </div>
-              <a href="/blog" title="More posts">Mais postagens</a>
-            </section>
-
-            <RepoList repos={repos} />
-          </div>
-
-          <aside>
-            <Sidebar />
-          </aside>
-        </main>
-        <footer>
-          <Footer />
-        </footer>
-      </body>
-    </html>
+        <aside>
+          <Sidebar />
+        </aside>
+      </main>
+    </Fragment>
   );
 };
 

@@ -1,5 +1,6 @@
 ---
-title: 'ElectroType Reaction: Basic Stuff'
+metas:
+    title: 'ElectroType Reaction: Basic Stuff'
 ---
 
 Primeiro de uma série de quatro posts de um tutorial de como usar Electron e
