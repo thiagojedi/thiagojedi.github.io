@@ -17,9 +17,8 @@ const BlogLayout: FC<PostData> = (
         <link rel="stylesheet" href="/code-highlight.css" />
       </BaseHead>
       <body>
-        <header>
-          <Header />
-        </header>
+        <Header />
+
         <nav aria-label="breadcrumb">
           <ul>
             <li>
