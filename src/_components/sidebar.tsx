@@ -46,6 +46,12 @@ const Sidebar = () => {
             Thiago Cerqueira
           </a>
         </dd>
+        <dt>Mastodon:</dt>
+        <dd>
+          <a rel="me" href="https://mastodon.online/@JediThiago">
+            @JediThiago@mastodon.online
+          </a>
+        </dd>
       </dl>
     </Fragment>
   );
