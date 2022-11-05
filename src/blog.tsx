@@ -5,12 +5,12 @@ export const layout = "layouts/default.tsx";
 export const title = "Blog";
 
 export const meta = {
-  title
-}
+  title,
+};
 
 const BlogPage = ({ search, comp: { BlogList, Sidebar } }: PageData) => {
   const posts = search.pages("blog", "date=desc")
-    .filter(p => p.data.url);
+    .filter((p) => p.data.url);
 
   return (
     <Fragment>

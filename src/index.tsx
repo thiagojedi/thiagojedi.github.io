@@ -3,7 +3,6 @@ import { NormalPageData } from "./types.ts";
 
 export const layout = "layouts/default.tsx";
 
-
 const Index = async (
   {
     comp: {
