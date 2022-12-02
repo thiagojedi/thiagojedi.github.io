@@ -2,7 +2,7 @@
   "imports": {
     "dayjs": "https://esm.sh/dayjs@1.11.5",
     "dayjs/": "https://esm.sh/dayjs@1.11.5/",
-    "lume/": "https://deno.land/x/lume@v1.12.1/",
+    "lume/": "https://deno.land/x/lume@v1.13.2/",
     "octokit": "https://cdn.skypack.dev/octokit?dts",
     "preact": "https://esm.sh/preact@10.10.6",
     "preact/": "https://esm.sh/preact@10.10.6/",
