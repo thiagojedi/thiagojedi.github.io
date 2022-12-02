@@ -112,12 +112,17 @@ article h1 {
   color: var(--color-text-highlight);
 }
 
-article img {
+article figure {
   display: block;
-  margin: 12px auto;
-  box-shadow: 0 4px 10px var(--color-image-shadow);
-  max-width: 100%;
-  max-height: 360px;
+  text-align: center;
+  font-size: small;
+}
+
+article figure img {
+    margin: 12px auto;
+    box-shadow: 0 4px 10px var(--color-image-shadow);
+    max-width: 100%;
+    max-height: 360px;
 }
 
 article img.emoji {

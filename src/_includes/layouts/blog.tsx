@@ -1,20 +1,23 @@
 import { FunctionComponent as FC } from "preact";
 import { PostData } from "../../types.ts";
+import { formatDate, longDate } from "../../helpers/date.ts";
 
 const BlogLayout: FC<PostData> = (
   {
     image,
+    imageDescription,
+    date,
     metas: {
       title,
       description,
-      lang,
+      lang = "pt-br",
     } = {},
     children,
     comp: { BaseHead, Footer, Header, Sidebar },
   },
 ) => {
   return (
-    <html lang={lang ?? "pt-br"}>
+    <html lang={lang}>
       <BaseHead title={title}>
         <link rel="stylesheet" href="/code-highlight.css" />
       </BaseHead>
@@ -39,9 +42,24 @@ const BlogLayout: FC<PostData> = (
           <article>
             <h1>{title}</h1>
 
+            {date && (
+              <small>
+                <time pubdate datetime={date.toISOString()}>
+                  {longDate(date, lang)}
+                </time>
+              </small>
+            )}
+
             {description && <p>{description}</p>}
 
-            {image && <img src={image} alt="" />}
+            {image && (
+              <figure>
+                <img src={image} alt={imageDescription} />
+                {imageDescription && (
+                  <figcaption>{imageDescription}</figcaption>
+                )}
+              </figure>
+            )}
 
             {children}
           </article>
