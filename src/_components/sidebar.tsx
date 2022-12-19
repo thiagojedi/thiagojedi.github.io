@@ -36,10 +36,6 @@ const Sidebar = () => {
         <dd>
           <a href="https://github.com/thiagojedi">@thiagojedi</a>
         </dd>
-        <dt>Twitter:</dt>
-        <dd>
-          <a href="https://twitter.com/Jedi_Thiago">@Jedi_Thiago</a>
-        </dd>
         <dt>LinkedIn:</dt>
         <dd>
           <a href="https://www.linkedin.com/in/thiagojediabreu/">
