@@ -1,4 +1,4 @@
-import { Octokit } from "octokit";
+import { Octokit } from "npm:octokit";
 
 const octokit = new Octokit();
 
