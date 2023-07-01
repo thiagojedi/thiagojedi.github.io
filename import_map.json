@@ -2,17 +2,12 @@
   "imports": {
     "dayjs": "https://esm.sh/dayjs@1.11.5",
     "dayjs/": "https://esm.sh/dayjs@1.11.5/",
-    "lume/": "https://deno.land/x/lume@v1.13.2/",
+    "lume/": "https://deno.land/x/lume@v1.18.0/",
     "octokit": "https://cdn.skypack.dev/octokit?dts",
     "preact": "https://esm.sh/preact@10.10.6",
     "preact/": "https://esm.sh/preact@10.10.6/",
+    "preact/hooks": "npm:preact/hooks",
     "preact/jsx-dev-runtime": "https://esm.sh/preact@10.10.6/jsx-dev-runtime",
     "preact/jsx-runtime": "https://esm.sh/preact@10.10.6/jsx-runtime"
-  },
-  "scopes": {
-    "lume/": {
-      "preact": "https://deno.land/x/lume@v1.11.4/deps/preact.ts",
-      "preact/jsx-runtime": "https://deno.land/x/lume@v1.11.4/deps/preact_runtime.ts"
-    }
   }
 }
