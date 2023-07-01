@@ -1,21 +1,15 @@
 import { FunctionComponent as FC } from "preact";
 import { PostData } from "../../types.ts";
-import { formatDate, longDate } from "../../helpers/date.ts";
+import { longDate } from "../../helpers/date.ts";
 
-const BlogLayout: FC<PostData> = (
-  {
-    image,
-    imageDescription,
-    date,
-    metas: {
-      title,
-      description,
-      lang = "pt-br",
-    } = {},
-    children,
-    comp: { BaseHead, Footer, Header, Sidebar },
-  },
-) => {
+const BlogLayout: FC<PostData> = ({
+  image,
+  imageDescription,
+  date,
+  metas: { title, description, lang = "pt-br", mastodonLink } = {},
+  children,
+  comp: { BaseHead, Footer, Header, Sidebar, CommentList },
+}) => {
   return (
     <html lang={lang}>
       <BaseHead title={title}>
@@ -63,12 +57,17 @@ const BlogLayout: FC<PostData> = (
 
             {children}
           </article>
+
+          <CommentList mastodonLink={mastodonLink} language={lang} />
+
           <aside>
             <Sidebar />
           </aside>
         </main>
 
         <Footer />
+
+        <script async src="/mastodon_comments.js"></script>
       </body>
     </html>
   );
