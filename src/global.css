@@ -291,7 +291,7 @@ pre {
   list-style: none;
 }
 
-h4 {
+#comments h3 {
   all: unset;
   color: var(--color-text-highlight);
 }

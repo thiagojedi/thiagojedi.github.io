@@ -87,7 +87,7 @@ const CommentList: FC<Props> = (
           <header>
             <img />
 
-            <h4 />
+            <h3 />
 
             <small>
               <a>

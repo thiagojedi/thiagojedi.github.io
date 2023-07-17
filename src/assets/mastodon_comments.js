@@ -56,7 +56,7 @@ function renderComment(comment, firstMentionFilter) {
     account = account + "@" + comment.account.url.split("/")[2];
   }
 
-  const displayName = result.querySelector("header h4");
+  const displayName = result.querySelector("header h3");
   displayName.innerText = comment.account.display_name;
   formatEmojis(comment.account.emojis, displayName);
   displayName.innerHTML += `&nbsp;@${account}`;
