@@ -83,11 +83,11 @@ const CommentList: FC<Props> = (
           )}
       </noscript>
       <template>
-        <article className="comment">
-          <header className="header">
+        <article>
+          <header>
             <img />
 
-            <h3></h3>
+            <h4 />
 
             <small>
               <a>
@@ -95,7 +95,7 @@ const CommentList: FC<Props> = (
               </a>
             </small>
           </header>
-          <div className="content" />
+          <div />
         </article>
       </template>
     </section>
