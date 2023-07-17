@@ -2,6 +2,7 @@
 image: /images/greens_and_coconuts.png
 metas:
     title: Comentários via ActivityPub
+    mastodonLink: https://cuscuz.in/@jedi/110731383945675150
 ---
 
 Pequeno post só para informar, e validar, que ativei um sistema de comentários
