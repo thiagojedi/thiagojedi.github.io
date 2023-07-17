@@ -291,7 +291,7 @@ pre {
   list-style: none;
 }
 
-h3 {
+h4 {
   all: unset;
   color: var(--color-text-highlight);
 }
