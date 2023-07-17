@@ -13,6 +13,10 @@ const fediVerseApps = [
     url: "https://akkoma.social/",
     name: "Akkoma",
   },
+  {
+    url: "https://pixelfed.org/",
+    name: "PixelFed",
+  },
 ];
 
 const FediVerseList: FC = () => {
