@@ -1,6 +1,6 @@
 /*
   Mastodon comment integration code by Thiago 'Jedi' Cerqueira, 2023.
-  
+
   Closely inspired by:
   Jan Wildeboer - https://jan.wildeboer.net/2023/02/Jekyll-Mastodon-Comments/
   Cassidy Blade - https://mastodon.blaede.family/@cassidy/110623574992080570
@@ -8,7 +8,7 @@
 
   This is just the JavaScript code, you'll need to supply your own HTML
   container (including a template for comment rendering) and CSS.
-  
+
   Released under the terms of the MIT license.
 */
 
@@ -20,14 +20,14 @@ function formatIsoDate(isoDate) {
       parseInt(isoDate.slice(8, 10), 10),
       parseInt(isoDate.slice(11, 13), 10),
       parseInt(isoDate.slice(14, 16), 10),
-      parseInt(isoDate.slice(17, 19), 10)
-    )
+      parseInt(isoDate.slice(17, 19), 10),
+    ),
   ).toLocaleDateString(undefined, {
     month: "short",
     day: "numeric",
     year: "numeric",
     hour: "numeric",
-    minute: "numeric"
+    minute: "numeric",
   });
 }
 
@@ -35,14 +35,14 @@ function formatEmojis(emojis, element) {
   emojis.forEach(({ shortcode, static_url, url }) => {
     element.innerHTML = element.innerHTML.replace(
       `:${shortcode}:`,
-      `<picture><source srcset="${url}" media="(prefers-reduced-motion: no-preference)"><img src="${static_url}" alt=":${shortcode}:" title=":${shortcode}:"></picture>`
+      `<picture><source srcset="${url}" media="(prefers-reduced-motion: no-preference)"><img src="${static_url}" alt=":${shortcode}:" title=":${shortcode}:"></picture>`,
     );
   });
 }
 
 function renderComment(comment, firstMentionFilter) {
   const result = document
-    .querySelector("section#comments template")
+    .querySelector("template")
     .content.cloneNode(true);
 
   const avatar = result.querySelector("header img");
@@ -56,7 +56,7 @@ function renderComment(comment, firstMentionFilter) {
     account = account + "@" + comment.account.url.split("/")[2];
   }
 
-  const displayName = result.querySelector("header h3");
+  const displayName = result.querySelector("header h4");
   displayName.innerText = comment.account.display_name;
   formatEmojis(comment.account.emojis, displayName);
   displayName.innerHTML += `&nbsp;@${account}`;
@@ -72,14 +72,14 @@ function renderComment(comment, firstMentionFilter) {
     edited.innerText = "*";
     edited.setAttribute(
       "title",
-      "Last edited: " + formatIsoDate(comment.edited_at)
+      "Last edited: " + formatIsoDate(comment.edited_at),
     );
     edited.setAttribute("datetime", comment.edited_at);
     time.innerHTML += "&nbsp;";
     time.appendChild(edited);
   }
 
-  const contentElem = result.querySelector(".content");
+  const contentElem = result.querySelector("article div");
   contentElem.innerHTML = comment.content;
   const firstMention = contentElem.querySelector(".mention");
   if (
@@ -91,7 +91,7 @@ function renderComment(comment, firstMentionFilter) {
     while (
       (removalCandidate === firstMention ||
         removalCandidate.childNodes.length === 0) &&
-      removalCandidate !== result.querySelector(".content")
+      removalCandidate !== result.querySelector("article div")
     ) {
       const next = removalCandidate.parentNode;
       removalCandidate.remove();
@@ -110,13 +110,14 @@ function renderComments(comments, firstMentionFilter) {
   for (let i = 0; i < comments.length; i++) {
     const container = document.createElement("li");
     container.appendChild(renderComment(comments[i], firstMentionFilter));
-    if (comments[i]["children"].length > 0) {
+    if (comments[i].children.length > 0) {
       container.appendChild(
-        renderComments(comments[i]["children"], [comments[i]["account"]["url"]])
+        renderComments(comments[i].children, [
+          comments[i].account.url,
+        ]),
       );
     }
     result.appendChild(container);
-
   }
   return result;
 }
@@ -145,16 +146,16 @@ function loadComments(url) {
     })
     .then((data) => {
       const comments = [];
-      if (data["descendants"] && Array.isArray(data["descendants"])) {
+      if (data.descendants && Array.isArray(data.descendants)) {
         const tempDict = {};
-        data["descendants"].forEach((comment) => {
-          if (comment["visibility"] !== "public") return;
+        data.descendants.forEach((comment) => {
+          if (comment.visibility !== "public") return;
           comment.children = [];
-          if (comment["in_reply_to_id"] === rootId) {
+          if (comment.in_reply_to_id === rootId) {
             comments.push(comment);
           } else {
-            if (tempDict[comment["in_reply_to_id"]]) {
-              tempDict[comment["in_reply_to_id"]].children.push(comment);
+            if (tempDict[comment.in_reply_to_id]) {
+              tempDict[comment.in_reply_to_id].children.push(comment);
             }
           }
           tempDict[comment["id"]] = comment;
@@ -178,7 +179,7 @@ function initComments() {
   commentsElem.appendChild(placeholder);
   const urlParts = commentsElem.dataset.url.split("/");
   loadComments(
-    "https://" + urlParts[2] + "/api/v1/statuses/" + urlParts[4] + "/context"
+    "https://" + urlParts[2] + "/api/v1/statuses/" + urlParts[4] + "/context",
   );
 }
 
