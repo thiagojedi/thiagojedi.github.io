@@ -1,4 +1,9 @@
 import type { Site } from "lume/core.ts";
+import {
+  type Element,
+  type Node,
+  NodeType,
+} from "https://deno.land/x/deno_dom@v0.1.38/src/api.ts";
 
 const defaultStyle = "display: block; float: left; text-align: right;";
 
@@ -10,8 +15,8 @@ const takeAttribute = (element: Element, attr: string) => {
   return value;
 };
 
-const isElement = (element: unknown): element is Element =>
-  element instanceof Element;
+const isElement = (element: Node): element is Element =>
+  element.nodeType === NodeType.ATTRIBUTE_NODE;
 
 type CommandLineOptions = {
   /**
