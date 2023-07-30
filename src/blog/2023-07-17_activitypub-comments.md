@@ -17,8 +17,8 @@ como comentário.
 
 > Ah, mas eu não tenho um perfil no Mastodon
 
-Não tem problema. Eu testei com Mastodon, Pixelfed, ~~CalcKey~~ Firefish e Akkoma. Em breve
-você também deverá conseguir através do Threads.
+Não tem problema. Eu testei com Mastodon, Pixelfed, ~~CalcKey~~ Firefish e
+Akkoma. Em breve você também deverá conseguir através do Threads.
 
 Esse sistema foi adaptado do trabalho de
 [Julian Fietkau](https://fietkau.blog/2023/another_blog_resurrection_fediverse_new_comment_system),
