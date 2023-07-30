@@ -2,14 +2,16 @@ import type { Site } from "lume/core.ts";
 
 const defaultStyle = "display: block; float: left; text-align: right;";
 
-const getAttribute = (e: unknown, attr: string) => {
-  const element = <Element> e;
+const takeAttribute = (element: Element, attr: string) => {
   const value = element.getAttribute(attr);
   if (value !== null) {
     element.removeAttribute(attr);
   }
   return value;
 };
+
+const isElement = (element: unknown): element is Element =>
+  element instanceof Element;
 
 type CommandLineOptions = {
   /**
@@ -54,13 +56,17 @@ export default function commandLine(
 
       const elements = document.querySelectorAll("pre > code.language-console");
       elements.forEach((element) => {
-        const dataUser = getAttribute(element, "user");
-        const dataServer = getAttribute(element, "server");
-        const dataPrompt = getAttribute(element, "prompt");
+        if (!isElement(element)) {
+          return;
+        }
+
+        const dataUser = takeAttribute(element, "user");
+        const dataServer = takeAttribute(element, "server");
+        const dataPrompt = takeAttribute(element, "prompt");
 
         const continuationPrompt =
-          getAttribute(element, "continuation-prompt") ?? defaultContPrompt;
-        const continuationMark = getAttribute(element, "continuation-mark") ??
+          takeAttribute(element, "continuation-prompt") ?? defaultContPrompt;
+        const continuationMark = takeAttribute(element, "continuation-mark") ??
           defaultContMark;
 
         let promptText;
@@ -98,9 +104,8 @@ export default function commandLine(
           promptColumn.appendChild(br);
 
           if (continuationMark) {
-            continuationLine = codeLines[index].endsWith(
-              continuationMark,
-            );
+            continuationLine = codeLines[index]
+              .endsWith(continuationMark);
           }
         }
 
