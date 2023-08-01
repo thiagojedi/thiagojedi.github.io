@@ -13,8 +13,8 @@ metas:
 _Imagem do post: detalhe da pintura Evening News—Subway Riders, de Francis Luis
 Mora._
 
-Um velho novo mundo
----
+## Um velho novo mundo
+
 Muitas coisas mudaram desde que Elon Musk, após muito bate boca, adquiriu ~~seu
 novo brinquedo~~ sua última empresa no final de 2022. Quer você concorde ou não
 com as mudanças na plataforma dele, temos que admitir que isso causou um impacto
@@ -42,41 +42,55 @@ Hotmail, Gmail, Yahoo, etc. Enfim, numa federação de redes sociais, em teoria,
 você pode se cadastrar em um provedor e interagir com todos os outros da mesma
 federação.
 
-Por isso acho que, por mais que você ache esse conceito [difícil][cnet01], é algo que
-provavelmente vamos ter que lidar a partir de agora.
+Por isso acho que, por mais que você ache esse conceito [difícil][cnet01], é
+algo que provavelmente vamos ter que lidar a partir de agora.
 
 Tirando isso do caminho, gostaria de dar minha opinião sobre cada uma das redes
 que eu to usando.
 
-Mastodon
----
-Ah, Mastodon. Das três, a plataforma mais madura em questão de funcionalidades.
+## Mastodon
+
+Ah, [Mastodon][masto01]. Das três, a plataforma mais madura em questão de funcionalidades.
 O que é bem claro, dado que já tá por aí desde 2016. Seu criador, Eugen Rochko,
-é
-bem vocal em dizer qual o objetivo da rede: não ser um serviço comercial. Em uma
-entrevista com a [Wired][wired01], Eugen sugere que algo tão importante como
+é bem vocal em dizer qual o objetivo da rede: não ser um serviço comercial. Em
+uma entrevista com a [Wired][wired01], Eugen sugere que algo tão importante como
 comunicação não deveria estar à mercê de interesses comerciais ou de um CEO.
 
 Será que ele já sabia de algo naquela época? Mas divago.
 
 A questão é que devido a esse foco, uma das coisas que me chamou mais a atenção
-no Mastodon foram as ferramentas de privacidade de conteúdo.
-<!-- TODO Falar sobre as ferramentas -->
+no Mastodon foram as ferramentas de privacidade de conteúdo. Em cada postagem
+que você escreve no Mastodon você pode configurar o grau de privacidade, por
+exemplo, se vai aparecer nas timelines públicas ou só para quem te segue, se a
+imagem é sensivel ou não, ou mesmo colocar um aviso de conteúdo se o conteúdo do
+texto é de alguma forma "complicado" como política, futebol, ou pior: spoilers.
+Além disso, há diversos graus de "bloqueio" disponíveis ao nível do próprio
+usuario.
 
-Threads
----
+Mas aí vem a grande quebra de paradigma do Mastodon: como não existe uma gigante
+da tecnologia controlando um único servidor, o papel de moderação de conteúdo é
+entregue nas mãos do próprio usuário. Desde a escolha de uma "instancia"
+(servidor) com as regras de conteúdo e equipe de moderação que te agrade, até
+saber lidar um usuário específico que tá te enchendo o saco, você é o
+responsável, você tem o poder de escolher como interagir com a rede.
+
+Mas nem todo mundo está pronto para (ou mesmo quer) ter essa responsabilidade.
+Então vamos olhar as alternativas.
+
+## Threads
+ 
 <!-- TODO Falar sobre Meta -->
 <!-- TODO Falar sobre a federação ActivityPub -->
 <!-- TODO Falar da importância de ter uma instância comercial -->
 
-BlueSky
----
+## BlueSky
+
 <!-- TODO Falar sobre Jack Dorsey -->
 <!-- TODO Falar sobre AT Protocol -->
 <!-- TODO Falar sobre os algoritmos como Plugin -->
 
-Conclusão
----
+## Conclusão
 
 [cnet01]: https://www.wired.com/story/the-man-behind-mastodon-eugen-rochko-built-it-for-this-moment/
 [wired01]: https://www.wired.com/story/the-man-behind-mastodon-eugen-rochko-built-it-for-this-moment/
+[masto01]: https://joinmastodon.org/
