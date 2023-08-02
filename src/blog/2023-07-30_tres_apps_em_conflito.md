@@ -50,11 +50,12 @@ que eu to usando.
 
 ## Mastodon
 
-Ah, [Mastodon][masto01]. Das três, a plataforma mais madura em questão de funcionalidades.
-O que é bem claro, dado que já tá por aí desde 2016. Seu criador, Eugen Rochko,
-é bem vocal em dizer qual o objetivo da rede: não ser um serviço comercial. Em
-uma entrevista com a [Wired][wired01], Eugen sugere que algo tão importante como
-comunicação não deveria estar à mercê de interesses comerciais ou de um CEO.
+Ah, [Mastodon][masto01]. Das três, a plataforma mais madura em questão de
+funcionalidades. O que é bem claro, dado que já tá por aí desde 2016. Seu
+criador, Eugen Rochko, é bem vocal em dizer qual o objetivo da rede: não ser um
+serviço comercial. Em uma entrevista com a [Wired][wired01], Eugen sugere que
+algo tão importante como comunicação não deveria estar à mercê de interesses
+comerciais ou de um CEO.
 
 Será que ele já sabia de algo naquela época? Mas divago.
 
@@ -70,27 +71,91 @@ usuario.
 Mas aí vem a grande quebra de paradigma do Mastodon: como não existe uma gigante
 da tecnologia controlando um único servidor, o papel de moderação de conteúdo é
 entregue nas mãos do próprio usuário. Desde a escolha de uma "instancia"
-(servidor) com as regras de conteúdo e equipe de moderação que te agrade, até
-saber lidar um usuário específico que tá te enchendo o saco, você é o
-responsável, você tem o poder de escolher como interagir com a rede.
+(servidor) com as regras de conteúdo e equipe de moderação que te agrade,
+procurar perfis para seguir, até saber lidar um usuário específico que tá te
+enchendo o saco, você é o responsável, você tem o poder de escolher como
+interagir com a rede.
 
 Mas nem todo mundo está pronto para (ou mesmo quer) ter essa responsabilidade.
 Então vamos olhar as alternativas.
 
 ## Threads
- 
-<!-- TODO Falar sobre Meta -->
-<!-- TODO Falar sobre a federação ActivityPub -->
-<!-- TODO Falar da importância de ter uma instância comercial -->
+
+Ao contrário do Mastodon, o [Threads][insta01] é o mais novo dos três que eu vou
+comentar nesse texto. Ainda tem muita funcionalidade faltando, que muitos
+considerariam como "básica" para uma rede social. Mas, se formos acreditar nas
+palavras de seu criador, [ainda tem muita lenha pra queimar][verge01]. A questão
+é que o Threads é "um app Instagram", feito pela mesma equipe que o Instagram,
+financiada pela mesma empresa que o Facebook, Meta.
+
+E esse pedigree trás muita bagagem.
+
+Se tem alguma empresa que consegue rivalizar com o Twitter no mercado de redes
+sociais, é a Meta. Seja em questão de sucesso, seja em controvérsias
+([Cambridge Analytica][bbc01] é só uma delas). O fato é que o Zuck tem
+experiência e calos para gerenciar uma rede social. E dinheiro pra isso.
+
+Assim, Threads se foca no que o Facebook, seu "[irmão mais velho][wiki01]", sabe
+fazer bem: recomendação. Chega a ser assustador como basta seguir algumas
+pessoas para o Threads popular a timeline com conteúdos parecidos. Parece até
+que sabe quem eu sou fora do próprio app.
+
+E é isso o que quer trazer para o ecossistema do Mastodon. Sim, o protocolo de
+federação que o Threads pretende usar é o mesmo que o Mastodon (e
+[nem todo mundo][wired02] tá feliz com isso).
+
+Eu pessoalmente vejo como uma coisa boa, um servidor comercial tem força para
+trazer usuários comerciais, o que, por sua vez, pode trazer investimento na
+tecnologia. Mas acho que isso vai significar que usuários que estejam
+preocupados com seus dados aparecerem no radar do Meta vão migrar para
+instâncias que não conectam como Threads, enquanto usuários que não tem essa
+preocupação vão ficar em instâncias que se conectam, e as pessoas que **querem**
+esse a facilidade de um algoritmo de recomendação vão diretamente para o
+Threads.
+
+Poder para o usuário, não é mesmo?
 
 ## BlueSky
 
-<!-- TODO Falar sobre Jack Dorsey -->
-<!-- TODO Falar sobre AT Protocol -->
-<!-- TODO Falar sobre os algoritmos como Plugin -->
+E não é só o Zuck que tem experiência com redes sociais. Outro que tá colocando
+ficha na mesa das redes sociais federadas é Jack Dorsey, fundador e antigo
+cabeça do Twitter, com o seu novo app [BlueSky][bsky01].
+
+Desde 2020, Dorsey tem trabalhado na visão de federação dele, com foco em
+[portabilidade de contas][at01], o BlueSky é a rede que está botando esse
+protocolo à prova. Mas sinceramente só vamos saber se isso vai funcionar após
+termos outro servidor além do "oficial".
+
+Mas se a federação não tá funcionando, qual o diferencial dessa rede? Timelines,
+ou melhor, escolha de timelines. O BlueSky é o primeiro app que eu conheço que
+permite que você crie, distribua, e utilize o [seu próprio algoritmo][bsky02] de
+ordenação de postagens.
+
+Dito isso, a meu ver o serviço em si não tem muito mais o que mostrar. O app é
+simples, apesar de perfeitamente funcional, o conteúdo não é tão abundante
+quanto nas outras alternativas (talvez pelo cadastro limitado a convites, por
+enquanto), sem falar nos problemas com [moderação][tech01].
 
 ## Conclusão
 
-[cnet01]: https://www.wired.com/story/the-man-behind-mastodon-eugen-rochko-built-it-for-this-moment/
+Acho que o elenco para a próxima temporada da internet tá se formando, e o
+elenco já sabe qual o papel deles nessa saga. Gestão de dados, públicos e
+privados, vai ser chave na internet, com todas as legislações botando em cheque
+o modelo atual.
+
+Mastodon, e seu ecossistema, segue como um bastião da privacidade e no combate a grandes empresas.
+ BlueSky vai no extremo oposto no quesito privacidade, mas foca em unificar a identidade do usuário através da rede. Enquanto Threads segue no meio termo, apostando 
+na base de usuários consolidada.
+
+[at01]: https://atproto.com/guides/faq#why-not-use-activitypub
+[bbc01]: https://www.bbc.com/portuguese/internacional-43461751
+[bsky01]: https://bsky.app
+[bsky02]: https://blueskyweb.xyz/blog/7-27-2023-custom-feeds
+[cnet01]: https://www.cnet.com/news/social-media/i-want-to-like-mastodon-the-decentralized-network-isnt-making-that-easy/
+[insta01]: https://www.threads.net
+[masto01]: https://joinmastodon.org
+[tech01]: https://techcrunch.com/2023/07/17/bluesky-racial-slurs-banned-list-usernames/
+[verge01]: https://www.theverge.com/2023/7/5/23784870/instagram-threads-adam-mosseri-interview-twitter-competitor
+[wiki01]: https://pt.wikipedia.org/wiki/1984_(livro) "Big Brother"
 [wired01]: https://www.wired.com/story/the-man-behind-mastodon-eugen-rochko-built-it-for-this-moment/
-[masto01]: https://joinmastodon.org/
+[wired02]: https://www.wired.com/story/metas-threads-could-make-or-break-the-fediverse/
