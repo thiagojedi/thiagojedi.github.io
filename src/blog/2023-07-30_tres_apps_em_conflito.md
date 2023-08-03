@@ -63,7 +63,7 @@ A questão é que devido a esse foco, uma das coisas que me chamou mais a atenç
 no Mastodon foram as ferramentas de privacidade de conteúdo. Em cada postagem
 que você escreve no Mastodon você pode configurar o grau de privacidade, por
 exemplo, se vai aparecer nas timelines públicas ou só para quem te segue, se a
-imagem é sensivel ou não, ou mesmo colocar um aviso de conteúdo se o conteúdo do
+imagem é sensivel ou não, ou mesmo colocar um aviso de conteúdo se o teor do
 texto é de alguma forma "complicado" como política, futebol, ou pior: spoilers.
 Além disso, há diversos graus de "bloqueio" disponíveis ao nível do próprio
 usuario.
@@ -136,16 +136,22 @@ simples, apesar de perfeitamente funcional, o conteúdo não é tão abundante
 quanto nas outras alternativas (talvez pelo cadastro limitado a convites, por
 enquanto), sem falar nos problemas com [moderação][tech01].
 
-## Conclusão
+## Impasse Mexicano
 
 Acho que o elenco para a próxima temporada da internet tá se formando, e o
 elenco já sabe qual o papel deles nessa saga. Gestão de dados, públicos e
 privados, vai ser chave na internet, com todas as legislações botando em cheque
 o modelo atual.
 
-Mastodon, e seu ecossistema, segue como um bastião da privacidade e no combate a grandes empresas.
- BlueSky vai no extremo oposto no quesito privacidade, mas foca em unificar a identidade do usuário através da rede. Enquanto Threads segue no meio termo, apostando 
-na base de usuários consolidada.
+Mastodon, segue sendo fazendo o **bom**, junto com seu ecossistema que preza
+pela privacidade e pelo combate a grandes empresas. Como ele vai reagir quando
+uma dos que ele considera um **vilão** entrar na sua federação através do
+Threads?
+
+E o BlueSky, o patinho **feio** dessa história? Vai conseguir vender sua própria
+federação e sua tecnologia nesse novo ambiente que é a internet atual?
+
+Mal posso esperar pelos próximos capítulos.
 
 [at01]: https://atproto.com/guides/faq#why-not-use-activitypub
 [bbc01]: https://www.bbc.com/portuguese/internacional-43461751
