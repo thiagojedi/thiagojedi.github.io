@@ -46,7 +46,7 @@ Por isso acho que, por mais que você ache esse conceito [difícil][cnet01], é
 algo que provavelmente vamos ter que lidar a partir de agora.
 
 Tirando isso do caminho, gostaria de dar minha opinião sobre cada uma das redes
-que eu to usando.
+que eu estou usando.
 
 ## Mastodon
 
