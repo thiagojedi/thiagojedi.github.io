@@ -33,7 +33,7 @@ Tem uma característica que as três redes sociais têm em comum: todas elas vã
 ou já estão, dentro de algum modelo de federação. E isso pra mim é a parte mais
 empolgante desse novo momento da internet.
 
-Têm vários artigos pela internet falando sobre "federação", mas parece que é
+Há vários artigos pela internet falando sobre "federação", mas parece que é
 obrigatório fazer alguma definição quando vamos falar sobre o tema. A meu ver, a
 parte importante do modelo de federação é a possibilidade de escolher o seu
 próprio provedor de serviços. Assim como você pode escolher o seu provedor de
