@@ -15,7 +15,8 @@ import "npm:prismjs@1.29.0/components/prism-sql.js";
 const site = lume({
   location: new URL("https://thiagojedi.github.io"),
   src: "./src/",
-}).ignore("helpers", "services", "types")
+})
+  .ignore("helpers", "services", "types")
   .loadAssets([".css"])
   .copy("assets", ".");
 
