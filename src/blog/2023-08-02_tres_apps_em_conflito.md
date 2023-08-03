@@ -1,5 +1,4 @@
 ---
-draft: true
 image: /images/newspapersinsubway.jpg
 metas:
   title: Três Apps em Conflito
