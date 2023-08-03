@@ -29,18 +29,18 @@ Twitter, mas que não queriam usar o Twitter por um motivo ou outro. E é
 interessante ver o que eles têm a propor e como eles abordam o "problema" que é
 uma rede social baseada em microblogging.
 
-Tem uma característica que as três redes sociais têm em comum: todas elas vão,
-ou já estão, dentro de algum modelo de federação. E isso pra mim é a parte mais
-empolgante desse novo momento da internet.
+Tem uma característica que as três redes sociais têm em comum: todas elas vão
+estar, ou já estão, dentro de algum modelo de federação. E isso pra mim é a
+parte mais empolgante desse novo momento da internet.
 
 Há vários artigos pela internet falando sobre "federação", mas parece que é
 obrigatório fazer alguma definição quando vamos falar sobre o tema. A meu ver, a
 parte importante do modelo de federação é a possibilidade de escolher o seu
 próprio provedor de serviços. Assim como você pode escolher o seu provedor de
 internet, qual empresa vai prover sua linha telefônica, ou se seu e-mail vai ser
-Hotmail, Gmail, Yahoo, etc. Enfim, numa federação de redes sociais, em teoria,
-você pode se cadastrar em um provedor e interagir com todos os outros da mesma
-federação.
+Hotmail, Gmail, Yahoo, etc. Enfim, dentro de uma federação de redes sociais, em
+teoria, você pode se cadastrar em um provedor e interagir com todos os outros da
+mesma federação.
 
 Por isso acho que, por mais que você ache esse conceito [difícil][cnet01], é
 algo que provavelmente vamos ter que lidar a partir de agora.
@@ -70,10 +70,10 @@ usuario.
 
 Mas aí vem a grande quebra de paradigma do Mastodon: como não existe uma gigante
 da tecnologia controlando um único servidor, o papel de moderação de conteúdo é
-entregue nas mãos do próprio usuário. Desde a escolha de uma "instancia"
+entregue nas mãos do próprio usuário. Desde a escolha de uma "instância"
 (servidor) com as regras de conteúdo e equipe de moderação que te agrade,
 procurar perfis para seguir, até saber lidar um usuário específico que tá te
-enchendo o saco, você é o responsável, você tem o poder de escolher como
+enchendo o saco... Você é o responsável, você tem o poder de escolher como
 interagir com a rede.
 
 Mas nem todo mundo está pronto para (ou mesmo quer) ter essa responsabilidade.
@@ -108,21 +108,20 @@ Eu pessoalmente vejo como uma coisa boa, um servidor comercial tem força para
 trazer usuários comerciais, o que, por sua vez, pode trazer investimento na
 tecnologia. Mas acho que isso vai significar que usuários que estejam
 preocupados com seus dados aparecerem no radar do Meta vão migrar para
-instâncias que não conectam como Threads, enquanto usuários que não tem essa
+instâncias que não conectam com o Threads, enquanto usuários que não tem essa
 preocupação vão ficar em instâncias que se conectam, e as pessoas que **querem**
-esse a facilidade de um algoritmo de recomendação vão diretamente para o
-Threads.
+a facilidade de um algoritmo de recomendação vão diretamente para o Threads.
 
 Poder para o usuário, não é mesmo?
 
 ## BlueSky
 
 E não é só o Zuck que tem experiência com redes sociais. Outro que tá colocando
-ficha na mesa das redes sociais federadas é Jack Dorsey, fundador e antigo
+fichas na mesa das redes sociais federadas é Jack Dorsey, fundador e antigo
 cabeça do Twitter, com o seu novo app [BlueSky][bsky01].
 
 Desde 2020, Dorsey tem trabalhado na visão de federação dele, com foco em
-[portabilidade de contas][at01], o BlueSky é a rede que está botando esse
+[portabilidade de contas][at01], e o BlueSky é a rede que está botando esse
 protocolo à prova. Mas sinceramente só vamos saber se isso vai funcionar após
 termos outro servidor além do "oficial".
 
@@ -138,15 +137,15 @@ enquanto), sem falar nos problemas com [moderação][tech01].
 
 ## Impasse Mexicano
 
-Acho que o elenco para a próxima temporada da internet tá se formando, e o
-elenco já sabe qual o papel deles nessa saga. Gestão de dados, públicos e
-privados, vai ser chave na internet, com todas as legislações botando em cheque
-o modelo atual.
+Acho que a próxima temporada da internet tá se formando, e o elenco já sabe qual
+o papel deles nessa saga. Gestão de dados, públicos e privados, vai ser chave na
+internet, com todas as novas legislações botando em cheque o modelo atual.
 
 Mastodon, segue sendo fazendo o **bom**, junto com seu ecossistema que preza
-pela privacidade e pelo combate a grandes empresas. Como ele vai reagir quando
-uma dos que ele considera um **vilão** entrar na sua federação através do
-Threads?
+pela privacidade e pelo combate a grandes empresas.
+
+Como ele vai reagir quando um dos que ele considera um **vilão** entrar na sua
+federação através do Threads?
 
 E o BlueSky, o patinho **feio** dessa história? Vai conseguir vender sua própria
 federação e sua tecnologia nesse novo ambiente que é a internet atual?
