@@ -95,9 +95,11 @@ aside {
 }
 
 aside img {
-  margin: var(--basic-spacing) 0;
+  display: block;
+  margin: var(--basic-spacing) auto;
   border-radius: 50%;
-  max-width: 100%;
+  width: 100%;
+  max-width: 212px;
 }
 
 footer {
