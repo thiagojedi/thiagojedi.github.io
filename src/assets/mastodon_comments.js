@@ -12,252 +12,205 @@
   Released under the terms of the MIT license.
 */
 
+function h(tag, attributes, ...args) {
+  return { tag, attributes, children: args.length ? [...args] : null };
+}
+
 /**
  * Renders an object into a html element
- * @param {{tag: string, attributes?: object, children?: object[]} | string} component
+ * @param {{tag: string, attributes?: object, children?: object[]} | string| HTMLElement} component
  */
 function render(component) {
-    if (typeof component === "string") {
-        return document.createTextNode(component);
-    } else {
-        const element = document.createElement(component.tag);
+  if (component.appendChild) {
+    return component;
+  }
+  if (typeof component === "string") {
+    return document.createTextNode(component);
+  } else {
+    const element = document.createElement(component.tag);
 
-        Object.entries(component.attributes || {}).forEach(([k, v]) => element.setAttribute(k, v));
+    Object.entries(component.attributes || {}).forEach(([k, v]) =>
+      element[k] = v
+    );
 
-        (component.children || []).forEach((child) => element.appendChild(render(child)));
+    (component.children || []).forEach((child) =>
+      element.appendChild(render(child))
+    );
 
-        return element
-    }
+    return element;
+  }
 }
 
 function formatIsoDate(isoDate) {
-    return new Date(
-        Date.UTC(
-            parseInt(isoDate.slice(0, 4), 10),
-            parseInt(isoDate.slice(5, 7), 10) - 1,
-            parseInt(isoDate.slice(8, 10), 10),
-            parseInt(isoDate.slice(11, 13), 10),
-            parseInt(isoDate.slice(14, 16), 10),
-            parseInt(isoDate.slice(17, 19), 10),
-        ),
-    ).toLocaleDateString(undefined, {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-    });
+  return new Date(
+    Date.UTC(
+      parseInt(isoDate.slice(0, 4), 10),
+      parseInt(isoDate.slice(5, 7), 10) - 1,
+      parseInt(isoDate.slice(8, 10), 10),
+      parseInt(isoDate.slice(11, 13), 10),
+      parseInt(isoDate.slice(14, 16), 10),
+      parseInt(isoDate.slice(17, 19), 10),
+    ),
+  ).toLocaleDateString(undefined, {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+  });
 }
 
 function formatEmojis(emojis, element) {
-    emojis.forEach(({shortcode, static_url, url}) => {
-        element.innerHTML = element.innerHTML.replace(
-            `:${shortcode}:`,
-            `<picture><source srcset="${url}" media="(prefers-reduced-motion: no-preference)"><img src="${static_url}" alt=":${shortcode}:" title=":${shortcode}:"></picture>`,
-        );
-    });
+  emojis.forEach(({ shortcode, static_url, url }) => {
+    element.innerHTML = element.innerHTML.replace(
+      `:${shortcode}:`,
+      `<picture><source srcset="${url}" media="(prefers-reduced-motion: no-preference)"><img src="${static_url}" alt=":${shortcode}:" title=":${shortcode}:"></picture>`,
+    );
+  });
 }
 
-function renderComment(comment) {
+function renderComment(comment, firstMentionFilter) {
+  const avatar = h("img", {
+    src: comment.account.avatar_static,
+    alt: `${comment.account.display_name}'s avatar`,
+  });
 
-    const avatar = {
-        tag: 'img',
-        attributes: {
-            src: comment.account.avatar_static,
-            alt: `${comment.account.display_name}'s avatar`
-        }
+  let account = comment.account.acct;
+  if (account.indexOf("@") === -1) {
+    account = account + "@" + new URL(comment.account.url).hostname;
+  }
+
+  const displayName = h("h3", {
+    innerHTML: `${comment.account.display_name}&nbsp;@${account}`,
+  });
+
+  const time = h(
+    "time",
+    { datetime: comment.created_at },
+    formatIsoDate(comment.created_at),
+  );
+
+  const link = h("a", { href: comment.url }, time);
+
+  const header = h("header", undefined, avatar, displayName, link);
+
+  const content = h("div", { innerHTML: comment.content });
+
+  const article = h("article", undefined, header, content);
+
+  const articleElement = render(article);
+
+  firstMentionFilter.forEach((mention) => {
+    const element = articleElement.querySelector(`.mention[href='${mention}']`);
+    if (element) {
+      element.remove();
     }
+  });
 
-    let account = comment.account.acct;
-    if (account.indexOf("@") === -1) {
-        account = account + "@" + new URL(comment.account.url).hostname;
-    }
+  // formatEmojis([...comment.emojis, ...comment.account.emojis], articleElement);
 
-    const displayName = {
-        tag: "h3",
-        children: [
-            comment.account.display_name,
-            "&nbsp;",
-            `@${account}`
-        ]
-    }
-    
-
-    const time = {
-        tag: "time",
-        attributes: {datetime: comment.created_at}, children: [
-            formatIsoDate(comment.created_at)
-        ]
-    };
-    const link = {
-        tag: "a", attributes: {href: comment.url}, children: [
-            time
-        ]
-    }
-
-    const header = {
-        tag: "header",
-        children: [
-            avatar,
-            displayName,
-            link
-        ]
-    }
-
-
-    
-    // if (comment.edited_at) {
-    //     const edited = document.createElement("time");
-    //     edited.innerText = "*";
-    //     edited.setAttribute(
-    //         "title",
-    //         "Last edited: " + formatIsoDate(comment.edited_at),
-    //     );
-    //     edited.setAttribute("datetime", comment.edited_at);
-    //     time.innerHTML += "&nbsp;";
-    //     time.appendChild(edited);
-    // }
-    
-    const content = {
-        tag: "div",
-        children: [
-            comment.content,
-        ]
-    }
-    
-    const article = {
-        tag: "article",
-        children: [
-            header,
-            content,
-        ]
-    }
-
-
-    return article;
+  return articleElement;
 }
 
-function renderComments(comments) {
-    
-    const result = {
-        tag: 'ul',
-        children: comments.map(comment => {
-            return {tag: 'li', children: [renderComment(comment)]}
-        })
-    }
-    
-    // comments.sort((a, b) => a.created_at > b.created_at);
-    // const result = document.createElement("ul");
-    //
-    // for (let i = 0; i < comments.length; i++) {
-    //     const container = document.createElement("li");
-    //     container.appendChild(renderComment(comments[i], firstMentionFilter));
-    //     if (comments[i].children.length > 0) {
-    //         container.appendChild(
-    //             renderComments(comments[i].children, [
-    //                 comments[i].account.url,
-    //             ]),
-    //         );
-    //     }
-    //     result.appendChild(container);
-    // }
-    return result;
+function renderComments(comments, mentionFilter) {
+  return h(
+    "ul",
+    undefined,
+    ...comments.map((comment) =>
+      h(
+        "li",
+        undefined,
+        renderComment(comment, mentionFilter),
+        renderComments(comment.children, [comment.account.url]),
+      )
+    ),
+  );
 }
 
 function showComments(comments) {
-    const commentsElem = document.querySelector("section#comments");
+  const commentsElem = document.querySelector("section#comments");
 
-    commentsElem.querySelector(".placeholder").remove();
+  let commentList;
+  if (comments.length === 0) {
+    commentList = h("p", undefined, "No comments so far");
+  } else {
+    // List of mentions that should be stripped if a top-level comment starts with one of them.
+    // Insert your fedi ID here!
+    const defaultInitialMentionFilter = ["https://cuscuz.in/@jedi"];
 
-    if (comments.length === 0) {
-        const noComments = render({tag: "p", attributes: {}, children: "No comments so far"});
-        commentsElem.appendChild(noComments)
-        return;
-    }
-    
-    const commentList = renderComments(comments)
-    commentsElem.appendChild(render(commentList));
-    //
-    // // List of mentions that should be stripped if a top-level comment starts with one of them.
-    // // Insert your fedi ID here!
-    // const defaultInitialMentionFilter = ["https://cuscuz.in/@jedi"];
-    // renderComments(comments, defaultInitialMentionFilter);
+    commentList = renderComments(comments, defaultInitialMentionFilter);
+  }
+
+  commentsElem.appendChild(render(commentList));
 }
 
 /** @type {Map<string,any>} */
 const tempMap = new Map();
 
 async function loadComments(url) {
-    const rootId = url.split("/")[6];
+  const rootId = url.split("/")[6];
 
-    const response = await fetch(url);
-    const data = await response.json();
+  const response = await fetch(url);
+  const data = await response.json();
 
-    /** @type {Array<{in_reply_to_id: string, visibility: string}>} */
-    const descendants = data.descendants;
+  /** @type {Array<{in_reply_to_id: string, visibility: string}>} */
+  const descendants = data.descendants;
 
-    if (Array.isArray(descendants) === false) {
-        return [];
-    }
+  if (Array.isArray(descendants) === false) {
+    return [];
+  }
 
-    return descendants.filter((comment) => comment.visibility === "public")
-        .map((comment) => ({...comment, children: []}))
-        .filter((comment) => {
-            const parent = tempMap.get(comment.in_reply_to_id);
-            if (parent) {
-                parent.children.push(comment);
-            }
-            tempMap.set(comment.id, comment);
-            return comment.in_reply_to_id === rootId;
-        });
+  return descendants.filter((comment) => comment.visibility === "public")
+    .map((comment) => ({ ...comment, children: [] }))
+    .filter((comment) => {
+      const parent = tempMap.get(comment.in_reply_to_id);
+      if (parent) {
+        parent.children.push(comment);
+      }
+      tempMap.set(comment.id, comment);
+      return comment.in_reply_to_id === rootId;
+    });
 }
 
 const urlRegex = /\/@\w+\/(\d+)$/;
 
 async function initComments() {
-    const commentsElem = document.querySelector("section#comments");
-    if (!commentsElem) {
-        return;
-    }
-    // const placeholder = document.createElement("p");
-    // placeholder.classList.add("placeholder");
-    // placeholder.innerText = "Loading...";
+  const commentsElem = document.querySelector("section#comments");
+  if (!commentsElem) {
+    return;
+  }
 
-    const placeholder = render({
-        tag: "p",
-        attributes: {class: "placeholder"},
-        children: ["Loading..."],
-    });
-    
-    commentsElem.appendChild(placeholder);
+  const placeholder = render(
+    h("p", { className: "placeholder" }, "Loading..."),
+  );
 
-    // commentsElem.appendChild(placeholder);
+  commentsElem.appendChild(placeholder);
 
-    const commentsUrl = commentsElem.dataset.url;
+  const commentsUrl = commentsElem.dataset.url;
+  const urlParts = urlRegex.exec(commentsUrl);
 
-    const urlParts = urlRegex.exec(commentsUrl);
+  let comments;
+  try {
+    const commentContext = commentsUrl.replace(
+      urlRegex,
+      `/api/v1/statuses/${urlParts[1]}/context`,
+    );
+    comments = await loadComments(commentContext);
 
-    let comments;
-    try {
-        const commentContext = commentsUrl.replace(
-            urlRegex,
-            `/api/v1/statuses/${urlParts[1]}/context`,
-        );
-        comments = await loadComments(commentContext);
+    placeholder.remove();
+  } catch (err) {
+    console.error(err);
+    document.querySelector("section#comments .placeholder").innerText =
+      "Could not load comments because of: " + err.message;
+  }
 
-    } catch (err) {
-        console.error(err);
-        document.querySelector("section#comments .placeholder").innerText =
-            "Could not load comments because of: " + err.message;
-    }
-
-    if (comments) {
-        showComments(comments);
-    }
+  if (comments) {
+    showComments(comments);
+  }
 }
 
 if ("loading" === document.readyState) {
-    document.addEventListener("DOMContentLoaded", initComments);
+  document.addEventListener("DOMContentLoaded", initComments);
 } else {
-    initComments();
+  initComments();
 }
