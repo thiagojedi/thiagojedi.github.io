@@ -33,11 +33,12 @@ async function initComments() {
 
   try {
     const idRegex = /\/@\w+\/(\d+)$/;
-    const commentContext = wrapper.dataset.url.replace(
-      idRegex,
-      `/api/v1/statuses/$1/context`,
-    );
-    const comments = await loadComments(commentContext);
+
+    const url = wrapper.dataset.url;
+    const postId = idRegex.exec(url)[1];
+    const commentContext = url.replace(idRegex, `/api/v1/statuses/$1/context`);
+
+    const comments = await loadComments(commentContext, postId);
     const commentsList = render(
       comments.length === 0
         ? h("p", undefined, "No comments so far")
@@ -46,13 +47,12 @@ async function initComments() {
     placeholder.replaceWith(commentsList);
   } catch (err) {
     console.error(err);
-    placeholder.innerText = `Could not load comments because of: ${err.message}`;
+    placeholder.innerText =
+      `Could not load comments because of: ${err.message}`;
   }
 }
 
-async function loadComments(url) {
-  const rootId = url.split("/")[6];
-
+async function loadComments(url, postId) {
   /** @type {{descendants: Array<{in_reply_to_id: string, visibility: string}>}} */
   const context = await fetch(url).then((response) => response.json());
 
@@ -71,7 +71,7 @@ async function loadComments(url) {
         parent.children.push(comment);
       }
       tempMap.set(comment.id, comment);
-      return comment.in_reply_to_id === rootId;
+      return comment.in_reply_to_id === postId;
     });
 }
 
@@ -183,7 +183,7 @@ function ReplyList(comments, mentionFilter) {
         undefined,
         formatComment(comment, mentionFilter),
         ReplyList(comment.children, [comment.account.url]),
-      ),
+      )
     ),
   );
 }
