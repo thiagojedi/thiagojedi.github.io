@@ -82,22 +82,6 @@ const CommentList: FC<Props> = (
             </p>
           )}
       </noscript>
-      <template>
-        <article>
-          <header>
-            <img />
-
-            <h3 />
-
-            <small>
-              <a>
-                <time></time>
-              </a>
-            </small>
-          </header>
-          <div />
-        </article>
-      </template>
     </section>
   );
 };
