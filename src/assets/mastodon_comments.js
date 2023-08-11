@@ -12,6 +12,77 @@
   Released under the terms of the MIT license.
 */
 
+// List of mentions that should be stripped if a top-level comment starts with one of them.
+// Insert your fedi ID here!
+const defaultInitialMentionFilter = ["https://cuscuz.in/@jedi"];
+
+if ("loading" === document.readyState) {
+  document.addEventListener("DOMContentLoaded", initComments);
+} else {
+  initComments();
+}
+
+async function initComments() {
+  const wrapper = document.querySelector("section#comments");
+  if (!wrapper) {
+    return;
+  }
+
+  const placeholder = render(Placeholder());
+  wrapper.appendChild(placeholder);
+
+  try {
+    const idRegex = /\/@\w+\/(\d+)$/;
+    const commentContext = wrapper.dataset.url.replace(
+      idRegex,
+      `/api/v1/statuses/$1/context`,
+    );
+    const comments = await loadComments(commentContext);
+    const commentsList = render(
+      comments.length === 0
+        ? h("p", undefined, "No comments so far")
+        : ReplyList(comments, defaultInitialMentionFilter),
+    );
+    placeholder.replaceWith(commentsList);
+  } catch (err) {
+    console.error(err);
+    placeholder.innerText = `Could not load comments because of: ${err.message}`;
+  }
+}
+
+async function loadComments(url) {
+  const rootId = url.split("/")[6];
+
+  /** @type {{descendants: Array<{in_reply_to_id: string, visibility: string}>}} */
+  const context = await fetch(url).then((response) => response.json());
+
+  if (Array.isArray(context.descendants) === false) {
+    return [];
+  }
+
+  /** @type {Map<string,any>} */
+  const tempMap = new Map();
+  return context.descendants
+    .filter((comment) => comment.visibility === "public")
+    .map((comment) => ({ ...comment, children: [] }))
+    .filter((comment) => {
+      const parent = tempMap.get(comment.in_reply_to_id);
+      if (parent) {
+        parent.children.push(comment);
+      }
+      tempMap.set(comment.id, comment);
+      return comment.in_reply_to_id === rootId;
+    });
+}
+
+//#region Hypescript
+
+/**
+ * @param {string} tag Name of the HTML tag
+ * @param {object|undefined} attributes Html attributes to be added to final element
+ * @param {any} [args] Children elements
+ * @returns {{tag: string, attributes?: object, children: any[]|null}} Tree representation of an element
+ */
 function h(tag, attributes, ...args) {
   return { tag, attributes, children: args.length ? [...args] : null };
 }
@@ -19,9 +90,11 @@ function h(tag, attributes, ...args) {
 /**
  * Renders an object into a html element
  * @param {{tag: string, attributes?: object, children?: object[]} | string| HTMLElement} component
+ * @returns {Text | HTMLElement} an DOM node to be added to the page
  */
 function render(component) {
   if (component.appendChild) {
+    // Component already rendered. Do nothing with it.
     return component;
   }
   if (typeof component === "string") {
@@ -43,17 +116,88 @@ function render(component) {
   }
 }
 
-function formatIsoDate(isoDate) {
-  return new Date(
-    Date.UTC(
-      parseInt(isoDate.slice(0, 4), 10),
-      parseInt(isoDate.slice(5, 7), 10) - 1,
-      parseInt(isoDate.slice(8, 10), 10),
-      parseInt(isoDate.slice(11, 13), 10),
-      parseInt(isoDate.slice(14, 16), 10),
-      parseInt(isoDate.slice(17, 19), 10),
+//#endregion
+
+//#region Components
+
+function Placeholder() {
+  return h("p", undefined, "Loading...");
+}
+
+function Avatar({ avatar_static, display_name }) {
+  return h("img", {
+    src: avatar_static,
+    alt: display_name.replace(/:.+?:/g, "").trim() + "'s avatar",
+  });
+}
+
+function UserInfo({ url, acct, display_name, emojis }) {
+  let account = acct;
+  if (account.indexOf("@") === -1) {
+    account = account + "@" + new URL(url).hostname;
+  }
+  return h("h3", {
+    innerHTML: `${formatEmojisOnText(emojis, display_name)}&nbsp;@${account}`,
+  });
+}
+
+function Timestamp({ created_at, edited_at, url }) {
+  return h(
+    "a",
+    { href: url },
+    h("time", { dateTime: created_at }, formatIsoDate(created_at)),
+    edited_at &&
+      h(
+        "time",
+        {
+          title: "Last edited: " + formatIsoDate(edited_at),
+          dateTime: edited_at,
+        },
+        "*",
+      ),
+  );
+}
+
+function Article(comment) {
+  return h(
+    "article",
+    undefined,
+    h(
+      "header",
+      undefined,
+      Avatar(comment.account),
+      UserInfo(comment.account),
+      Timestamp(comment),
     ),
-  ).toLocaleDateString(undefined, {
+    h("p", { innerHTML: formatEmojisOnText(comment.emojis, comment.content) }),
+  );
+}
+
+function ReplyList(comments, mentionFilter) {
+  return h(
+    "ul",
+    undefined,
+    ...comments.map((comment) =>
+      h(
+        "li",
+        undefined,
+        formatComment(comment, mentionFilter),
+        ReplyList(comment.children, [comment.account.url]),
+      ),
+    ),
+  );
+}
+
+//#endregion
+
+//#region Formatters
+
+/**
+ * @param {string} isoDate Date in ISO format to be parsed
+ * @returns {string} Formatted string
+ */
+function formatIsoDate(isoDate) {
+  return new Date(isoDate).toLocaleDateString(undefined, {
     month: "short",
     day: "numeric",
     year: "numeric",
@@ -62,169 +206,39 @@ function formatIsoDate(isoDate) {
   });
 }
 
-function formatEmojis(emojis, element) {
-  emojis.forEach(({ shortcode, static_url, url }) => {
-    element.innerHTML = element.innerHTML.replace(
-      `:${shortcode}:`,
-      `<picture><source srcset="${url}" media="(prefers-reduced-motion: no-preference)"><img src="${static_url}" alt=":${shortcode}:" title=":${shortcode}:"></picture>`,
-    );
-  });
+/**
+ * Gets the comment custom emojis and display them as HTML
+ * @param {Array<{shortcode: string, static_url: string, url: string}>} emojis The list of emojis
+ * @param {string} text The raw string with emoji notation
+ * @return {string} A HTML string with the emojis as pictures
+ */
+function formatEmojisOnText(emojis, text) {
+  return emojis.reduce(
+    (acc, { shortcode, static_url, url }) =>
+      acc.replace(
+        new RegExp(`\\B:${shortcode}:\\B`),
+        `<picture><source srcset="${url}" media="(prefers-reduced-motion: no-preference)"><img src="${static_url}" alt=":${shortcode}:" title=":${shortcode}:"></picture>`,
+      ),
+    text,
+  );
 }
 
-function renderComment(comment, firstMentionFilter) {
-  const userDisplayName = comment.account.display_name;
-
-  const displayNameWithoutEmoji = userDisplayName.replace(/:.+?:/g, "").trim();
-
-  const avatar = h("img", {
-    src: comment.account.avatar_static,
-    alt: `${displayNameWithoutEmoji}'s avatar`,
-  });
-
-  let account = comment.account.acct;
-  if (account.indexOf("@") === -1) {
-    account = account + "@" + new URL(comment.account.url).hostname;
-  }
-
-  const displayName = h("h3", {
-    innerHTML: `${userDisplayName}&nbsp;@${account}`,
-  });
-
-  const time = h(
-    "time",
-    { dateTime: comment.created_at },
-    formatIsoDate(comment.created_at),
-    comment.edited_at &&
-      h(
-        "time",
-        {
-          title: "Last edited: " + formatIsoDate(comment.edited_at),
-          dateTime: comment.edited_at,
-        },
-        "*",
-      ),
-  );
-
-  const link = h("a", { href: comment.url }, time);
-
-  const header = h("header", undefined, avatar, displayName, link);
-
-  const content = h("p", { innerHTML: comment.content });
-
-  const article = h("article", undefined, header, content);
-
-  const articleElement = render(article);
+function formatComment(comment, firstMentionFilter) {
+  const articleElement = render(Article(comment));
 
   firstMentionFilter.forEach((mention) => {
-    const element = articleElement.querySelector(`.mention[href='${mention}']`);
+    const element = articleElement.querySelector(
+      `.mention[href='${mention}']:first-child`,
+    );
     if (element) {
       element.remove();
     }
   });
-
-  formatEmojis(
-    new Set([...comment.emojis, ...comment.account.emojis]),
-    articleElement,
-  );
+  articleElement
+    .querySelectorAll(".invisible")
+    .forEach((element) => element.remove());
 
   return articleElement;
 }
 
-function renderComments(comments, mentionFilter) {
-  return h(
-    "ul",
-    undefined,
-    ...comments.map((comment) =>
-      h(
-        "li",
-        undefined,
-        renderComment(comment, mentionFilter),
-        renderComments(comment.children, [comment.account.url]),
-      )
-    ),
-  );
-}
-
-function showComments(comments) {
-  const commentsElem = document.querySelector("section#comments");
-
-  let commentList;
-  if (comments.length === 0) {
-    commentList = h("p", undefined, "No comments so far");
-  } else {
-    // List of mentions that should be stripped if a top-level comment starts with one of them.
-    // Insert your fedi ID here!
-    const defaultInitialMentionFilter = ["https://cuscuz.in/@jedi"];
-
-    commentList = renderComments(comments, defaultInitialMentionFilter);
-  }
-
-  commentsElem.appendChild(render(commentList));
-}
-
-/** @type {Map<string,any>} */
-const tempMap = new Map();
-
-async function loadComments(url) {
-  const rootId = url.split("/")[6];
-
-  const response = await fetch(url);
-  const data = await response.json();
-
-  /** @type {Array<{in_reply_to_id: string, visibility: string}>} */
-  const descendants = data.descendants;
-
-  if (Array.isArray(descendants) === false) {
-    return [];
-  }
-
-  return descendants
-    .filter((comment) => comment.visibility === "public")
-    .map((comment) => ({ ...comment, children: [] }))
-    .filter((comment) => {
-      const parent = tempMap.get(comment.in_reply_to_id);
-      if (parent) {
-        parent.children.push(comment);
-      }
-      tempMap.set(comment.id, comment);
-      return comment.in_reply_to_id === rootId;
-    });
-}
-
-
-async function initComments() {
-  const commentsElem = document.querySelector("section#comments");
-  if (!commentsElem) {
-    return;
-  }
-
-  const placeholder = render(
-    h("p", { className: "placeholder" }, "Loading..."),
-  );
-
-  commentsElem.appendChild(placeholder);
-
-  let comments;
-  try {
-    const commentContext = commentsElem.dataset.url.replace(
-        /\/@\w+\/(\d+)$/,
-      `/api/v1/statuses/$1/context`,
-    );
-    comments = await loadComments(commentContext);
-  } catch (err) {
-    console.error(err);
-    placeholder.innerText =
-      `Could not load comments because of: ${err.message}`;
-  }
-
-  if (comments) {
-    placeholder.remove();
-    showComments(comments);
-  }
-}
-
-if ("loading" === document.readyState) {
-  document.addEventListener("DOMContentLoaded", initComments);
-} else {
-  initComments();
-}
+//#endregion
