@@ -13,6 +13,7 @@ const BlogLayout: FC<PostData> = ({
   return (
     <html lang={lang}>
       <BaseHead title={title}>
+        <link rel="stylesheet" href="/comments.css" />
         <link rel="stylesheet" href="/code-highlight.css" />
       </BaseHead>
       <body>
@@ -27,8 +28,7 @@ const BlogLayout: FC<PostData> = ({
             <li>
               <a href="/blog/">Blog</a>
             </li>
-            /
-            <li aria-current="page">Post</li>
+            /<li aria-current="page">Post</li>
           </ul>
         </nav>
 
