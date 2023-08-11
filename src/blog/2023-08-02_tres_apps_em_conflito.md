@@ -141,8 +141,8 @@ Acho que a próxima temporada da internet tá se formando, e o elenco já sabe q
 o papel deles nessa saga. Gestão de dados, públicos e privados, vai ser chave na
 internet, com todas as novas legislações botando em cheque o modelo atual.
 
-Mastodon, segue sendo fazendo o **bom**, junto com seu ecossistema que preza
-pela privacidade e pelo combate a grandes empresas.
+Mastodon, segue tentando fazer o papel do **bom moço**, junto com seu
+ecossistema que preza pela privacidade e pelo combate a grandes empresas.
 
 Como ele vai reagir quando um dos que ele considera um **vilão** entrar na sua
 federação através do Threads?
