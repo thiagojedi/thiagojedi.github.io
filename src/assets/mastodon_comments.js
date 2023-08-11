@@ -33,9 +33,12 @@ function render(component) {
       element[k] = v
     );
 
-    (component.children || []).forEach((child) =>
-      element.appendChild(render(child))
-    );
+    (component.children || [])
+      .forEach((child) => {
+        if (child !== null && typeof child !== "boolean") {
+          element.appendChild(render(child));
+        }
+      });
 
     return element;
   }
@@ -91,8 +94,16 @@ function renderComment(comment, firstMentionFilter) {
 
   const time = h(
     "time",
-    { datetime: comment.created_at },
+    { dateTime: comment.created_at },
     formatIsoDate(comment.created_at),
+    comment.edited_at && h(
+      "time",
+      {
+        title: "Last edited: " + formatIsoDate(comment.edited_at),
+        dateTime: comment.edited_at,
+      },
+      "*",
+    ),
   );
 
   const link = h("a", { href: comment.url }, time);
