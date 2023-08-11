@@ -29,16 +29,15 @@ function render(component) {
   } else {
     const element = document.createElement(component.tag);
 
-    Object.entries(component.attributes || {}).forEach(([k, v]) =>
-      element[k] = v
+    Object.entries(component.attributes || {}).forEach(
+      ([k, v]) => (element[k] = v),
     );
 
-    (component.children || [])
-      .forEach((child) => {
-        if (child !== null && typeof child !== "boolean") {
-          element.appendChild(render(child));
-        }
-      });
+    (component.children || []).forEach((child) => {
+      if (child !== null && typeof child !== "boolean") {
+        element.appendChild(render(child));
+      }
+    });
 
     return element;
   }
@@ -73,10 +72,9 @@ function formatEmojis(emojis, element) {
 }
 
 function renderComment(comment, firstMentionFilter) {
-  const displayNameWithoutEmoji = comment.account.display_name.replace(
-    /:.+?:/g,
-    "",
-  ).trim();
+  const userDisplayName = comment.account.display_name;
+
+  const displayNameWithoutEmoji = userDisplayName.replace(/:.+?:/g, "").trim();
 
   const avatar = h("img", {
     src: comment.account.avatar_static,
@@ -89,21 +87,22 @@ function renderComment(comment, firstMentionFilter) {
   }
 
   const displayName = h("h3", {
-    innerHTML: `${comment.account.display_name}&nbsp;@${account}`,
+    innerHTML: `${userDisplayName}&nbsp;@${account}`,
   });
 
   const time = h(
     "time",
     { dateTime: comment.created_at },
     formatIsoDate(comment.created_at),
-    comment.edited_at && h(
-      "time",
-      {
-        title: "Last edited: " + formatIsoDate(comment.edited_at),
-        dateTime: comment.edited_at,
-      },
-      "*",
-    ),
+    comment.edited_at &&
+      h(
+        "time",
+        {
+          title: "Last edited: " + formatIsoDate(comment.edited_at),
+          dateTime: comment.edited_at,
+        },
+        "*",
+      ),
   );
 
   const link = h("a", { href: comment.url }, time);
@@ -179,7 +178,8 @@ async function loadComments(url) {
     return [];
   }
 
-  return descendants.filter((comment) => comment.visibility === "public")
+  return descendants
+    .filter((comment) => comment.visibility === "public")
     .map((comment) => ({ ...comment, children: [] }))
     .filter((comment) => {
       const parent = tempMap.get(comment.in_reply_to_id);
