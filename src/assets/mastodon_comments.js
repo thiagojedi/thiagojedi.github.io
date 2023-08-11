@@ -70,9 +70,14 @@ function formatEmojis(emojis, element) {
 }
 
 function renderComment(comment, firstMentionFilter) {
+  const displayNameWithoutEmoji = comment.account.display_name.replace(
+    /:.+?:/g,
+    "",
+  ).trim();
+
   const avatar = h("img", {
     src: comment.account.avatar_static,
-    alt: `${comment.account.display_name}'s avatar`,
+    alt: `${displayNameWithoutEmoji}'s avatar`,
   });
 
   let account = comment.account.acct;
@@ -94,7 +99,7 @@ function renderComment(comment, firstMentionFilter) {
 
   const header = h("header", undefined, avatar, displayName, link);
 
-  const content = h("div", { innerHTML: comment.content });
+  const content = h("p", { innerHTML: comment.content });
 
   const article = h("article", undefined, header, content);
 
@@ -107,7 +112,10 @@ function renderComment(comment, firstMentionFilter) {
     }
   });
 
-  // formatEmojis([...comment.emojis, ...comment.account.emojis], articleElement);
+  formatEmojis(
+    new Set([...comment.emojis, ...comment.account.emojis]),
+    articleElement,
+  );
 
   return articleElement;
 }
