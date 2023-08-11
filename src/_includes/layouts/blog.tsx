@@ -1,4 +1,4 @@
-import { FunctionComponent as FC } from "preact";
+import { Fragment, FunctionComponent as FC } from "preact";
 import { PostData } from "../../types.ts";
 import { longDate } from "../../helpers/date.ts";
 
@@ -13,8 +13,13 @@ const BlogLayout: FC<PostData> = ({
   return (
     <html lang={lang}>
       <BaseHead title={title}>
-        <link rel="stylesheet" href="/comments.css" />
         <link rel="stylesheet" href="/code-highlight.css" />
+        {mastodonLink && (
+          <Fragment>
+            <link rel="stylesheet" href="/comments.css" />
+            <script async src="/mastodon_comments.js"></script>
+          </Fragment>
+        )}
       </BaseHead>
       <body>
         <Header />
@@ -66,8 +71,6 @@ const BlogLayout: FC<PostData> = ({
         </main>
 
         <Footer />
-
-        <script async src="/mastodon_comments.js"></script>
       </body>
     </html>
   );
