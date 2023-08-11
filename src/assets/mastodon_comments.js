@@ -191,7 +191,6 @@ async function loadComments(url) {
     });
 }
 
-const urlRegex = /\/@\w+\/(\d+)$/;
 
 async function initComments() {
   const commentsElem = document.querySelector("section#comments");
@@ -205,25 +204,21 @@ async function initComments() {
 
   commentsElem.appendChild(placeholder);
 
-  const commentsUrl = commentsElem.dataset.url;
-  const urlParts = urlRegex.exec(commentsUrl);
-
   let comments;
   try {
-    const commentContext = commentsUrl.replace(
-      urlRegex,
-      `/api/v1/statuses/${urlParts[1]}/context`,
+    const commentContext = commentsElem.dataset.url.replace(
+        /\/@\w+\/(\d+)$/,
+      `/api/v1/statuses/$1/context`,
     );
     comments = await loadComments(commentContext);
-
-    placeholder.remove();
   } catch (err) {
     console.error(err);
-    document.querySelector("section#comments .placeholder").innerText =
-      "Could not load comments because of: " + err.message;
+    placeholder.innerText =
+      `Could not load comments because of: ${err.message}`;
   }
 
   if (comments) {
+    placeholder.remove();
     showComments(comments);
   }
 }
