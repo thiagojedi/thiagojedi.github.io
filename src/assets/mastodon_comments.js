@@ -7,7 +7,7 @@
   Julian Fietkau - https://fietkau.blog/2023/another_blog_resurrection_fediverse_new_comment_system
 
   This is just the JavaScript code, you'll need to supply your own HTML
-  container (including a template for comment rendering) and CSS.
+  container and CSS.
 
   Released under the terms of the MIT license.
 */
@@ -230,7 +230,7 @@ function formatComment(
 
   firstMentionFilter
     .map((filter) => `.mention[href='${filter}']:first-child`)
-    .map(selector => articleElement.querySelector(selector))
+    .map((selector) => articleElement.querySelector(selector))
     .forEach((mention) => mention?.remove());
 
   articleElement
