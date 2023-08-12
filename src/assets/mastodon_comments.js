@@ -217,8 +217,8 @@ function formatIsoDate(isoDate) {
 function formatEmojisOnText(emojis, text) {
   return emojis.reduce(
     (acc, { shortcode, static_url, url }) =>
-      acc.replace(
-        new RegExp(`\\B:${shortcode}:\\B`),
+      acc.replaceAll(
+        `:${shortcode}:`,
         `<picture><source srcset="${url}" media="(prefers-reduced-motion: no-preference)"><img src="${static_url}" alt=":${shortcode}:" title=":${shortcode}:"></picture>`,
       ),
     text,
