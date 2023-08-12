@@ -352,7 +352,7 @@ That's all I wanted to share with you. You may find the final and complete code
 
 My current flow today is as follows: I publish an article on my blog, then I
 post a toot on my Mastodon profile promoting the post. With that toot url, I
-update my blog article connecting both. Et voilà! Replies are not comments.
+update my blog article connecting both. Et voilà! Replies are now comments.
 
 Besides my take, and Julian's that I mentioned a lot on this text, there are a
 lot of different ones doing the same in different ways, with different languages
