@@ -6,25 +6,25 @@ metas:
   image: /images/typescript.png
   lang: en-US
   description:
-    So, using Mastodon replies are all the rage this past few months. And I too
-    wanted to be like the cool kids. In this post I want to tell you how I did
-    it.
+    So, using Mastodon replies as comments are all the rage this past few months. 
+    And I too wanted to be like the cool kids. In this post I want to tell you 
+    how I did it.
 ---
 
 _Post image: A snippet of generic typescript code. Black background, cian, green
 and white font colors._
 
-So here's the deal, a few people asked me how I wrote the comment section you'll
+Here's the deal, a few people asked me how I wrote the comment section you'll
 find on the end of the page. Sure, I could just point people the giant whose
 shoulders I'm standing (as I did on a previous post), but I believe I've now
 made enough changes to deserve a post on its own.
 
 ## The task at hand
 
-The plan was simple: I wanted to have comments on each post without using any
-dedicated comment system. Those normally are paid and I want to use my current
-funds with another endeavor. The problem is that I use an static site generator,
-[Lume][lume01], that doesn't allow me to use my favorite ui library,
+The challenge was simple: I wanted to have comments on each post without using
+any dedicated comment system. Those normally are paid and I want to use my
+current funds with another endeavor. The problem is that I use an static site
+generator, [Lume][lume01], that doesn't allow me to use my favorite ui library,
 [Preact][preact01], on the client side, only during the compile phase.
 
 That's when I stumble on a post of [Julian Fietkau][fietkau01] where he uses
@@ -346,6 +346,10 @@ call, and with the result, I replace the placeholder with the right component.
 
 ## Simple as that
 
+That's all I wanted to share with you. You may find the final and complete code
+[here][jedi01]. And the CSS for the comments are in a dedicated file
+[here][jedi02]. Feel free to use them.
+
 My current flow today is as follows: I publish an article on my blog, then I
 post a toot on my Mastodon profile promoting the post. With that toot url, I
 update my blog article connecting both. Et voilà! Replies are not comments.
@@ -363,10 +367,12 @@ me know!
 
 May the Force be with y'all!
 
+[csstricks01]: https://css-tricks.com/no-class-css-frameworks/
+[developit01]: https://jasonformat.com/wtf-is-jsx/
 [fietkau01]: https://fietkau.blog/2023/another_blog_resurrection_fediverse_new_comment_system
+[jedi01]: https://github.com/thiagojedi/thiagojedi.github.io/blob/main/src/assets/mastodon_comments.js
+[jedi02]: https://github.com/thiagojedi/thiagojedi.github.io/blob/main/src/comments.css
 [lume01]: https://lume.land/
 [lume02]: https://lume.land/docs/creating-pages/page-data/
-[preact01]: https://preactjs.com/
-[developit01]: https://jasonformat.com/wtf-is-jsx/
-[csstricks01]: https://css-tricks.com/no-class-css-frameworks/
 [oscarotero01]: https://github.com/oom-components/mastodon-comments
+[preact01]: https://preactjs.com/
