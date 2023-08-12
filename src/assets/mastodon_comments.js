@@ -230,7 +230,7 @@ function formatComment(
 
   firstMentionFilter
     .map((filter) => `.mention[href='${filter}']:first-child`)
-    .map(articleElement.querySelector)
+    .map(selector => articleElement.querySelector(selector))
     .forEach((mention) => mention?.remove());
 
   articleElement
