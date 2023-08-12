@@ -41,7 +41,7 @@ async function initComments() {
     const comments = await loadComments(commentContext, postId);
     const commentsList = render(
       comments.length === 0
-        ? h("p", undefined, "No comments so far")
+        ? EmptyList()
         : ReplyList(comments, defaultInitialMentionFilter),
     );
     placeholder.replaceWith(commentsList);
@@ -122,6 +122,10 @@ function render(component) {
 
 function Placeholder() {
   return h("p", undefined, "Loading...");
+}
+
+function EmptyList() {
+  return h("p", undefined, "No comments so far")
 }
 
 function Avatar({ avatar_static, display_name }) {
