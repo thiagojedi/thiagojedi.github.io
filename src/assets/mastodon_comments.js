@@ -199,12 +199,9 @@ function ReplyList(comments, mentionFilter) {
  * @returns {string} Formatted string
  */
 function formatIsoDate(isoDate) {
-  return new Date(isoDate).toLocaleDateString(undefined, {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-    hour: "numeric",
-    minute: "numeric",
+  return new Date(isoDate).toLocaleString(undefined, {
+    dateStyle: "long",
+    timeStyle: "short",
   });
 }
 
