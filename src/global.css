@@ -253,3 +253,6 @@ pre {
   overflow: auto;
 }
 
+code {
+  background-color: var(--code-color-background);
+}
