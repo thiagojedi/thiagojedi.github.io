@@ -42,7 +42,7 @@ async function initComments() {
     const commentsList = render(
       comments.length === 0
         ? EmptyList()
-        : ReplyList(comments, defaultInitialMentionFilter),
+        : ReplyList(comments),
     );
     placeholder.replaceWith(commentsList);
   } catch (err) {
@@ -227,7 +227,7 @@ function formatEmojisOnText(emojis, text) {
   );
 }
 
-function formatComment(comment, firstMentionFilter) {
+function formatComment(comment, firstMentionFilter = defaultInitialMentionFilter) {
   const articleElement = render(Article(comment));
 
   firstMentionFilter.forEach((mention) => {
