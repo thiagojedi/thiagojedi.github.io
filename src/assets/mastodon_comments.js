@@ -228,14 +228,11 @@ function formatComment(
 ) {
   const articleElement = render(Article(comment));
 
-  firstMentionFilter.forEach((mention) => {
-    const element = articleElement.querySelector(
-      `.mention[href='${mention}']:first-child`,
-    );
-    if (element) {
-      element.remove();
-    }
-  });
+  firstMentionFilter
+    .map((filter) => `.mention[href='${filter}']:first-child`)
+    .map(articleElement.querySelector)
+    .forEach((mention) => mention?.remove());
+
   articleElement
     .querySelectorAll(".invisible")
     .forEach((element) => element.remove());
