@@ -11,11 +11,11 @@ metas:
     how I did it.
 ---
 
-_Post image: A snippet of generic typescript code. Black background, cian, green
+_Post image: A snippet of generic typescript code. Black background, cyan, green
 and white font colors._
 
-A few people asked me how I got to work the comment section you'll find on the
-end of the page. Sure, I could just point to the giants whose shoulders I'm
+A few people asked me how I got the comment section you'll find on the end of
+the page working. Sure, I could just point to the giants on whose shoulders I'm
 standing (as I did on a previous post), but I believe I've now made enough
 changes to deserve a post on its own.
 
@@ -24,10 +24,10 @@ changes to deserve a post on its own.
 The objective was simple: I wanted to have comments on each post without using
 any dedicated comment system. Those normally are paid and I want to use my
 current funds with another endeavor. The problem is that I use a static site
-generator, [Lume][lume01], that doesn't allow me to use my favorite ui library,
+generator, [Lume][lume01], that doesn't allow me to use my favorite UI library,
 [Preact][preact01], on the client side, only during a compile phase.
 
-That's when I stumble on a post by [Julian Fietkau][fietkau01] where he uses
+That's when I stumbled on a post by [Julian Fietkau][fietkau01] where he uses
 Mastodon's public API to get the replies of a post and display them as comments,
 using only plain javascript and DOM manipulation, like the good ol' days. That's
 exactly what I needed! And you should check his post for all the details and his
@@ -74,8 +74,8 @@ async function loadComments(url, postId) {
 ```
 
 This is the part of the code that I left mostly untouched, as it is pretty
-straight forward. The function calls the an url and processes the response to
-create a tree of replies, with the direct replies to given `postId` on the root.
+straight forward. The function calls an URL and processes the response to create
+a tree of replies, with the direct replies to given postId on the root.
 
 I did change the iterations from `for` loops to Array methods, but it is a
 purely stylistic choice.
@@ -135,9 +135,10 @@ function render(component) {
 }
 ```
 
-The first function, `h()` is a builder function that helps me create a component
-tree in the format of a JSON object. Then this tree is passed to the `render()`
-function to be translated to a DOM Element to be append on the page's HTML.
+The first function, `h()`, is a builder function that helps me create a
+component tree in the format of a JSON object. Then this tree is passed to the
+`render()` function to be translated to a DOM Element to be append on the page's
+HTML.
 
 ```js
 //Example
@@ -284,15 +285,14 @@ function formatComment(comment, firstMentionFilter = defaultFilter) {
 You see, there are two interesting behaviors on Mastodon's API. And in this
 formatter function I handle both.
 
-The first one is that, when you start compose a reply to a post, Mastodon apps
-add to the start of the text all the accounts mentioned on the original post so
-the server can notify each participant of the conversation. That's ok for
-Mastodon, but Julian's implementation correctly assumes that it would clutter
-the comments content and removes the author of the post that the reply refers
-to, so I did the same here.
+The first one is that, when you start to compose a reply to a post, most
+Mastodon apps add to the start of the text all the accounts mentioned on the
+original post. That's ok for Mastodon, but Julian's implementation correctly
+assumes that it would clutter the comments content and removes the author of the
+post that the reply refers to, so I did the same here.
 
 The other behavior is that Mastodon marks the start and end of a long URL with a
-`.invisible` CSS class so client's can hide them, replacing the need for a URL
+`.invisible` CSS class so clients can hide them, replacing the need for a URL
 shortener (those may include privacy issues). I'd like to keep my blog with a
 [classless][csstricks01] css style, so I just remove them.
 
@@ -371,6 +371,9 @@ please, show me!
 
 Thanks!
 
+> A special thanks to [@BackAlleyUrbanist][urbanists01] for reviewing my broken
+> english.
+
 [csstricks01]: https://css-tricks.com/no-class-css-frameworks/
 [developit01]: https://jasonformat.com/wtf-is-jsx/
 [fietkau01]: https://fietkau.blog/2023/another_blog_resurrection_fediverse_new_comment_system
@@ -380,3 +383,4 @@ Thanks!
 [lume02]: https://lume.land/docs/creating-pages/page-data/
 [oscarotero01]: https://github.com/oom-components/mastodon-comments
 [preact01]: https://preactjs.com/
+[urbanists01]: https://urbanists.social/@BackAlleyUrbanist
