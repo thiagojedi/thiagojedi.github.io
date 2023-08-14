@@ -1,5 +1,4 @@
 ---
-draft: true
 image: /images/typescript.png
 metas:
   title: Explaining the new comment system
