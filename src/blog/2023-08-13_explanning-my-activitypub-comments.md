@@ -8,6 +8,7 @@ metas:
     So, using Mastodon replies as comments are all the rage this past few months. 
     And I too wanted to be like the cool kids. In this post I want to tell you 
     how I did it.
+  mastodonLink: https://cuscuz.in/@jedi/110885262441927297
 ---
 
 _Post image: A snippet of generic typescript code. Black background, cyan, green
