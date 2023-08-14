@@ -27,6 +27,7 @@ pre > code .token.keyword {
 
 pre > code .token.function {
   color: var(--code-token-function);
+  font-weight: bolder;
 }
 
 pre > code .token.tag {
@@ -43,7 +44,7 @@ pre > code .token.number {
 
 pre > code .token.class-name {
   color: var(--code-token-function);
-  font-weight: 600;
+  font-weight: bolder;
 }
 
 .command-line-prompt {
