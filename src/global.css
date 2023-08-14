@@ -25,7 +25,7 @@
   --code-token-constant: #060;
   --code-token-function: #090;
   --code-color-background: #f1f1f1;
-  --code-token-comment: #555;
+  --code-token-comment: gray;
   --code-token-string-expression: #00a;
   --code-token-parameter: black;
   --code-token-punctuation: black;
@@ -43,11 +43,10 @@
     --color-text-highlight: #0a0;
     --color-image-shadow: #777;
     --code-color-text: lightgray;
-    --code-token-keyword: #0a0;
+    --code-token-keyword: #060;
     --code-token-constant: #0f0;
     --code-token-function: #090;
     --code-color-background: #000;
-    --code-token-comment: rgb(121 121 121);
     --code-token-string-expression: rgb(87 87 255);
     --code-token-parameter: lightgray;
     --code-token-punctuation: lightgray;
