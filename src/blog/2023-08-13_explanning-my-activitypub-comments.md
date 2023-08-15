@@ -8,7 +8,7 @@ metas:
     So, using Mastodon replies as comments are all the rage this past few months. 
     And I too wanted to be like the cool kids. In this post I want to tell you 
     how I did it.
-  mastodonLink: https://cuscuz.in/@jedi/110885262441927297
+  mastodonLink: https://fosstodon.org/@jedi@cuscuz.in/110885262404839437
 ---
 
 _Post image: A snippet of generic typescript code. Black background, cyan, green
@@ -354,6 +354,9 @@ That's all I wanted to share with you. You may find the final and complete code
 [here][jedi01]. And the CSS for the comments are in a dedicated file
 [here][jedi02]. Feel free to use them.
 
+> Update: A version of the script without that `h()` and `render()` functions,
+> only manipulating the DOM, can be found [here][jedi03]
+
 My current flow today is as follows: I publish an article on my blog, then I
 post a toot on my Mastodon profile promoting the post. With that toot url, I
 update my blog article connecting both. Et voilà! Replies are now comments.
@@ -379,6 +382,7 @@ Thanks!
 [fietkau01]: https://fietkau.blog/2023/another_blog_resurrection_fediverse_new_comment_system
 [jedi01]: https://github.com/thiagojedi/thiagojedi.github.io/blob/main/src/assets/mastodon_comments.js
 [jedi02]: https://github.com/thiagojedi/thiagojedi.github.io/blob/main/src/comments.css
+[jedi03]: https://github.com/thiagojedi/thiagojedi.github.io/blob/main/src/assets/mastodon_comments_vanilla.js
 [lume01]: https://lume.land/
 [lume02]: https://lume.land/docs/creating-pages/page-data/
 [oscarotero01]: https://github.com/oom-components/mastodon-comments
