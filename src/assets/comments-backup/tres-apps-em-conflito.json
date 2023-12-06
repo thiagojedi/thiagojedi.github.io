@@ -1,0 +1,121 @@
+{
+  "ancestors": [],
+  "descendants": [
+    {
+      "id": "110823287381133536",
+      "created_at": "2023-08-03T02:19:23.000Z",
+      "in_reply_to_id": "110823252850539939",
+      "in_reply_to_account_id": "109302720308687498",
+      "sensitive": false,
+      "spoiler_text": "",
+      "visibility": "public",
+      "language": "pt",
+      "uri": "https://mastodon.social/users/giancarlozero/statuses/110823287270345567",
+      "url": "https://mastodon.social/@giancarlozero/110823287270345567",
+      "replies_count": 0,
+      "reblogs_count": 0,
+      "favourites_count": 0,
+      "edited_at": null,
+      "local_only": null,
+      "content": "\u003cp\u003e\u003cspan class=\"h-card\"\u003e\u003ca href=\"https://cuscuz.in/@jedi\" class=\"u-url mention\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e@\u003cspan\u003ejedi\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e Esta semana eu baixei meus dados dos dois perfis que tenho lá no Twitter. Ainda tá difícil largar um costume de mais de 10 anos, mas tô cada vez mais decidido a sair do Twitter.\u003c/p\u003e\u003cp\u003eSó falta eu decidir se dou ou não mais uma chance ao Bluesky, pois pelo jeito é pra lá que a maioria dos meus amigos está migrando.\u003c/p\u003e\u003cp\u003eSó sei que o Mastodon se tornou minha nova rede social favorita. ^^\u003c/p\u003e",
+      "reblog": null,
+      "account": {
+        "id": "109366099162570920",
+        "username": "giancarlozero",
+        "acct": "giancarlozero@mastodon.social",
+        "display_name": "Giancarlo Silva 🏆",
+        "locked": false,
+        "bot": false,
+        "discoverable": true,
+        "group": false,
+        "created_at": "2022-11-16T00:00:00.000Z",
+        "note": "\u003cp\u003eDesenvolvedor web especializado em WordPress e desenvolvedor de jogos. Opiniões são somente minhas.\u003c/p\u003e\u003cp\u003e❤️ \u003cspan class=\"h-card\"\u003e\u003ca href=\"https://mastodon.art/@nyxastrae\" class=\"u-url mention\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e@\u003cspan\u003enyxastrae\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e\u003c/p\u003e",
+        "url": "https://mastodon.social/@giancarlozero",
+        "avatar": "https://cuscuz.in/system/cache/accounts/avatars/109/366/099/162/570/920/original/62b5d05236a9c419.jpg",
+        "avatar_static": "https://cuscuz.in/system/cache/accounts/avatars/109/366/099/162/570/920/original/62b5d05236a9c419.jpg",
+        "header": "https://cuscuz.in/system/cache/accounts/headers/109/366/099/162/570/920/original/3f6d01e433eb924f.jpg",
+        "header_static": "https://cuscuz.in/system/cache/accounts/headers/109/366/099/162/570/920/original/3f6d01e433eb924f.jpg",
+        "followers_count": 118,
+        "following_count": 128,
+        "statuses_count": 1692,
+        "last_status_at": "2023-12-05",
+        "emojis": [],
+        "fields": [
+          {
+            "name": "Site e portfólio",
+            "value": "\u003ca href=\"https://giancarlosilva.com.br\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003egiancarlosilva.com.br\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
+            "verified_at": "2023-11-21T16:23:01.622+00:00"
+          }
+        ]
+      },
+      "media_attachments": [],
+      "mentions": [
+        {
+          "id": "109302720308687498",
+          "username": "jedi",
+          "url": "https://cuscuz.in/@jedi",
+          "acct": "jedi"
+        }
+      ],
+      "tags": [],
+      "emojis": [],
+      "card": null,
+      "poll": null
+    },
+    {
+      "id": "110827809480686304",
+      "created_at": "2023-08-03T21:29:26.000Z",
+      "in_reply_to_id": "110823252850539939",
+      "in_reply_to_account_id": "109302720308687498",
+      "sensitive": false,
+      "spoiler_text": "",
+      "visibility": "public",
+      "language": "pt",
+      "uri": "https://bolha.us/users/guites/statuses/110827809433855242",
+      "url": "https://bolha.us/@guites/110827809433855242",
+      "replies_count": 0,
+      "reblogs_count": 0,
+      "favourites_count": 0,
+      "edited_at": null,
+      "local_only": null,
+      "content": "\u003cp\u003e\u003cspan class=\"h-card\"\u003e\u003ca href=\"https://cuscuz.in/@jedi\" class=\"u-url mention\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e@\u003cspan\u003ejedi\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e me pergunto se  um segundo player comercial vai entrar com o uso do activitypub. Esse pra mim vai ser o momento mais interessante pra entender a relação entre provedores comerciais vs. livres, e ver se vai tomar um rumo como o do email, onde ouve um esmagamento do self hosting.\u003c/p\u003e\u003cp\u003eNitpick: não entendi bem essa frase\u003c/p\u003e\u003cp\u003e\u0026gt;Mastodon, segue sendo fazendo o\u0026nbsp;bom, junto com seu ecossistema que preza pela privacidade e pelo combate a grandes empresas.\u003c/p\u003e",
+      "reblog": null,
+      "account": {
+        "id": "110703744721150086",
+        "username": "guites",
+        "acct": "guites@bolha.us",
+        "display_name": "guites",
+        "locked": false,
+        "bot": false,
+        "discoverable": true,
+        "group": false,
+        "created_at": "2023-07-12T00:00:00.000Z",
+        "note": "\u003cp\u003eeng de software adorador da internet. \u003c/p\u003e\u003cp\u003eescrevo em \u003ca href=\"https://guilhermegarcia.dev/blog/index.html\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"ellipsis\"\u003eguilhermegarcia.dev/blog/index\u003c/span\u003e\u003cspan class=\"invisible\"\u003e.html\u003c/span\u003e\u003c/a\u003e\u003c/p\u003e",
+        "url": "https://bolha.us/@guites",
+        "avatar": "https://cuscuz.in/system/cache/accounts/avatars/110/703/744/721/150/086/original/da7963500648b21c.jpg",
+        "avatar_static": "https://cuscuz.in/system/cache/accounts/avatars/110/703/744/721/150/086/original/da7963500648b21c.jpg",
+        "header": "https://cuscuz.in/system/cache/accounts/headers/110/703/744/721/150/086/original/8ce3822ab8169fc7.jpg",
+        "header_static": "https://cuscuz.in/system/cache/accounts/headers/110/703/744/721/150/086/original/8ce3822ab8169fc7.jpg",
+        "followers_count": 64,
+        "following_count": 297,
+        "statuses_count": 439,
+        "last_status_at": "2023-11-29",
+        "emojis": [],
+        "fields": []
+      },
+      "media_attachments": [],
+      "mentions": [
+        {
+          "id": "109302720308687498",
+          "username": "jedi",
+          "url": "https://cuscuz.in/@jedi",
+          "acct": "jedi"
+        }
+      ],
+      "tags": [],
+      "emojis": [],
+      "card": null,
+      "poll": null
+    }
+  ]
+}

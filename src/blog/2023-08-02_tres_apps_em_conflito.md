@@ -8,6 +8,7 @@ metas:
     novo panorama que tem se formado na internet, principalmente
     no que diz respeito às redes sociais.
   mastodonLink: https://cuscuz.in/@jedi/110823252850539939
+  commentsBackup: /comments-backup/tres-apps-em-conflito.json
 ---
 
 _Imagem do post: detalhe da pintura Evening News—Subway Riders, de Francis Luis

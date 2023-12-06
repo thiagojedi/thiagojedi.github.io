@@ -9,6 +9,7 @@ metas:
     And I too wanted to be like the cool kids. In this post I want to tell you 
     how I did it.
   mastodonLink: https://cuscuz.in/@jedi/110885262441927297
+  commentsBackup: /comments-backup/explanning-my-activitypub-comments.json
 ---
 
 _Post image: A snippet of generic typescript code. Black background, cyan, green
