@@ -34,37 +34,59 @@ const FediVerseList: FC = () => {
 type Props = {
   mastodonLink: string;
   language: string;
+  commentsBackup?: string;
 };
 
 const CommentList: FC<Props> = (
-  { mastodonLink, language },
+  { mastodonLink, language, commentsBackup },
 ) => {
   if (!mastodonLink) {
     return null;
   }
 
   return (
-    <section id="comments" data-url={mastodonLink}>
+    <section
+      id="comments"
+      data-url={mastodonLink}
+      data-fallback={commentsBackup}
+    >
       <hr />
       <h2>{language === "pt-br" ? "Comentários" : "Comments"}</h2>
-      {language === "pt-br"
-        ? (
-          <p>
-            Você pode adicionar o seu comentário respondendo a{" "}
-            <a href={mastodonLink}>esse toot no Mastodon</a> da sua conta no
-            {" "}
-            <FediVerseList />{" "}
-            ou qualquer outra rede social com suporte a ActivityPub.
-          </p>
-        )
-        : (
-          <p>
-            You can leave a comment by replying to{" "}
-            <a href={mastodonLink}>this Mastodon post</a>{" "}
-            from your own account on <FediVerseList />{" "}
-            or any other ActivityPub-capable social network.
-          </p>
-        )}
+      {commentsBackup && (
+        language === "pt-br"
+          ? (
+            <p>
+              Esses comentários foram postados via ActivityPub, porém a postagem
+              original não está mais acessível.
+            </p>
+          )
+          : (
+            <p>
+              The following comments were posted via ActivityPub, but the
+              original post is no longer accessible.
+            </p>
+          )
+      )}
+      {commentsBackup === undefined && (
+        language === "pt-br"
+          ? (
+            <p>
+              Você pode adicionar o seu comentário respondendo a{" "}
+              <a href={mastodonLink}>esse toot no Mastodon</a> da sua conta no
+              {" "}
+              <FediVerseList />{" "}
+              ou qualquer outra rede social com suporte a ActivityPub.
+            </p>
+          )
+          : (
+            <p>
+              You can leave a comment by replying to{" "}
+              <a href={mastodonLink}>this Mastodon post</a>{" "}
+              from your own account on <FediVerseList />{" "}
+              or any other ActivityPub-capable social network.
+            </p>
+          )
+      )}
       <noscript>
         {language === "pt-br"
           ? (

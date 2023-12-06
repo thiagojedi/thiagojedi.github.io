@@ -34,9 +34,10 @@ async function initComments() {
   try {
     const idRegex = /\/@\w+\/(\d+)$/;
 
-    const url = wrapper.dataset.url;
+    const { url, fallback } = wrapper.dataset;
     const postId = idRegex.exec(url)[1];
-    const commentContext = url.replace(idRegex, `/api/v1/statuses/$1/context`);
+    const commentContext = fallback ??
+      url.replace(idRegex, `/api/v1/statuses/$1/context`);
 
     const comments = await loadComments(commentContext, postId);
     const commentsList = render(

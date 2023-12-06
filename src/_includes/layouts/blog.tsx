@@ -6,7 +6,8 @@ const BlogLayout: FC<PostData> = ({
   image,
   imageDescription,
   date,
-  metas: { title, description, lang = "pt-br", mastodonLink } = {},
+  metas: { title, description, lang = "pt-br", mastodonLink, commentsBackup } =
+    {},
   children,
   comp: { BaseHead, Footer, Header, Sidebar, CommentList },
 }) => {
@@ -63,7 +64,11 @@ const BlogLayout: FC<PostData> = ({
             {children}
           </article>
 
-          <CommentList mastodonLink={mastodonLink} language={lang} />
+          <CommentList
+            mastodonLink={mastodonLink}
+            commentsBackup={commentsBackup}
+            language={lang}
+          />
 
           <aside>
             <Sidebar />
