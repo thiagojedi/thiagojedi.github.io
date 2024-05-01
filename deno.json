@@ -12,6 +12,9 @@
     "lib": [
       "deno.window",
       "dom"
+    ],
+    "types": [
+      "lume/types.ts"
     ]
   },
   "lint": {

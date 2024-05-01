@@ -54,68 +54,72 @@ export default function commandLine(
   }: Partial<CommandLineOptions> = {},
 ) {
   return (site: Site) => {
-    site.process([".html"], ({ document }) => {
-      if (!document) {
-        return;
-      }
-
-      const elements = document.querySelectorAll("pre > code.language-console");
-      elements.forEach((element) => {
-        if (!isElement(element)) {
+    site.process([".html"], (pages) =>
+      pages.forEach(({ document }) => {
+        if (!document) {
           return;
         }
 
-        const dataUser = takeAttribute(element, "user");
-        const dataServer = takeAttribute(element, "server");
-        const dataPrompt = takeAttribute(element, "prompt");
-
-        const continuationPrompt =
-          takeAttribute(element, "continuation-prompt") ?? defaultContPrompt;
-        const continuationMark = takeAttribute(element, "continuation-mark") ??
-          defaultContMark;
-
-        let promptText;
-        if (dataPrompt) {
-          promptText = dataPrompt;
-        } else if (dataUser || dataServer) {
-          const promptUser = dataUser ?? defaultUser;
-          const promptMachine = dataServer ?? defaultServer;
-          const promptSign = promptUser === "root" ? "#" : "$";
-
-          promptText = `${promptUser}@${promptMachine} ${promptSign}`;
-        } else {
-          const promptSign = defaultUser === "root" ? "#" : "$";
-          promptText = defaultPrompt ??
-            `${defaultUser}@${defaultServer} ${promptSign}`;
-        }
-
-        const codeLines = element.firstChild.textContent.trim().split("\n");
-        const numberOfLines = codeLines.length;
-
-        const promptColumn = document.createElement("span");
-        promptColumn.className = "command-line-prompt";
-        promptColumn.setAttribute("style", defaultStyle);
-
-        let continuationLine = false;
-        for (let index = 0; index < numberOfLines; index++) {
-          const prompt = document.createElement("span");
-
-          prompt.textContent =
-            (continuationLine ? continuationPrompt : promptText) + " ";
-
-          const br = document.createElement("br");
-
-          promptColumn.appendChild(prompt);
-          promptColumn.appendChild(br);
-
-          if (continuationMark) {
-            continuationLine = codeLines[index]
-              .endsWith(continuationMark);
+        const elements = document.querySelectorAll(
+          "pre > code.language-console",
+        );
+        elements.forEach((element) => {
+          if (!isElement(element)) {
+            return;
           }
-        }
 
-        element.insertBefore(promptColumn, element.firstChild);
-      });
-    });
+          const dataUser = takeAttribute(element, "user");
+          const dataServer = takeAttribute(element, "server");
+          const dataPrompt = takeAttribute(element, "prompt");
+
+          const continuationPrompt =
+            takeAttribute(element, "continuation-prompt") ?? defaultContPrompt;
+          const continuationMark =
+            takeAttribute(element, "continuation-mark") ??
+              defaultContMark;
+
+          let promptText;
+          if (dataPrompt) {
+            promptText = dataPrompt;
+          } else if (dataUser || dataServer) {
+            const promptUser = dataUser ?? defaultUser;
+            const promptMachine = dataServer ?? defaultServer;
+            const promptSign = promptUser === "root" ? "#" : "$";
+
+            promptText = `${promptUser}@${promptMachine} ${promptSign}`;
+          } else {
+            const promptSign = defaultUser === "root" ? "#" : "$";
+            promptText = defaultPrompt ??
+              `${defaultUser}@${defaultServer} ${promptSign}`;
+          }
+
+          const codeLines = element.firstChild.textContent.trim().split("\n");
+          const numberOfLines = codeLines.length;
+
+          const promptColumn = document.createElement("span");
+          promptColumn.className = "command-line-prompt";
+          promptColumn.setAttribute("style", defaultStyle);
+
+          let continuationLine = false;
+          for (let index = 0; index < numberOfLines; index++) {
+            const prompt = document.createElement("span");
+
+            prompt.textContent =
+              (continuationLine ? continuationPrompt : promptText) + " ";
+
+            const br = document.createElement("br");
+
+            promptColumn.appendChild(prompt);
+            promptColumn.appendChild(br);
+
+            if (continuationMark) {
+              continuationLine = codeLines[index]
+                .endsWith(continuationMark);
+            }
+          }
+
+          element.insertBefore(promptColumn, element.firstChild);
+        });
+      }));
   };
 }
