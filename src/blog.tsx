@@ -1,4 +1,5 @@
 import { Fragment } from "preact";
+import { PostData } from "./types.ts";
 
 export const layout = "layouts/default.tsx";
 export const title = "Blog";
@@ -8,7 +9,7 @@ export const meta = {
 };
 
 const BlogPage = ({ search, comp: { BlogList, Sidebar } }: Lume.Data) => {
-  const posts = search.pages("blog", "date=desc")
+  const posts = search.pages<PostData>("blog", "date=desc")
     .filter((p) => p.url);
 
   return (
