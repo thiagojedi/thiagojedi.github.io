@@ -44,8 +44,8 @@ const Sidebar = () => {
         </dd>
         <dt>Mastodon:</dt>
         <dd>
-          <a rel="me" href="https://mastodon.com.br/@jedi">
-            @jedi@mastodon.com.br
+          <a rel="me" href="https://bolha.us/@jedi">
+            @jedi@bolha.us
           </a>
         </dd>
       </dl>
