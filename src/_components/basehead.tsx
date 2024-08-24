@@ -1,4 +1,4 @@
-import { FunctionComponent as FC } from "preact";
+import type { FunctionComponent as FC } from "preact";
 
 const BaseHead: FC<{ title?: string }> = ({ title, children }) => {
   return (

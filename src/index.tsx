@@ -1,5 +1,5 @@
 import { Fragment } from "preact";
-import { NormalPageData } from "./types.ts";
+import type { NormalPageData } from "./types.ts";
 
 export const layout = "layouts/default.tsx";
 
@@ -9,7 +9,6 @@ const Index = async (
       HighlightPost,
       RepoList,
       Sidebar,
-      Footer,
     },
     search,
     getPublicRepositories,

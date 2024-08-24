@@ -1,4 +1,4 @@
-import { Fragment, FunctionComponent as FC } from "preact";
+import { Fragment, type FunctionComponent as FC } from "preact";
 import dayjs from "dayjs";
 import type { GithubRepos } from "../services/github.ts";
 

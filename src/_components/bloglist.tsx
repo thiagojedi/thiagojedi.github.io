@@ -1,6 +1,6 @@
-import { Fragment, FunctionalComponent as FC } from "preact";
+import { Fragment, type FunctionalComponent as FC } from "preact";
 import { formatDate } from "../helpers/date.ts";
-import { PostData } from "../types.ts";
+import type { PostData } from "../types.ts";
 
 type BlogListProps = {
   posts: Array<PostData>;

@@ -1,7 +1,7 @@
 import type { FunctionalComponent as FC } from "preact";
 
 import { formatDate } from "../helpers/date.ts";
-import { PostData } from "../types.ts";
+import type { PostData } from "../types.ts";
 
 const HighlightPost: FC<{ post: PostData }> = ({ post }) => (
   <article>

@@ -1,5 +1,5 @@
 import { Fragment } from "preact";
-import { PostData } from "./types.ts";
+import type { PostData } from "./types.ts";
 
 export const layout = "layouts/default.tsx";
 export const title = "Blog";
