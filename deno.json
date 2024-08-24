@@ -1,26 +1,29 @@
 {
-  "importMap": "import_map.json",
+  "imports": {
+    "dayjs": "npm:dayjs@^1.11.13",
+    "lume/": "https://deno.land/x/lume@v2.2.4/",
+    "octokit": "npm:octokit@^4.0.2",
+    "preact": "npm:preact@^10.23.2"
+  },
   "tasks": {
-    "lume": "echo \"import 'lume/cli.ts'\" | deno run --unstable -A -",
+    "lume": "echo \"import 'lume/cli.ts'\" | deno run -A -",
     "build": "deno task lume",
     "serve": "deno task lume -s"
   },
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "preact",
-    "noUnusedLocals": true,
-    "lib": [
-      "deno.window",
-      "dom"
-    ],
     "types": [
       "lume/types.ts"
-    ]
+    ],
+    "jsx": "react-jsx",
+    "jsxImportSource": "npm:preact"
   },
   "lint": {
     "rules": {
       "tags": [
         "recommended"
+      ],
+      "include": [
+        "verbatim-module-syntax"
       ]
     }
   }
