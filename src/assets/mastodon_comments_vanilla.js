@@ -14,7 +14,11 @@
 
 // List of mentions that should be stripped if a top-level comment starts with one of them.
 // Insert your fedi ID here!
-const defaultInitialMentionFilter = ["https://cuscuz.in/@jedi"];
+const defaultInitialMentionFilter = [
+  "https://cuscuz.in/@jedi",
+  "https://mastodon.com.br/@jedi",
+  "https://bolha.us/@jedi",
+];
 
 if ("loading" === document.readyState) {
   document.addEventListener("DOMContentLoaded", initComments);

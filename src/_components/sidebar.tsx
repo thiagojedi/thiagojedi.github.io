@@ -20,9 +20,8 @@ const Sidebar = () => {
       <div lang="pt_BR">
         <p>
           Nascido e criado em Natal, RN, sou Bacharel em Ciência da Computação
-          pela UFRN. Atualmente trabalho como programador na empresa
-          <a href="http://www.agilecontent.com/br/">Agile Content S.A</a>. em
-          São Paulo, SP.
+          pela UFRN. Atualmente trabalho como programador e lider técnico em São
+          Paulo, SP.
         </p>
         <p>
           Minha principal linguagem de programação atualmente é TypeScript, mas
@@ -32,17 +31,23 @@ const Sidebar = () => {
         <p>Além disso, toco contrabaixo, jogo online e conto piadas ruins.</p>
       </div>
       <dl>
-        <dt>Github:</dt>
+        <dt>
+          <i class="fa-brands fa-github" /> Github:
+        </dt>
         <dd>
           <a href="https://github.com/thiagojedi">@thiagojedi</a>
         </dd>
-        <dt>LinkedIn:</dt>
+        <dt>
+          <i class="fa-brands fa-linkedin" /> LinkedIn:
+        </dt>
         <dd>
           <a href="https://www.linkedin.com/in/thiagojediabreu/">
             Thiago Cerqueira
           </a>
         </dd>
-        <dt>Mastodon:</dt>
+        <dt>
+          <i class="fa-brands fa-mastodon" /> Mastodon:
+        </dt>
         <dd>
           <a rel="me" href="https://bolha.us/@jedi">
             @jedi@bolha.us

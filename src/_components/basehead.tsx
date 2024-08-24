@@ -9,6 +9,8 @@ const BaseHead: FC<{ title?: string }> = ({ title, children }) => {
       {title ? <title>JediComp - {title}</title> : <title>JediComp</title>}
 
       <link rel="stylesheet" href="/global.css" />
+      <link rel="stylesheet" href="/fontawesome/css/fontawesome.css" />
+      <link rel="stylesheet" href="/fontawesome/css/brands.css" />
 
       {children}
     </head>
