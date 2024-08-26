@@ -120,18 +120,18 @@ Let's translate it to the language MongoDB understand, which happens to be
 JavaScript.
 
 ```js
-var filter = { "studio.name": "Warner" };
 var projection = { title: 1, publish_date: 1, _id: 0 };
+var filter = { "studio.name": "Warner" };
 var order = { publish_date: -1 };
 
-db.movies.find(filter, projection).sortBy(order);
+db.movies.find(filter, projection).sort(order);
 ```
 
 Notice the similarities! The `db.movies` means we are dealing with the `movies`
-collection in current db, just like the `FROM` clause. The `filter` acts like
-the `WHERE`, with a little help of the denormalization here. The `SELECT` clause
-is converted to a `projection` json object. The `ORDER BY` goes inside the
-`sortBy` method, with the `-1` indicating the descending order.
+collection in current db, just like the `FROM` clause. The `filter` function
+acts like the `WHERE`, with a little help of the denormalization here. The
+`SELECT` clause is converted to a `projection` json object. The `ORDER BY` goes
+inside the `sort` method, with the `-1` indicating the descending order.
 
 The main difference in this example is that you need to explicitly indicate the
 `_id` field should not be retrieved with a `"_id": 0` in the `projection`, as
