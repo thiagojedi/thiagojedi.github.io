@@ -1,7 +1,7 @@
-import type { GithubRepo } from "./services/github.ts";
+import type { getPublicRepositories } from "./services/github.ts";
 
 export interface NormalPageData extends Lume.Data {
-  getPublicRepositories: () => Promise<GithubRepo[]>;
+  getPublicRepositories: typeof getPublicRepositories;
 }
 
 export interface PostData extends NormalPageData {

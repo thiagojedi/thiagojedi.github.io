@@ -3,12 +3,12 @@ import { Octokit } from "npm:octokit";
 const octokit = new Octokit();
 
 export type GithubRepo = {
-  language?: string;
+  language?: string | null;
   html_url: string;
   name: string;
-  description: string;
+  description?: string | null;
   fork: boolean;
-  updated_at: string;
+  updated_at?: string | null;
 };
 
 export async function getPublicRepositories(): Promise<GithubRepo[]> {
