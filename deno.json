@@ -4,7 +4,8 @@
     "lume/": "https://deno.land/x/lume@v3.0.0/",
     "lume/jsx-runtime": "https://deno.land/x/ssx@v0.1.9/jsx-runtime.ts",
     "octokit": "npm:octokit@^4.1.2",
-    "preact": "npm:preact@^10.26.2"
+    "preact": "npm:preact@^10.26.2",
+    "prismjs": "npm:prismjs@^1.30.0"
   },
   "tasks": {
     "lume": "echo \"import 'lume/cli.ts'\" | deno run -A -",
