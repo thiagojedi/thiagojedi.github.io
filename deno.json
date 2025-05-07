@@ -1,7 +1,8 @@
 {
   "imports": {
     "dayjs": "npm:dayjs@^1.11.13",
-    "lume/": "https://deno.land/x/lume@v2.2.4/",
+    "lume/": "https://deno.land/x/lume@v3.0.0/",
+    "lume/jsx-runtime": "https://deno.land/x/ssx@v0.1.9/jsx-runtime.ts",
     "octokit": "npm:octokit@^4.1.2",
     "preact": "npm:preact@^10.26.2"
   },
@@ -15,7 +16,7 @@
       "lume/types.ts"
     ],
     "jsx": "react-jsx",
-    "jsxImportSource": "npm:preact"
+    "jsxImportSource": "lume"
   },
   "lint": {
     "rules": {
@@ -25,6 +26,12 @@
       "include": [
         "verbatim-module-syntax"
       ]
-    }
-  }
+    },
+    "plugins": [
+      "https://deno.land/x/lume@v3.0.0/lint.ts"
+    ]
+  },
+  "unstable": [
+    "temporal"
+  ]
 }
