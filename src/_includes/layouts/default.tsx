@@ -1,6 +1,4 @@
-import type { FunctionComponent as FC } from "preact";
-
-import type { NormalPageData } from "../../types.ts";
+import type { FC, NormalPageData } from "../../types.ts";
 
 const DefaultLayout: FC<NormalPageData> = (
   { title, children, comp: { BaseHead, Header, Footer } },

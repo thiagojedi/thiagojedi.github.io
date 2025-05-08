@@ -12,7 +12,7 @@ const BlogLayout: FC<PostData> = ({
   comp: { BaseHead, Footer, Header, Sidebar, CommentList },
 }) => {
   return (
-    <html lang={lang}>
+    <html lang={lang as string}>
       <BaseHead title={title}>
         <link rel="stylesheet" href="/code-highlight.css" />
         {mastodonLink && (
@@ -45,7 +45,7 @@ const BlogLayout: FC<PostData> = ({
             {date && (
               <small>
                 <time pubdate datetime={date.toISOString()}>
-                  {longDate(date, lang)}
+                  {longDate(date, lang as string)}
                 </time>
               </small>
             )}

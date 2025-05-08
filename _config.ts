@@ -4,7 +4,6 @@ import metas from "lume/plugins/metas.ts";
 import prism from "lume/plugins/prism.ts";
 import commandLine from "./plugins/command-line.ts";
 
-// @ts-types="npm:@types/prismjs"
 import "prismjs/components/prism-javascript.js";
 import "prismjs/components/prism-typescript.js";
 import "prismjs/components/prism-jsx.js";
@@ -14,7 +13,7 @@ import "prismjs/components/prism-markup.js";
 import "prismjs/components/prism-sql.js";
 
 const site = lume({
-  location: new URL("https://thiagojedi.github.io"),
+  location: new URL("https://thiagojedi.codeberg.pages"),
   src: "./src/",
 });
 
