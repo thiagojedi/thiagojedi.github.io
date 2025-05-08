@@ -25,9 +25,11 @@ const RepoList: FC<{ repos: Repository[] }> = ({ repos }) => (
         </div>
       ))}
     </div>
-    <a href="https://github.com/thiagojedi" title="More at Github">
-      Mais no GitHub
-    </a>
+    Mais{" "}
+    <a href="https://github.com/thiagojedi">
+      GitHub
+    </a>{" "}
+    e <a href="https://codeberg.org/thiagojedi">Codeberg</a>
   </section>
 );
 

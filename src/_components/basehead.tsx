@@ -12,7 +12,8 @@ const BaseHead: FC<PropsWithChildren<{ title?: string }>> = (
 
       <link rel="stylesheet" href="/global.css" />
       <link rel="stylesheet" href="/fontawesome/css/fontawesome.css" />
-      <link rel="stylesheet" href="/fontawesome/css/brands.css" />
+      <link rel="stylesheet" href="/fontawesome/css/brands.min.css" />
+      <link rel="stylesheet" href="/fontawesome/css/solid.min.css" />
 
       {children}
     </head>

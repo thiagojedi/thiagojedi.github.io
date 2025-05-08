@@ -32,6 +32,12 @@ const Sidebar = () => {
       </div>
       <dl>
         <dt>
+          <i className="fa-solid fa-code-branch" /> Forgejo:
+        </dt>
+        <dd>
+          <a href="https://codeberg.org/thiagojedi">@thiagojedi@codeberg.org</a>
+        </dd>
+        <dt>
           <i class="fa-brands fa-github" /> Github:
         </dt>
         <dd>
@@ -49,9 +55,7 @@ const Sidebar = () => {
           <i class="fa-brands fa-mastodon" /> Mastodon:
         </dt>
         <dd>
-          <a rel="me" href="https://bolha.us/@jedi">
-            @jedi@bolha.us
-          </a>
+          <a rel="me" href="https://bolha.us/@jedi">@jedi@bolha.us</a>
         </dd>
       </dl>
     </Fragment>

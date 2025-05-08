@@ -18,19 +18,20 @@ const getCodebergRepos = () =>
 
 export async function getPublicRepositories() {
   try {
-    const codebergRequest = getCodebergRepos();
-    const githubRequest = getGithubRepos();
+    const [codeberg, githubRepos] = await Promise.all([
+      getCodebergRepos(),
+      getGithubRepos(),
+    ]);
 
-    const codeberg = await codebergRequest;
+    const mainRepos = githubRepos.map((repo) =>
+      codeberg.find(({ name }) => name === repo.name) ?? repo
+    );
 
-    const mainRepos = (await githubRequest).map((repo) => {
-      const repoOnCodeberg = codeberg.find(({ name }) => name === repo.name);
-      return repoOnCodeberg ?? repo;
-    });
+    const fillRepos = codeberg.filter((repo) => !mainRepos.includes(repo));
 
     return [
       ...mainRepos,
-      ...codeberg.filter((repo) => !mainRepos.includes(repo)),
+      ...fillRepos,
     ].slice(0, 6);
   } catch (e) {
     console.error(e);
