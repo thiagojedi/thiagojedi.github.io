@@ -2,6 +2,7 @@ import lume from "lume/mod.ts";
 import jsx from "lume/plugins/jsx.ts";
 import metas from "lume/plugins/metas.ts";
 import prism from "lume/plugins/prism.ts";
+import extractDate from "lume/plugins/extract_date.ts";
 import commandLine from "./plugins/command-line.ts";
 
 import "prismjs/components/prism-javascript.js";
@@ -24,5 +25,6 @@ site.use(jsx());
 site.use(metas());
 site.use(prism());
 site.use(commandLine());
+site.use(extractDate());
 
 export default site;
