@@ -32,7 +32,9 @@ const Index = async (
           <section>
             <h2>Blog</h2>
             <div>
-              {highlightPosts.map((post) => <HighlightPost post={post} />)}
+              {highlightPosts.map((post) => (
+                <HighlightPost key={post.id} post={post} />
+              ))}
             </div>
             <a href="/blog" title="More posts">Mais postagens</a>
           </section>
