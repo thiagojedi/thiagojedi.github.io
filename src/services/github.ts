@@ -2,7 +2,11 @@ import { Octokit } from "@octokit/core";
 
 const github = new Octokit();
 const getGithubRepos = () =>
-  github.request("GET /users/{username}/repos", { username: "thiagojedi" })
+  github.request("GET /users/{username}/repos", {
+    username: "thiagojedi",
+    sort: "updated",
+    direction: "desc",
+  })
     .then((r) => r.data)
     .catch(() => []);
 
