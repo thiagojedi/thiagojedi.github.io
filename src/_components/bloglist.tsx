@@ -1,6 +1,6 @@
-import { Fragment, type FunctionalComponent as FC } from "preact";
+import { Fragment } from "lume/jsx-runtime";
 import { formatDate } from "../helpers/date.ts";
-import type { PostData } from "../types.ts";
+import type { FC, PostData } from "../types.ts";
 
 type BlogListProps = {
   posts: Array<PostData>;

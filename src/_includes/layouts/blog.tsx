@@ -1,5 +1,5 @@
-import { Fragment, type FunctionComponent as FC } from "preact";
-import type { PostData } from "../../types.ts";
+import { Fragment } from "lume/jsx-runtime";
+import type { FC, PostData } from "../../types.ts";
 import { longDate } from "../../helpers/date.ts";
 
 const BlogLayout: FC<PostData> = ({

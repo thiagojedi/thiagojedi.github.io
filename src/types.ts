@@ -9,3 +9,7 @@ export interface PostData extends NormalPageData {
   image?: string;
   draft?: boolean;
 }
+
+export type PropsWithChildren<Props> = Props & {children: JSX.Children}
+
+export type FC<Props> = (props: Props) => unknown;

@@ -1,6 +1,8 @@
-import type { FunctionComponent as FC } from "preact";
+import type { FC, PropsWithChildren } from "../types.ts";
 
-const BaseHead: FC<{ title?: string }> = ({ title, children }) => {
+const BaseHead: FC<PropsWithChildren<{ title?: string }>> = (
+  { title, children },
+) => {
   return (
     <head>
       <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />

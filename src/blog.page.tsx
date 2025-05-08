@@ -1,4 +1,4 @@
-import { Fragment } from "preact";
+import { Fragment } from "lume/jsx-runtime";
 import type { PostData } from "./types.ts";
 
 export const layout = "layouts/default.tsx";

@@ -1,4 +1,4 @@
-import { Fragment, type FunctionComponent as FC } from "preact";
+import { Fragment } from "lume/jsx-runtime";
 
 const fediVerseApps = [
   {
@@ -19,11 +19,11 @@ const fediVerseApps = [
   },
 ];
 
-const FediVerseList: FC = () => {
+const FediVerseList = () => {
   return (
     <Fragment>
       {fediVerseApps.map(({ url, name }) => (
-        <Fragment key={name}>
+        <Fragment>
           <a href={url}>{name}</a>,{" "}
         </Fragment>
       ))}
@@ -37,8 +37,8 @@ type Props = {
   commentsBackup?: string;
 };
 
-const CommentList: FC<Props> = (
-  { mastodonLink, language, commentsBackup },
+const CommentList = (
+  { mastodonLink, language, commentsBackup }: Props,
 ) => {
   if (!mastodonLink) {
     return null;

@@ -1,6 +1,7 @@
-import { Fragment, type FunctionComponent as FC } from "preact";
+import { Fragment } from "lume/jsx-runtime";
 import dayjs from "dayjs";
 import type { GithubRepo } from "../services/github.ts";
+import type { FC } from "../types.ts";
 
 const RepoList: FC<{ repos: GithubRepo[] }> = ({ repos }) => (
   <section>
@@ -16,7 +17,7 @@ const RepoList: FC<{ repos: GithubRepo[] }> = ({ repos }) => (
           </h4>
           <p>{repo.description}</p>
           <p title="Last commit">
-            {repo.fork && <Fragment>Contribuição -</Fragment>}Último commit:
+            {repo.fork && <Fragment>Contribuição - </Fragment>}Último commit:
             {" "}
             <time dateTime={repo.updated_at ?? undefined}>
               {dayjs(repo.updated_at).format("DD/MM/YYYY")}
