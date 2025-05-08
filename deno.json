@@ -3,7 +3,7 @@
     "dayjs": "npm:dayjs@^1.11.13",
     "lume/": "https://deno.land/x/lume@v3.0.0/",
     "lume/jsx-runtime": "https://deno.land/x/ssx@v0.1.9/jsx-runtime.ts",
-    "octokit": "npm:octokit@^4.1.2",
+    "octokit": "https://esm.sh/octokit?dts",
     "prismjs": "npm:prismjs@^1.30.0"
   },
   "tasks": {

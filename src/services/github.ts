@@ -1,4 +1,4 @@
-import { Octokit } from "npm:octokit";
+import { Octokit } from "octokit";
 
 const octokit = new Octokit();
 
@@ -21,7 +21,8 @@ export async function getPublicRepositories(): Promise<GithubRepo[]> {
     });
 
     return repos.data;
-  } catch {
+  } catch (e) {
+    console.error(e)
     console.error("error trying to get repos from github");
   }
 
