@@ -1,19 +1,33 @@
-import { Octokit } from "octokit";
+import { Octokit } from "@octokit/core";
+
+const github = new Octokit();
+const getGithubRepos = () =>
+  github.request("GET /users/{username}/repos", { username: "thiagojedi" })
+    .then((r) => r.data)
+    .catch(() => []);
+
+const codeberg = new Octokit({ baseUrl: "https://codeberg.org/api/v1" });
+const getCodebergRepos = () =>
+  codeberg.request("GET /users/{username}/repos", { username: "thiagojedi" })
+    .then((r) => r.data)
+    .catch(() => []);
 
 export async function getPublicRepositories() {
   try {
-    const octokit = new Octokit({
-      // baseUrl: "https://codeberg.org/api/v1",
+    const codebergRequest = getCodebergRepos();
+    const githubRequest = getGithubRepos();
+
+    const codeberg = await codebergRequest;
+
+    const mainRepos = (await githubRequest).map((repo) => {
+      const repoOnCodeberg = codeberg.find(({ name }) => name === repo.name);
+      return repoOnCodeberg ?? repo;
     });
 
-    const repos = await octokit.rest.repos.listForUser({
-      username: "thiagojedi",
-      per_page: 6,
-      sort: "updated",
-      direction: "desc",
-    });
-
-    return repos.data;
+    return [
+      ...mainRepos,
+      ...codeberg.filter((repo) => !mainRepos.includes(repo)),
+    ].slice(0, 6);
   } catch (e) {
     console.error(e);
     console.error("error trying to get repos from github");

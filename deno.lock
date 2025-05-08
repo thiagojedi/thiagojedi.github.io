@@ -61,6 +61,9 @@
     "jsr:@std/yaml@^1.0.5": "1.0.6",
     "npm:@js-temporal/polyfill@0.4.4": "0.4.4",
     "npm:@octokit/core@6.1.5": "6.1.5",
+    "npm:@octokit/core@^6.1.5": "6.1.5",
+    "npm:@octokit/types@14": "14.0.0",
+    "npm:@octokit/types@14.0.0": "14.0.0",
     "npm:@types/estree@1.0.5": "1.0.5",
     "npm:@types/estree@1.0.6": "1.0.6",
     "npm:@types/prismjs@*": "1.26.5",
@@ -1618,8 +1621,9 @@
   },
   "workspace": {
     "dependencies": [
+      "npm:@octokit/core@^6.1.5",
+      "npm:@octokit/types@14",
       "npm:dayjs@^1.11.13",
-      "npm:octokit@3",
       "npm:prismjs@^1.30.0"
     ]
   }
