@@ -1146,7 +1146,6 @@
   "workspace": {
     "dependencies": [
       "npm:dayjs@^1.11.13",
-      "npm:octokit@^4.1.2",
       "npm:prismjs@^1.30.0"
     ]
   }

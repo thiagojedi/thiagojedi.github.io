@@ -14,7 +14,7 @@ import "prismjs/components/prism-markup.js";
 import "prismjs/components/prism-sql.js";
 
 const site = lume({
-  location: new URL("https://thiagojedi.codeberg.pages"),
+  location: new URL("https://thiagojedi.github.io"),
   src: "./src/",
 });
 
