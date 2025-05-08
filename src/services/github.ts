@@ -3,7 +3,7 @@ import { Octokit } from "octokit";
 export async function getPublicRepositories() {
   try {
     const octokit = new Octokit({
-      baseUrl: "https://codeberg.org/api/v1",
+      // baseUrl: "https://codeberg.org/api/v1",
     });
 
     const repos = await octokit.rest.repos.listForUser({
