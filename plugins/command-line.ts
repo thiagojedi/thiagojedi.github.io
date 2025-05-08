@@ -1,9 +1,4 @@
-import type { Site } from "lume/core.ts";
-import {
-  type Element,
-  type Node,
-  NodeType,
-} from "https://deno.land/x/deno_dom@v0.1.38/src/api.ts";
+import type Site from "lume/core/site.ts";
 
 const defaultStyle = "display: block; float: left; text-align: right;";
 
@@ -16,7 +11,7 @@ const takeAttribute = (element: Element, attr: string) => {
 };
 
 const isElement = (element: Node): element is Element =>
-  element.nodeType === NodeType.ATTRIBUTE_NODE;
+  element.nodeType === 2;
 
 type CommandLineOptions = {
   /**
@@ -93,7 +88,8 @@ export default function commandLine(
               `${defaultUser}@${defaultServer} ${promptSign}`;
           }
 
-          const codeLines = element.firstChild.textContent.trim().split("\n");
+          const codeLines =
+            element.firstChild?.textContent?.trim().split("\n") ?? [];
           const numberOfLines = codeLines.length;
 
           const promptColumn = document.createElement("span");
