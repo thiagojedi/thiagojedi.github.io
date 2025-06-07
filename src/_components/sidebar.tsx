@@ -32,7 +32,7 @@ const Sidebar = () => {
       </div>
       <dl>
         <dt>
-          <i className="fa-solid fa-code-branch" /> Forgejo:
+          <i class="fa-solid fa-code-branch" /> Forgejo:
         </dt>
         <dd>
           <a href="https://codeberg.org/thiagojedi">@thiagojedi@codeberg.org</a>
