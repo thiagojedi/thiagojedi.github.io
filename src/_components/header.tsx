@@ -7,8 +7,8 @@ const Header = () => {
         </h1>
       </div>
       <marquee behavior="alternate">
-        This site moved to <a href="https://thiagojedi.codeberg.org">
-          https://thiagojedi.codeberg.org
+        This site moved to <a href="https://thiagojedi.codeberg.page">
+          https://thiagojedi.codeberg.page
         </a>
       </marquee>
       <marquee behavior="scroll">
