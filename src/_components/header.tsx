@@ -12,8 +12,8 @@ const Header = () => {
         </a>
       </marquee>
       <marquee behavior="scroll">
-        This site moved to <a href="https://thiagojedi.codeberg.org">
-          https://thiagojedi.codeberg.org
+        This site moved to <a href="https://thiagojedi.codeberg.page">
+          https://thiagojedi.codeberg.page
         </a>
       </marquee>
     </header>
